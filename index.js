@@ -1,9 +1,9 @@
 import { Argument } from "commander";
 import { Command } from "commander";
+import { handleAddCommand } from "./commands/add.js";
+import { loadConfig } from "./utils/config.js";
 
-function handleAddCommand(component) {
-  console.log(component);
-}
+export const config = await loadConfig();
 
 const addCommand = new Command("add")
   .description("Add a component into your project")
@@ -19,4 +19,6 @@ const vuetCommand = new Command("vuet")
   .version("0.0.1")
   .addCommand(addCommand);
 
-vuetCommand.parse();
+export default function run() {
+  vuetCommand.parse();
+}
