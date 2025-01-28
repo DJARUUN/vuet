@@ -1,3 +1,5 @@
 {
-  "needs": []
+  "needs": [
+    "Text"
+  ]
 }
