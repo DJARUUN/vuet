@@ -2,25 +2,15 @@ import { config } from "../index.js";
 import { logFatal, logHeader, logInfo, logResult } from "../utils/logging.js";
 import fs from "fs";
 import { fixPath } from "../utils/misc.js";
+import chalk from "chalk";
 
-const baseUrl =
-  "https://api.github.com/repos/DJARUUN/vuet/contents/components/";
-const fetchOpts = { Accept: "application/vnd.github+json" };
+const basePath = "../components/";
 
+/** @type {Set<string>} */
+const addedComponentsSet = new Set();
+
+/** @type {{ component: string; indentLevel: number; content: string; fullPath: string; alreadyAdded: boolean }[]} */
 const addedComponents = [];
-
-function getComponentFilenameAndMetaUrls(name) {
-  return {
-    componentUrl: `${baseUrl}V${name}.vue`,
-    metaUrl: `${baseUrl}V${name}.meta.json`,
-  };
-}
-
-function decodeContent(content) {
-  const buf = Buffer.from(content, "base64");
-  const decoded = buf.toString("utf8");
-  return decoded;
-}
 
 function createDirsIfNotExists() {
   const pathSegments = config.componentsDir
@@ -38,71 +28,114 @@ function createDirsIfNotExists() {
   }
 }
 
+/**
+ * @param {string} content
+ * @param {string} fullPath
+ */
 function createComponent(content, fullPath) {
+  // console.log("WROTE:", fullPath);
   fs.writeFileSync(fullPath, content);
 }
 
-export async function handleAddCommand(component) {
+/**
+ * @param {string[]} components
+ * @param {{ force: boolean }} options
+ */
+export async function handleAddCommand(components, { force }) {
+  /**
+   * @param {string} component
+   * @param {number} indentLevel
+   */
   async function aux(component, indentLevel = 0) {
+    let alreadyAdded = false;
     const fullPath = `${fixPath(config.componentsDir)}V${component}.vue`;
 
-    logHeader(`Adding ${component}`, indentLevel);
-
-    if (fs.existsSync(fullPath)) {
-      logInfo(`Using existing Button -> ${fullPath}`, indentLevel);
-      return;
+    if (
+      !force &&
+      (addedComponentsSet.has(component) || fs.existsSync(fullPath))
+    ) {
+      alreadyAdded = true;
     }
 
-    const { componentUrl, metaUrl } =
-      getComponentFilenameAndMetaUrls(component);
+    logHeader(`Adding ${component}`, indentLevel, false);
+
+    const [componentPath, metaPath] = [
+      `${basePath}V${component}.vue`,
+      `${basePath}V${component}.meta.json`,
+    ];
 
     logInfo("Getting metadata", indentLevel);
 
-    const metaResult = await fetch(metaUrl, fetchOpts);
-    if (!metaResult.ok) {
+    let metaContent;
+    try {
+      metaContent = JSON.parse(fs.readFileSync(metaPath).toString());
+    } catch (err) {
       logFatal(
         `${component} is not an existing component.\nIf you want me to add it create an issue in the GitHub repository and we'll see what I can do.`,
       );
     }
 
-    const metaJson = await metaResult.json();
-    const metaContent = JSON.parse(decodeContent(metaJson.content));
-
     const needs = metaContent.needs;
     if (needs.length > 0) {
-      logInfo("Getting dependencies");
+      logInfo("Getting dependencies", indentLevel);
       for (const need of needs) {
         await aux(need, indentLevel + 1);
       }
     }
 
-    logInfo("Downloading source", indentLevel);
+    let componentContent;
+    if (force || !alreadyAdded) {
+      logInfo("Reading source", indentLevel);
 
-    const componentResult = await fetch(componentUrl, fetchOpts);
-    if (!componentResult.ok) {
-      logFatal("Something went wrong.\nTry again later.");
+      try {
+        componentContent = fs.readFileSync(componentPath);
+      } catch (err) {
+        logFatal("Something went wrong.\nTry again later.");
+      }
+
+      logInfo(
+        `Adding ${chalk.reset.green(component)} ${chalk.reset.dim("")} ${chalk.reset.gray(fullPath)}`,
+        indentLevel,
+      );
+    } else {
+      logInfo(
+        `Using existing ${chalk.reset.green(component)} ${chalk.reset.dim("")} ${chalk.reset.gray(fullPath)}`,
+        indentLevel,
+      );
     }
 
-    const componentJson = await componentResult.json();
-    const componentContent = decodeContent(componentJson.content);
+    addedComponentsSet.add(component);
 
-    logInfo(`Adding as V${component}.vue`);
-
-    createDirsIfNotExists();
-
-    createComponent(componentContent, fullPath);
-
-    addedComponents.unshift({ component: "Button", indentLevel: indentLevel });
+    addedComponents.push({
+      component,
+      indentLevel,
+      content: !force && alreadyAdded ? null : componentContent,
+      fullPath,
+      alreadyAdded,
+    });
   }
 
-  await aux(component, 0);
+  const uniqueComponents = [...new Set(components)];
+
+  for (const component of uniqueComponents) {
+    await aux(component, 0);
+  }
+
+  createDirsIfNotExists();
 
   if (addedComponents.length > 0) {
-    console.log();
     logHeader("Added components");
 
-    addedComponents.forEach(({ component, indentLevel }) =>
-      logResult(component, indentLevel + 1),
-    );
+    addedComponents
+      .toReversed()
+      .forEach(
+        ({ component, indentLevel, content, fullPath, alreadyAdded }) => {
+          if (force || !alreadyAdded) {
+            createComponent(content, fullPath);
+          }
+
+          logResult(component, indentLevel + 1, alreadyAdded);
+        },
+      );
   }
 }

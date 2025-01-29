@@ -1,5 +1,4 @@
-import { Argument } from "commander";
-import { Command } from "commander";
+import { Argument, Command, Option } from "commander";
 import { handleAddCommand } from "./commands/add.js";
 import { loadConfig } from "./utils/config.js";
 
@@ -8,8 +7,12 @@ export const config = await loadConfig();
 const addCommand = new Command("add")
   .description("Add a component into your project")
   .addArgument(
-    new Argument("component", "the name of the component to add").argRequired(),
+    new Argument(
+      "components...",
+      "the components to add separated by spaces",
+    ).argRequired(),
   )
+  .addOption(new Option("--force", "never reuse existing components"))
   .action(handleAddCommand);
 
 const vuetCommand = new Command("vuet")
