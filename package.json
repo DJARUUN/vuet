@@ -1,21 +1,23 @@
 {
   "name": "vuet",
   "version": "1.0.0",
-  "description": "",
+  "author": "",
   "main": "index.js",
+  "dependencies": {
+    "chalk": "^5.4.1",
+    "commander": "^13.1.0"
+  },
   "bin": {
     "vuet": "./bin/vuet.js"
   },
-  "type": "module",
+  "description": "",
+  "keywords": [],
+  "license": "ISC",
   "scripts": {
     "run": "node index.js"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "chalk": "^5.4.1",
-    "commander": "^13.1.0",
-    "eslint": "^9.19.0"
+  "type": "module",
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4"
   }
 }
