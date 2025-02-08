@@ -14,4 +14,7 @@ export default defineNuxtConfig({
       pathPrefix: false,
     },
   ],
+  modules: [
+    '@nuxt/fonts',
+  ]
 });

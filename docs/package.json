@@ -10,18 +10,17 @@
   },
   "dependencies": {
     "@ark-ui/vue": "^4.9.1",
+    "@nuxt/fonts": "0.10.3",
     "@tailwindcss/vite": "^4.0.3",
     "nuxt": "^3.15.4",
     "tailwind-merge": "^3.0.1",
     "tailwindcss": "^4.0.3",
     "vaul-vue": "^0.2.1",
     "vue": "latest",
-    "vue-router": "latest"
+    "vue-router": "latest",
+    "vue-use": "^0.2.0"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@histoire/plugin-nuxt": "^0.17.17",
-    "@histoire/plugin-vue": "^0.17.17",
-    "histoire": "^0.17.17"
   }
 }

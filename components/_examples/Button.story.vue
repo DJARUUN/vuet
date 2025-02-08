@@ -4,7 +4,7 @@
       <VButton>Click me!</VButton>
     </Variant>
 
-    <Variant title="secondary">
+    <Variant title="primary">
       <VButton variant="primary">Click me!</VButton>
     </Variant>
   </Story>
