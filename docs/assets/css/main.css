@@ -1,1 +1,72 @@
 @import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@utility ease {
+	--ease: cubic-bezier(0.5, 1, 0.89, 1);
+	transition-timing-function: var(--ease);
+	animation-timing-function: var(--ease);
+}
+
+@layer base {
+	body {
+		font-family: Inter, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
+		font-weight: normal;
+	}
+}
+
+@layer animations {
+	[data-scope="dialog"] {
+		[data-part="backdrop"] {
+			&:is([open], [data-open], [data-state="open"]) {
+				animation: modal-backdrop-in 150ms;
+				@apply ease;
+			}
+
+			&:is([closed], [data-closed], [data-state="closed"]) {
+				animation: modal-backdrop-out 150ms;
+				@apply ease;
+			}
+		}
+
+		[data-part="content"] {
+			&:is([open], [data-open], [data-state="open"]) {
+				animation: modal-content-in 150ms;
+				@apply ease;
+			}
+
+			&:is([closed], [data-closed], [data-state="closed"]) {
+				animation: modal-content-out 150ms;
+				@apply ease;
+			}
+		}
+	}
+
+	@keyframes modal-backdrop-in {
+		from {
+			opacity: 0;
+		}
+	}
+
+	@keyframes modal-backdrop-out {
+		to {
+			opacity: 0;
+		}
+	}
+
+	@keyframes modal-content-in {
+		from {
+			opacity: 0;
+			scale: 97.5%;
+			filter: blur(4px);
+		}
+	}
+
+	@keyframes modal-content-out {
+		to {
+			opacity: 0;
+			scale: 97.5%;
+			filter: blur(4px);
+		}
+	}
+}
