@@ -45,10 +45,10 @@ const variantStyles = {
          bg-primary-600/85      hover:bg-primary-500/85      active:bg-primary-400/85
 
     dark:text-zinc-100
-         text-zinc-100
+         text-zinc-900
 
     dark:border-primary-400/35 dark:border-t-primary-400/95 dark:hover:border-primary-300/35 dark:hover:border-t-primary-300/95
-         border-zinc-400/55         border-t-zinc-400/35         hover:border-zinc-300/55         hover:border-t-zinc-300/35
+         border-primary-400/35      border-t-primary-400/95      hover:border-primary-300/35      hover:border-t-primary-300/95
 
     border backdrop-blur-lg backdrop-saturate-150
   `,
