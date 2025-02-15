@@ -4,10 +4,10 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
-  components: [{ path: "../components", pathPrefix: false }, "~/components"],
+  components: [{ path: "~/components", pathPrefix: false }],
   vite: {
     plugins: [tailwindcss()],
   },
   css: ["~/assets/css/main.css"],
-  modules: ["@nuxt/fonts"],
+  modules: ["@nuxt/fonts", "@nuxt/content"],
 });

@@ -1,0 +1,6 @@
+{
+	"needs": [
+		"SidebarItem",
+		"SidebarGroup"
+	]
+}

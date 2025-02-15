@@ -1,0 +1,7 @@
+# Modal
+
+is this really a modal or is someone pranking me?
+
+::Example
+    ::ModalExample
+::
