@@ -24,6 +24,13 @@
   --color-primary-950: var(--color-indigo-950);
 }
 
+@layer base {
+  body {
+    @apply dark:bg-zinc-900 bg-zinc-100 dark:text-zinc-100 text-zinc-900;
+    font-family: "Figtree", sans-serif;
+  }
+}
+
 .page-enter-active,
 .page-leave-active {
   @apply transition-all ease-bounce duration-[400ms];
