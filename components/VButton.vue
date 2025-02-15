@@ -1,8 +1,29 @@
 <script setup lang="ts">
 import { twMerge } from "tailwind-merge";
 
-const sharedStyles =
-  "border inline-flex text-sm font-medium items-center justify-center gap-2 rounded-lg cursor-pointer h-8.5 px-3 transition-all ease";
+const {
+  type = "button",
+  variant = "default",
+  size = "default",
+  link = false,
+  nuxt = true,
+} = defineProps<{
+  type?: "button" | "submit" | "reset";
+  variant?: keyof typeof variantStyles;
+  size?: "default" | "icon";
+  link?: boolean;
+  nuxt?: boolean;
+  to?: string;
+  class?: string;
+}>();
+
+const sharedStyles = `flex text-sm font-medium rounded-lg cursor-pointer transition-[background-color,color,border] ease-out`;
+
+const sizeStyles = {
+  default: `h-8.5 px-3`,
+
+  icon: `size-8.5`,
+};
 
 const variantStyles = {
   default: `
@@ -15,7 +36,7 @@ const variantStyles = {
     dark:border-zinc-600/35 dark:border-t-zinc-600/95 dark:hover:border-zinc-500/35 dark:hover:border-t-zinc-500/95
          border-zinc-300/55      border-t-zinc-300/35      hover:border-zinc-300/55      hover:border-t-zinc-300/35
 
-    backdrop-blur-lg backdrop-saturate-150
+    border  backdrop-blur-lg backdrop-saturate-150
   `,
 
   primary: `
@@ -28,7 +49,7 @@ const variantStyles = {
     dark:border-primary-400/35 dark:border-t-primary-400/95 dark:hover:border-primary-300/35 dark:hover:border-t-primary-300/95
          border-zinc-400/55         border-t-zinc-400/35         hover:border-zinc-300/55         hover:border-t-zinc-300/35
 
-    backdrop-blur-lg backdrop-saturate-150
+    border  backdrop-blur-lg backdrop-saturate-150
   `,
 
   outline: `
@@ -39,22 +60,51 @@ const variantStyles = {
          text-zinc-900
 
     dark:border-zinc-500/35 dark:hover:border-zinc-500/35
-         border-zinc-400/55      hover:border-zinc-400/55
+         border-zinc-400/45      hover:border-zinc-400/45
+
+    border
+  `,
+
+  ghost: `
+    dark:hover:bg-zinc-700/85 dark:active:bg-zinc-600/85
+         hover:bg-zinc-50/85       active:bg-zinc-100/85
+
+    dark:text-zinc-100
+         text-zinc-900
   `,
 };
 
-const { type = "button", variant = "default" } = defineProps<{
-  type?: "button" | "submit" | "reset";
-  variant?: keyof typeof variantStyles;
-  class?: string;
-}>();
+const innerStyles = "inline-flex gap-2 items-center justify-center size-full";
 </script>
 
 <template>
   <button
+    v-if="!link"
     :type="type"
-    :class="twMerge(sharedStyles, variantStyles[variant], $props.class)"
+    :class="twMerge(sharedStyles, sizeStyles[size], variantStyles[variant], $props.class)"
   >
-    <slot />
+    <div :class="innerStyles">
+      <slot />
+    </div>
   </button>
+
+  <NuxtLink
+    v-else-if="nuxt && link"
+    :class="twMerge(sharedStyles, sizeStyles[size], variantStyles[variant], $props.class)"
+    :to="to"
+  >
+    <div :class="innerStyles">
+      <slot />
+    </div>
+  </NuxtLink>
+
+  <a
+    v-else
+    :class="twMerge(sharedStyles, sizeStyles[size], variantStyles[variant], $props.class)"
+    :href="to"
+  >
+    <div :class="innerStyles">
+      <slot />
+    </div>
+  </a>
 </template>
