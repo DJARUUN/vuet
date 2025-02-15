@@ -11,7 +11,7 @@ const { items } = defineProps<{ items: ContentNavigationItem[] }>();
       NO HEADER
     </slot>
 
-    <template v-for="item in items">
+    <template v-for="item in items" :key="item">
       <VSidebarGroup v-if="item.page === false" :item="item" />
       <VSidebarItem v-else :item="item" />
     </template>

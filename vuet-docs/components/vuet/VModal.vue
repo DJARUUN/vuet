@@ -8,7 +8,7 @@ defineProps<{
   class?: string;
 }>();
 
-const isOpen = defineModel({ required: true });
+const isOpen = defineModel<boolean>({ required: true });
 </script>
 
 <template>
@@ -51,63 +51,3 @@ const isOpen = defineModel({ required: true });
     </Teleport>
   </Dialog.Root>
 </template>
-
-<style>
-@import "tailwindcss";
-
-@utility ease-bounce {
-  --ease: cubic-bezier(0.34, 1.56, 0.64, 1);
-  transition-timing-function: var(--ease);
-  animation-timing-function: var(--ease);
-}
-
-[data-scope="dialog"] {
-
-  &[data-part="backdrop"] {
-    &:is([open], [data-open], [data-state="open"]) {
-      animation: modal-backdrop-in 200ms;
-      @apply ease-out;
-    }
-  }
-
-  &[data-part="content"] {
-    &:is([open], [data-open], [data-state="open"]) {
-      animation: modal-content-in 300ms;
-      @apply ease-bounce;
-    }
-
-    &:is([closed], [data-closed], [data-state="closed"]) {
-      animation: modal-content-out 200ms;
-      @apply ease-out;
-    }
-  }
-}
-
-@keyframes modal-backdrop-in {
-  from {
-    opacity: 0;
-  }
-}
-
-@keyframes modal-backdrop-out {
-  to {
-    opacity: 0;
-  }
-}
-
-@keyframes modal-content-in {
-  from {
-    filter: blur(10px);
-    opacity: 0;
-    scale: 90%;
-  }
-}
-
-@keyframes modal-content-out {
-  to {
-    filter: blur(2.5px);
-    opacity: 0;
-    scale: 90%;
-  }
-}
-</style>

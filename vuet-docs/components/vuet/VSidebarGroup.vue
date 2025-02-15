@@ -9,7 +9,7 @@ const { item } = defineProps<{ item: ContentNavigationItem, isNested?: boolean }
     <h4 class="font-medium text-[0.938rem]">{{ item.title }}</h4>
 
     <div class="flex flex-col">
-      <template v-for="item_ in item.children">
+      <template v-for="item_ in item.children" :key="item_">
         <VSidebarGroup v-if="item_.page === false" :item="item_" isNested />
         <VSidebarItem v-else :item="item_" />
       </template>
