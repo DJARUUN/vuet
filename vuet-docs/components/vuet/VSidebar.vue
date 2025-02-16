@@ -60,13 +60,25 @@ watch(route, () => isMobileNavShown.value = false);
     </div>
   </nav>
 
-  <div v-show="isMobileNavShown"
-    class="lg:hidden flex flex-col gap-5 fixed z-[100] top-16 dark:bg-zinc-900 bg-zinc-100 p-6 bottom-0 inset-x-0 pt-0 overflow-auto">
-    <template v-for="item in items" :key="item">
-      <VSidebarGroup v-if="item.page === false" :item="item" />
-      <VSidebarItem v-else :item="item" />
-    </template>
+  <Transition>
+    <div v-show="isMobileNavShown"
+      class="lg:hidden flex flex-col gap-5 fixed z-[100] top-16 dark:bg-zinc-900 bg-zinc-100 p-6 bottom-0 inset-x-0 pt-0 overflow-auto transition-[opacity,scale,height] origin-top ease-bounce duration-300">
+      <template v-for="item in items" :key="item">
+        <VSidebarGroup v-if="item.page === false" :item="item" />
+        <VSidebarItem v-else :item="item" />
+      </template>
 
-    <slot name="footer" />
-  </div>
+      <slot name="footer" />
+    </div>
+  </Transition>
 </template>
+
+<style scoped>
+.v-enter-from,
+.v-leave-to {
+  transition-duration: 150ms;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  opacity: 0;
+  scale: 100% 90%;
+}
+</style>
