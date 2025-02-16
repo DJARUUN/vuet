@@ -15,7 +15,7 @@ const isActive = computed(() => route.path === item.path);
     </div>
 
     <VButton link :to="item.path" :variant="isActive ? 'soft' : 'ghost'"
-      :class="`h-8 flex-1 ${isActive ? 'dark:text-zinc-100 text-zinc-900' : 'dark:text-zinc-400 dark:hover:text-zinc-100 text-zinc-600 hover:text-zinc-900'}`"
+      :class="`h-8.5 flex-1 ${isActive ? 'dark:text-zinc-100 text-zinc-900' : 'dark:text-zinc-400 dark:hover:text-zinc-100 text-zinc-600 hover:text-zinc-900'}`"
       innerClass="justify-start">
       {{ item.title }}
     </VButton>

@@ -21,9 +21,9 @@ const {
 const sharedStyles = `flex text-sm font-medium rounded-lg cursor-pointer transition-[background-color,color,border] ease-out`;
 
 const sizeStyles = {
-  default: `h-8.5 px-3`,
+  default: `h-9 px-3.5`,
 
-  icon: `size-8.5`,
+  icon: `size-9`,
 };
 
 const variantStyles = {
