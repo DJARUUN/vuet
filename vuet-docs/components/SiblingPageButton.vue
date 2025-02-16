@@ -5,7 +5,7 @@ defineProps<{ toPage: ContentCollectionItem | undefined, next: boolean }>();
 </script>
 
 <template>
-  <VButton v-if="toPage" variant="outline" :to="toPage.path" class="h-fit pb-3 pt-2.5 rounded-xl"
+  <VButton v-if="toPage" variant="outline" :to="toPage.path" class="h-fit pb-3.5 pt-3 px-4 rounded-xl"
     :innerClass="`flex flex-col ${next ? 'items-end' : 'items-start'}`">
     <div :class="`grid gap-3 ${next ? 'grid-cols-[1fr_auto]' : 'grid-cols-[auto_1fr]'}`">
       <svg v-if="!next" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -19,7 +19,7 @@ defineProps<{ toPage: ContentCollectionItem | undefined, next: boolean }>();
         </h3>
 
         <p
-          :class="`text-sm font-base line-clamp-2 min-h-[2lh] dark:text-zinc-400 text-zinc-600 ${next ? 'text-end' : 'text-start'}`">
+          :class="`text-sm font-base h-[2lh] overflow-hidden dark:text-zinc-400 text-zinc-600 ${next ? 'text-end' : 'text-start'}`">
           {{ toPage?.description }}
         </p>
       </div>
