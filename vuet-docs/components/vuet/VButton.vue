@@ -5,20 +5,19 @@ const {
   type = "button",
   variant = "default",
   size = "default",
-  link = false,
   nuxt = true,
 } = defineProps<{
   type?: "button" | "submit" | "reset";
   variant?: keyof typeof variantStyles;
   size?: "default" | "icon";
-  link?: boolean;
   nuxt?: boolean;
   to?: string;
   class?: string;
   innerClass?: string;
+  disabled?: boolean;
 }>();
 
-const sharedStyles = `flex text-sm font-medium rounded-lg cursor-pointer transition-[background-color,color,border] ease-out`;
+const sharedStyles = `flex text-sm font-medium rounded-lg cursor-pointer transition-[background-color,color,border] ease-out data-disabled:opacity-50 data-disabled:cursor-not-allowed select-none data-disabled:pointer-events-none`;
 
 const sizeStyles = {
   default: `h-9 px-3.5`,
@@ -34,8 +33,8 @@ const variantStyles = {
     dark:text-zinc-100
          text-zinc-900
 
-    dark:border-zinc-600/35 dark:border-t-zinc-600/95 dark:hover:border-zinc-500/35 dark:hover:border-t-zinc-500/95
-         border-zinc-300/55      border-t-zinc-300/35      hover:border-zinc-300/55      hover:border-t-zinc-300/35
+    dark:border-zinc-500/35 dark:border-t-zinc-500/95 dark:hover:border-zinc-400/35 dark:hover:border-t-zinc-400/95
+         border-zinc-400/30      border-t-zinc-400/20      hover:border-zinc-400/30      hover:border-t-zinc-400/20
 
     border backdrop-blur-lg backdrop-saturate-150
   `,
@@ -71,7 +70,7 @@ const variantStyles = {
          text-zinc-900
 
     dark:border-zinc-500/35 dark:hover:border-zinc-500/35
-         border-zinc-400/45      hover:border-zinc-400/45
+         border-zinc-400/30      hover:border-zinc-400/30
 
     border hover:backdrop-blur-lg hover:backdrop-saturate-150 active:backdrop-blur-lg active:backdrop-saturate-150
   `,
@@ -91,21 +90,22 @@ const innerStyles = "inline-flex gap-2 items-center justify-center size-full";
 </script>
 
 <template>
-  <button v-if="!link" :type="type"
+  <button v-if="!to" :type="type" :data-disabled="disabled || null"
     :class="twMerge(sharedStyles, sizeStyles[size], variantStyles[variant], $props.class)">
     <div :class="twMerge(innerStyles, innerClass)">
       <slot />
     </div>
   </button>
 
-  <NuxtLink v-else-if="nuxt && link"
+  <NuxtLink v-else-if="nuxt && to" :data-disabled="disabled || null"
     :class="twMerge(sharedStyles, sizeStyles[size], variantStyles[variant], $props.class)" :to="to">
     <div :class="twMerge(innerStyles, innerClass)">
       <slot />
     </div>
   </NuxtLink>
 
-  <a v-else :class="twMerge(sharedStyles, sizeStyles[size], variantStyles[variant], $props.class)" :href="to">
+  <a v-else :data-disabled="disabled || null"
+    :class="twMerge(sharedStyles, sizeStyles[size], variantStyles[variant], $props.class)" :href="to">
     <div :class="twMerge(innerStyles, innerClass)">
       <slot />
     </div>

@@ -23,7 +23,7 @@ watch(route, (_) => isMobileNavShown.value = false);
     <VSidebar :items="pages">
       <template #header>
         <div class="inline-flex justify-between items-center">
-          <VButton link to="/getting-started/introduction" variant="ghost" class="text-xl font-bold -ml-3.5">Vuet
+          <VButton to="/getting-started/introduction" variant="ghost" class="text-xl font-bold -ml-3.5">Vuet
           </VButton>
 
           <VButton variant="ghost" size="icon" @click="theme = theme === 'dark' ? 'light' : 'dark'">
@@ -42,15 +42,17 @@ watch(route, (_) => isMobileNavShown.value = false);
       </template>
     </VSidebar>
 
-    <div class="p-6 overflow-auto">
+    <div class="p-6 overflow-auto flex flex-col gap-6">
       <slot />
+
+      <SiblingPageButtons />
     </div>
   </div>
 
   <div :class="`hidden not-lg:grid grid-rows-[auto_1fr] h-dvh ${isMobileNavShown && 'gap-3'}`">
     <div
-      :class="`inline-flex justify-between items-center px-6 py-4 ${isMobileNavShown ? 'pb-0 -mb-6' : 'border-b dark:border-zinc-600/35 border-zinc-300/45'}`">
-      <VButton link to="/getting-started/introduction" variant="ghost" class="text-xl font-bold -ml-3.5">Vuet</VButton>
+      :class="`inline-flex justify-between items-center px-6 py-4 ${isMobileNavShown ? 'pb-0 -mb-6' : 'border-b dark:border-zinc-500/35 border-zinc-400/30'}`">
+      <VButton to="/getting-started/introduction" variant="ghost" class="text-xl font-bold -ml-3.5">Vuet</VButton>
 
       <div class="inline-flex gap-3">
         <VButton variant="ghost" size="icon" @click="theme = theme === 'dark' ? 'light' : 'dark'">
@@ -81,8 +83,10 @@ watch(route, (_) => isMobileNavShown.value = false);
 
     <VSidebar v-show="isMobileNavShown" :items="pages" />
 
-    <div v-show="!isMobileNavShown" class="p-6 overflow-auto">
+    <div v-show="!isMobileNavShown" class="p-6 overflow-auto flex flex-col gap-6">
       <slot />
+
+      <SiblingPageButtons />
     </div>
   </div>
 </template>

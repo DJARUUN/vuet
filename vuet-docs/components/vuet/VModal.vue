@@ -22,7 +22,7 @@ const isOpen = defineModel<boolean>({ required: true });
         :class="twMerge('absolute inset-0 flex justify-center items-center p-3 z-50 isolate', $props.class)">
 
         <Dialog.Content
-          class="dark:bg-zinc-800/85 dark:text-zinc-100 bg-white/85 text-zinc-900 dark:border-zinc-600/35 dark:border-t-zinc-600/95 border-zinc-300/55 border-t-zinc-300/35 rounded-xl px-6 py-5 flex flex-col gap-6 border max-h-full backdrop-blur-lg backdrop-saturate-150 max-w-full shadow-xl dark:shadow-black/20 shadow-black/10">
+          class="dark:bg-zinc-800/85 dark:text-zinc-100 bg-white/85 text-zinc-900 dark:border-zinc-500/35 dark:border-t-zinc-500/95 border-zinc-400/30 border-t-zinc-400/20 rounded-xl px-6 py-5 flex flex-col gap-6 border max-h-full backdrop-blur-lg backdrop-saturate-150 max-w-full shadow-xl dark:shadow-black/20 shadow-black/10">
           <div class="grid grid-cols-[1fr_auto] gap-3">
             <Dialog.Title class="flex flex-col gap-1.5">
               <h3 class="text-lg font-semibold">{{ title }}</h3>

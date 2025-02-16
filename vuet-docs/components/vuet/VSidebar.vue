@@ -6,7 +6,7 @@ const { items } = defineProps<{ items: ContentNavigationItem[] }>();
 
 <template>
   <aside
-    class="flex flex-col gap-5 p-6 lg:border-r dark:border-zinc-600/35 border-zinc-300/45 min-w-[18rem] overflow-auto">
+    class="flex flex-col gap-5 p-6 lg:border-r dark:border-zinc-500/35 border-zinc-400/30 min-w-[18rem] overflow-auto">
     <slot name="header" />
 
     <template v-for="item in items" :key="item">
