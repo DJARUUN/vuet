@@ -10,6 +10,52 @@
   animation-timing-function: var(--ease);
 }
 
+@utility prose {
+  --tw-prose-body: var(--color-zinc-700) !important;
+  --tw-prose-headings: var(--color-zinc-900) !important;
+  --tw-prose-lead: var(--color-zinc-600) !important;
+  --tw-prose-links: var(--color-zinc-900) !important;
+  --tw-prose-bold: var(--color-zinc-900) !important;
+  --tw-prose-counters: var(--color-zinc-600) !important;
+  --tw-prose-bullets: var(--color-zinc-400) !important;
+  --tw-prose-hr: var(--color-zinc-700) !important;
+  --tw-prose-quotes: var(--color-zinc-900) !important;
+  --tw-prose-quote-borders: var(--color-zinc-700) !important;
+  --tw-prose-captions: var(--color-zinc-600) !important;
+  --tw-prose-kbd: var(--color-zinc-900) !important;
+  --tw-prose-kbd-shadows: var(--tw-prose-kbd-shadows) !important;
+  --tw-prose-code: var(--color-zinc-700) !important;
+  --tw-prose-pre-code: var(--color-zinc-700) !important;
+  --tw-prose-pre-bg: color-mix(in oklab, var(--color-zinc-200) 85%, transparent) !important;
+  --tw-prose-th-borders: color-mix(in oklab, var(--color-zinc-400) 30%, transparent) !important;
+  --tw-prose-td-borders: color-mix(in oklab, var(--color-zinc-400) 30%, transparent) !important;
+
+  pre {
+    @apply rounded-xl;
+  }
+}
+
+@utility prose-invert {
+  --tw-prose-body: var(--color-zinc-300) !important;
+  --tw-prose-headings: var(--color-zinc-100) !important;
+  --tw-prose-lead: var(--color-zinc-400) !important;
+  --tw-prose-links: var(--color-zinc-100) !important;
+  --tw-prose-bold: var(--color-zinc-100) !important;
+  --tw-prose-counters: var(--color-zinc-400) !important;
+  --tw-prose-bullets: var(--color-zinc-600) !important;
+  --tw-prose-hr: var(--color-zinc-700) !important;
+  --tw-prose-quotes: var(--color-zinc-100) !important;
+  --tw-prose-quote-borders: var(--color-zinc-700) !important;
+  --tw-prose-captions: var(--color-zinc-400) !important;
+  --tw-prose-kbd: var(--color-zinc-100) !important;
+  --tw-prose-kbd-shadows: var(--tw-prose-invert-kbd-shadows) !important;
+  --tw-prose-code: var(--color-zinc-300) !important;
+  --tw-prose-pre-code: var(--color-zinc-300) !important;
+  --tw-prose-pre-bg: color-mix(in oklab, var(--color-zinc-800) 85%, transparent) !important;
+  --tw-prose-th-borders: color-mix(in oklab, var(--color-zinc-500) 35%, transparent) !important;
+  --tw-prose-td-borders: color-mix(in oklab, var(--color-zinc-500) 35%, transparent) !important;
+}
+
 @theme inline {
   --color-primary-50: var(--color-indigo-50);
   --color-primary-100: var(--color-indigo-100);
