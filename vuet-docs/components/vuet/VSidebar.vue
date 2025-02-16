@@ -62,11 +62,13 @@ watch(route, () => isMobileNavShown.value = false);
 
   <Transition>
     <div v-show="isMobileNavShown"
-      class="lg:hidden flex flex-col gap-5 fixed z-[100] top-16 dark:bg-zinc-900 bg-zinc-100 p-6 bottom-0 inset-x-0 pt-0 overflow-auto transition-[opacity,scale,height] origin-top ease-bounce duration-300">
-      <template v-for="item in items" :key="item">
-        <VSidebarGroup v-if="item.page === false" :item="item" />
-        <VSidebarItem v-else :item="item" />
-      </template>
+      class="lg:hidden block fixed z-[100] top-16 dark:bg-zinc-900 bg-zinc-100 p-6 bottom-0 inset-x-0 pt-0 overflow-auto">
+      <div class="flex flex-col gap-5 transition-[scale] origin-top ease-bounce duration-300">
+        <template v-for="item in items" :key="item">
+          <VSidebarGroup v-if="item.page === false" :item="item" />
+          <VSidebarItem v-else :item="item" />
+        </template>
+      </div>
 
       <slot name="footer" />
     </div>
@@ -74,11 +76,9 @@ watch(route, () => isMobileNavShown.value = false);
 </template>
 
 <style scoped>
-.v-enter-from,
-.v-leave-to {
-  transition-duration: 150ms;
-  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
-  opacity: 0;
-  scale: 100% 90%;
+.v-enter-from {
+  div {
+    scale: 100% 90%;
+  }
 }
 </style>
