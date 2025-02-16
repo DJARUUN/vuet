@@ -4,7 +4,7 @@ This is a simple layout component that creates a two-part grid layout with a sid
 
 It pairs perfectly with the [Sidebar](/components/sidebar) component.
 
-# Usage
+## Usage
 
 It has two slots, `sidebar` and the default unnamed slot. By itself it only acts as a layout container and therefore has to have the full sidebar passed in to the `sidebar` slot.
 
