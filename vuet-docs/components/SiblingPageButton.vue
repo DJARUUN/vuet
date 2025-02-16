@@ -5,7 +5,7 @@ defineProps<{ toPage: ContentCollectionItem | undefined, next: boolean }>();
 </script>
 
 <template>
-  <VButton :disabled="!toPage" variant="outline" :to="toPage && toPage.path" class="h-fit py-3 rounded-xl"
+  <VButton v-if="toPage" variant="outline" :to="toPage.path" class="h-fit pb-3 pt-2.5 rounded-xl"
     :innerClass="`flex flex-col ${next ? 'items-end' : 'items-start'}`">
     <div :class="`grid gap-3 ${next ? 'grid-cols-[1fr_auto]' : 'grid-cols-[auto_1fr]'}`">
       <svg v-if="!next" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
@@ -15,12 +15,12 @@ defineProps<{ toPage: ContentCollectionItem | undefined, next: boolean }>();
 
       <div :class="`flex flex-col gap-0.5 ${next ? 'items-end' : 'items-start'}`">
         <h3 class="text-lg font-semibold">
-          {{ toPage ? toPage.title : (next ? "Last page" : "First page") }}
+          {{ toPage.title }}
         </h3>
 
         <p
           :class="`text-sm font-base line-clamp-2 min-h-[2lh] dark:text-zinc-400 text-zinc-600 ${next ? 'text-end' : 'text-start'}`">
-          {{ toPage?.description || (next ? "This is the last page" : "This is the first page") }}
+          {{ toPage?.description }}
         </p>
       </div>
 
@@ -30,4 +30,6 @@ defineProps<{ toPage: ContentCollectionItem | undefined, next: boolean }>();
       </svg>
     </div>
   </VButton>
+
+  <div v-else class="not-lg:hidden" />
 </template>
