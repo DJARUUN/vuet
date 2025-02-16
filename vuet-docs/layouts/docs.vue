@@ -24,6 +24,8 @@ const pages = await queryCollectionNavigation("content");
         </template>
 
         <template #headerRight>
+          <!-- <SearchModal /> -->
+
           <VButton variant="ghost" size="icon" @click="theme = theme === 'dark' ? 'light' : 'dark'">
             <svg v-if="theme === 'dark'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
               stroke-width="1.5" stroke="currentColor" class="size-4.5">
@@ -40,7 +42,13 @@ const pages = await queryCollectionNavigation("content");
       </VSidebar>
     </template>
 
-    <slot />
-    <SiblingPageButtons />
+    <div class="lg:grid lg:grid-cols-[1fr_16rem] not-lg:flex not-lg:flex-col-reverse gap-9">
+      <div class="overflow-auto scroll-smooth flex flex-col gap-6 scroll-pt-6">
+        <slot />
+        <SiblingPageButtons />
+      </div>
+
+      <TOC />
+    </div>
   </VSidebarLayout>
 </template>
