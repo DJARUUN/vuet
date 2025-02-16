@@ -42,7 +42,7 @@
 .page-leave-to {
   translate: 0 0.5rem;
   opacity: 25%;
-  @apply transition-all ease-in duration-[150ms];
+  @apply transition-all ease-in duration-[125ms];
 }
 
 @layer modal {

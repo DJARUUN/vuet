@@ -23,7 +23,8 @@ watch(route, (_) => isMobileNavShown.value = false);
     <VSidebar :items="pages">
       <template #header>
         <div class="inline-flex justify-between items-center">
-          <VButton link to="/" variant="ghost" class="text-xl font-bold -ml-3.5">Vuet</VButton>
+          <VButton link to="/getting-started/introduction" variant="ghost" class="text-xl font-bold -ml-3.5">Vuet
+          </VButton>
 
           <VButton variant="ghost" size="icon" @click="theme = theme === 'dark' ? 'light' : 'dark'">
             <svg v-if="theme === 'dark'" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
@@ -49,7 +50,7 @@ watch(route, (_) => isMobileNavShown.value = false);
   <div :class="`hidden not-lg:grid grid-rows-[auto_1fr] h-dvh ${isMobileNavShown && 'gap-3'}`">
     <div
       :class="`inline-flex justify-between items-center px-6 py-4 ${isMobileNavShown ? 'pb-0 -mb-6' : 'border-b dark:border-zinc-600/35 border-zinc-300/45'}`">
-      <VButton link to="/" variant="ghost" class="text-xl font-bold -ml-3.5">Vuet</VButton>
+      <VButton link to="/getting-started/introduction" variant="ghost" class="text-xl font-bold -ml-3.5">Vuet</VButton>
 
       <div class="inline-flex gap-3">
         <VButton variant="ghost" size="icon" @click="theme = theme === 'dark' ? 'light' : 'dark'">
