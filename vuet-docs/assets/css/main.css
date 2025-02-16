@@ -22,6 +22,8 @@
   --color-primary-800: var(--color-indigo-800);
   --color-primary-900: var(--color-indigo-900);
   --color-primary-950: var(--color-indigo-950);
+
+  --text-sm: 0.9rem;
 }
 
 @layer base {
