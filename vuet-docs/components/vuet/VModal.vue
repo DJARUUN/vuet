@@ -18,7 +18,8 @@ const isOpen = defineModel<boolean>({ required: true });
     <Teleport to="body">
       <Dialog.Backdrop class="absolute inset-0 bg-zinc-900/60 z-40 backdrop-blur-xs backdrop-saturate-150" />
 
-      <Dialog.Positioner :class="twMerge('absolute inset-0 flex justify-center items-center p-3 z-50', $props.class)">
+      <Dialog.Positioner
+        :class="twMerge('absolute inset-0 flex justify-center items-center p-3 z-50 isolate', $props.class)">
 
         <Dialog.Content
           class="dark:bg-zinc-800/85 dark:text-zinc-100 bg-white/85 text-zinc-900 dark:border-zinc-600/35 dark:border-t-zinc-600/95 border-zinc-300/55 border-t-zinc-300/35 rounded-xl px-6 py-5 flex flex-col gap-6 border max-h-full backdrop-blur-lg backdrop-saturate-150 max-w-full shadow-xl dark:shadow-black/20 shadow-black/10">
