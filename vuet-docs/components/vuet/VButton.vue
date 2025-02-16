@@ -57,8 +57,8 @@ const variantStyles = {
     dark:bg-zinc-800/85 dark:hover:bg-zinc-700/85 dark:active:bg-zinc-600/85
          bg-zinc-200/85      hover:bg-zinc-300/85      active:bg-zinc-400/85
 
-    dark:text-zinc-400 dark:hover:text-zinc-100
-         text-zinc-600      hover:text-zinc-900
+    dark:text-zinc-100
+         text-zinc-900
 
     backdrop-blur-lg backdrop-saturate-150
   `,
@@ -80,8 +80,8 @@ const variantStyles = {
     dark:hover:bg-zinc-700/85 dark:active:bg-zinc-600/85
          hover:bg-zinc-300/85      active:bg-zinc-400/85
 
-    dark:hover:text-zinc-100
-         hover:text-zinc-900
+    dark:text-zinc-100
+         text-zinc-900
 
     hover:backdrop-blur-lg hover:backdrop-saturate-150 active:backdrop-blur-lg active:backdrop-saturate-150
   `,
