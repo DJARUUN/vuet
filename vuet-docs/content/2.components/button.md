@@ -1,7 +1,179 @@
+---
+id: button
+title: Button
+description: A versatile button component that can act as a standard button or a link, offering various styles and sizes.
+---
+
 # Button
 
-A simple button that is made to be versetile and has the possibility to act either as a regular button or as a link button.
+::Example
+	::ButtonExample
+::
+
+## Anatomy
+
+The Button component is composed of a few key parts:
+
+-   **Root Element:** The outer element, which can be a `<button>`, `<NuxtLink>`, or `<a>` tag depending on the props. This element handles ???????? button interactions and styling.
+-   **Inner Container:** A `<div>` element inside the root element. This container is used for centering and arranging the button's content (icon and text).
+-   **Content Slot:** The `<slot>` element, which allows you to insert any content you want inside the button, such as text, icons, or other components.
+
+## Examples
+
+Explore different ways to use the `Button` component.
 
 ::Example
-    ::ButtonExample
+	::ButtonExample
 ::
+
+### Basic Button
+
+This is the most basic usage of the Button component, rendering a standard button element.
+
+::Example
+	::ButtonExample
+::
+
+```vue
+<template>
+  <Button>
+    Click me
+  </Button>
+</template>
+```
+
+### Primary Button
+
+Using the `primary` variant to highlight the button as a main action.
+
+::Example
+	::ButtonExample
+::
+
+```vue
+<template>
+  <Button variant="primary">
+    Primary Button
+  </Button>
+</template>
+```
+
+### Soft Button
+
+A softer style using the `soft` variant, ideal for less prominent actions.
+
+::Example
+	::ButtonExample
+::
+
+```vue
+<template>
+  <Button variant="soft">
+    Soft Button
+  </Button>
+</template>
+```
+
+### Outline Button
+
+An outlined style using the `outline` variant.
+
+::Example
+	::ButtonExample
+::
+
+```vue
+<template>
+  <Button variant="outline">
+    Outline Button
+  </Button>
+</template>
+```
+
+### Ghost Button
+
+A minimal ghost style using the `ghost` variant.
+
+::Example
+	::ButtonExample
+::
+
+```vue
+<template>
+  <Button variant="ghost">
+    Ghost Button
+  </Button>
+</template>
+```
+
+### Icon Button
+
+Using the `icon` size for buttons that primarily contain icons.
+
+::Example
+	::ButtonExample
+::
+
+```vue
+<template>
+  <Button size="icon">
+    <Icon name="heroicons:information-circle-solid" size="5" />
+  </Button>
+</template>
+```
+
+### NuxtLink Button
+
+Creating a button that acts as a NuxtLink for internal navigation.
+
+::Example
+	::ButtonExample
+::
+
+```vue
+<template>
+  <Button to="/about">
+    Go to About
+  </Button>
+</template>
+```
+
+### Anchor Link Button
+
+Creating a button that acts as a standard anchor link for external URLs.
+
+::Example
+	::ButtonExample
+::
+
+```vue
+<template>
+  <Button to="https://example.com" :nuxt="false">
+    External Link
+  </Button>
+</template>
+```
+
+## API Reference
+
+| Prop          | Type                                  | Default     | Description                                                                 |
+| :------------ | :------------------------------------ | :---------- | :-------------------------------------------------------------------------- |
+| `type`        | `"button" \| "submit" \| "reset"`     | `"button"`  | HTML `type` attribute for `<button>` elements.                             |
+| `variant`     | `"default" \| "primary" \| "soft" \| "outline" \| "ghost"` | `"default"` | Defines the visual style of the button.                                     |
+| `size`        | `"default" \| "icon"`                | `"default"` | Sets the size of the button.                                            |
+| `nuxt`        | `boolean`                             | `true`      | Enables `<NuxtLink>` rendering when `to` prop is provided.                 |
+| `to`          | `string`                              | `undefined` |  Destination path for `<NuxtLink>` or `href` for `<a>` elements.          |
+| `class`       | `string`                              | `undefined` |  CSS classes to apply to the root button element.                            |
+| `innerClass`  | `string`                              | `undefined` |  CSS classes to apply to the inner container element.                       |
+| `disabled`    | `boolean`                             | `undefined` |  Disables the button, making it non-interactive.                             |
+
+## Accessibility
+
+The Button component is designed to be accessible and follows common accessibility practices for buttons and links.
+
+### Keyboard Support
+
+The Button component provides standard keyboard interactions:
+
+-   **Tab:**  Users can focus on the button using the Tab key.
+-   **Enter/Space:**  When focused, users can activate the button by pressing Enter or Space keys.
