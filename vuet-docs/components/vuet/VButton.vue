@@ -17,7 +17,7 @@ const {
   disabled?: boolean;
 }>();
 
-const sharedStyles = `flex text-sm font-medium rounded-lg cursor-pointer transition-[background-color,color,border] ease-out data-disabled:opacity-50 data-disabled:cursor-not-allowed select-none data-disabled:pointer-events-none`;
+const sharedStyles = `flex text-sm font-medium rounded-lg cursor-pointer transition-[background-color,color,border,opacity] ease-out data-disabled:opacity-60 data-disabled:cursor-not-allowed select-none data-disabled:pointer-events-none`;
 
 const sizeStyles = {
   default: `h-9 px-3.5`,
