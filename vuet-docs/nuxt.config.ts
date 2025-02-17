@@ -2,29 +2,35 @@ import tailwindcss from "@tailwindcss/vite";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-	compatibilityDate: "2024-11-01",
-	devtools: { enabled: true },
+  compatibilityDate: "2024-11-01",
+  devtools: { enabled: true },
 
-	components: [
-		{ path: "~/vuet", pathPrefix: false },
-		{ path: "~/components", pathPrefix: false },
-	],
+  app: {
+    head: {
+      htmlAttrs: { lang: "en" },
+    },
+  },
 
-	vite: {
-		plugins: [tailwindcss()],
-	},
+  components: [
+    { path: "~/vuet", pathPrefix: false },
+    { path: "~/components", pathPrefix: false },
+  ],
 
-	css: ["~/assets/css/main.css"],
+  vite: {
+    plugins: [tailwindcss()],
+  },
 
-	modules: ["@nuxt/fonts", "@nuxt/content"],
+  css: ["~/assets/css/main.css"],
 
-	content: {
-		build: {
-			markdown: {
-				toc: {
-					depth: 3,
-				},
-			},
-		},
-	},
+  modules: ["@nuxt/fonts", "@nuxt/content"],
+
+  content: {
+    build: {
+      markdown: {
+        toc: {
+          depth: 3,
+        },
+      },
+    },
+  },
 });
