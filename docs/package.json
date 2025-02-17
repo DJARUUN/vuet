@@ -3,24 +3,27 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "story:dev": "histoire dev",
-    "story:build": "histoire build",
-    "story:preview": "histoire preview --port 4567",
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "dev:host": "nuxt dev --host",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
     "@ark-ui/vue": "^4.9.1",
+    "@nuxt/content": "^3.1.1",
     "@nuxt/fonts": "0.10.3",
-    "@tailwindcss/vite": "^4.0.3",
+    "@tailwindcss/vite": "^4.0.5",
+    "fuse.js": "^7.1.0",
     "nuxt": "^3.15.4",
     "tailwind-merge": "^3.0.1",
-    "tailwindcss": "^4.0.3",
-    "vaul-vue": "^0.2.1",
+    "tailwindcss": "^4.0.5",
     "vue": "latest",
-    "vue-router": "latest",
-    "vue-use": "^0.2.0"
+    "vue-router": "latest"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
+    "@tailwindcss/typography": "^0.5.16"
   }
 }
