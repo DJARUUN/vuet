@@ -5,13 +5,15 @@ definePageMeta({
 });
 
 const route = useRoute();
-if (route.path === "/") await navigateTo("/getting-started/introduction");
 
-const { data: page } = await useAsyncData(route.path, () => queryCollection("content").path(route.path).first());
-if (!page.value) throw createError({
-  status: 404,
-  message: `${route.fullPath} is not a page`,
-});
+const { data: page } = await useAsyncData(route.path, () =>
+  queryCollection("content").path(route.path).first()
+);
+if (!page.value)
+  throw createError({
+    status: 404,
+    message: `${route.fullPath} is not a page`,
+  });
 
 useSeoMeta({
   title: page.value?.title + " - Vuet",
@@ -20,6 +22,9 @@ useSeoMeta({
 </script>
 
 <template>
-  <ContentRenderer v-if="page" :value="page"
-    class="prose prose-h1:font-bold prose-h1:text-3xl prose-headings:**:no-underline dark:prose-invert min-w-full" />
+  <ContentRenderer
+    v-if="page"
+    :value="page"
+    class="prose prose-h1:font-bold prose-h1:text-3xl prose-headings:**:no-underline dark:prose-invert min-w-full"
+  />
 </template>

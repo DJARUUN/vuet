@@ -5,10 +5,6 @@ export default defineNuxtConfig({
   compatibilityDate: "2024-11-01",
   devtools: { enabled: true },
 
-  // app: {
-  //   baseURL: "/vuet/",
-  // },
-
   components: [
     { path: "~/vuet", pathPrefix: false },
     { path: "~/components", pathPrefix: false },
