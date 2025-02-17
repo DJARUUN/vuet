@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import type { ContentCollectionItem } from '@nuxt/content';
+import type { ContentCollectionItem } from "@nuxt/content";
 
-defineProps<{ toPage: ContentCollectionItem | undefined, next: boolean }>();
+defineProps<{ toPage: ContentCollectionItem | undefined; next: boolean }>();
 </script>
 
 <template>

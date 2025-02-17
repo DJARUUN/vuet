@@ -1,5 +1,3 @@
 {
-	"needs": [
-		"SidebarItem"
-	]
+	"needs": ["SidebarItem"]
 }

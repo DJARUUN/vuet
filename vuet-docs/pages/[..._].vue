@@ -1,23 +1,23 @@
 <script setup lang="ts">
 definePageMeta({
-  layout: "docs",
-  // pageTransition: { name: "page", mode: "out-in" },
+	layout: "docs",
+	// pageTransition: { name: "page", mode: "out-in" },
 });
 
 const route = useRoute();
 
 const { data: page } = await useAsyncData(route.path, () =>
-  queryCollection("content").path(route.path).first()
+	queryCollection("content").path(route.path).first(),
 );
 if (!page.value)
-  throw createError({
-    status: 404,
-    message: `${route.fullPath} is not a page`,
-  });
+	throw createError({
+		status: 404,
+		message: `${route.fullPath} is not a page`,
+	});
 
 useSeoMeta({
-  title: page.value?.title + " - Vuet",
-  description: page.value?.description,
+	title: page.value?.title + " - Vuet",
+	description: page.value?.description,
 });
 </script>
 

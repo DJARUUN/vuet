@@ -3,7 +3,7 @@ const route = useRoute();
 const page = ref(await queryCollection("content").path(route.path).first());
 
 watch(route, async ({ path }) => {
-  page.value = await queryCollection("content").path(path).first();
+	page.value = await queryCollection("content").path(path).first();
 });
 </script>
 

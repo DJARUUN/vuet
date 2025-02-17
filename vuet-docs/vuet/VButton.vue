@@ -2,31 +2,31 @@
 import { twMerge } from "tailwind-merge";
 
 const {
-  type = "button",
-  variant = "default",
-  size = "default",
-  nuxt = true,
+	type = "button",
+	variant = "default",
+	size = "default",
+	nuxt = true,
 } = defineProps<{
-  type?: "button" | "submit" | "reset";
-  variant?: keyof typeof variantStyles;
-  size?: "default" | "icon";
-  nuxt?: boolean;
-  to?: string;
-  class?: string;
-  innerClass?: string;
-  disabled?: boolean;
+	type?: "button" | "submit" | "reset";
+	variant?: keyof typeof variantStyles;
+	size?: "default" | "icon";
+	nuxt?: boolean;
+	to?: string;
+	class?: string;
+	innerClass?: string;
+	disabled?: boolean;
 }>();
 
 const sharedStyles = `flex text-sm font-medium rounded-lg cursor-pointer transition-[background-color,color,border,opacity] ease-out data-disabled:opacity-60 data-disabled:cursor-not-allowed select-none data-disabled:pointer-events-none`;
 
 const sizeStyles = {
-  default: `h-9 px-3.5`,
+	default: `h-9 px-3.5`,
 
-  icon: `size-9`,
+	icon: `size-9`,
 };
 
 const variantStyles = {
-  default: `
+	default: `
     dark:bg-zinc-800/85 dark:hover:bg-zinc-700/85 dark:active:bg-zinc-600/85
          bg-white            hover:bg-zinc-50/85       active:bg-zinc-100/85
 
@@ -39,7 +39,7 @@ const variantStyles = {
     border backdrop-blur-lg backdrop-saturate-150
   `,
 
-  primary: `
+	primary: `
     dark:bg-primary-600/85 dark:hover:bg-primary-500/85 dark:active:bg-primary-400/85
          bg-primary-600/85      hover:bg-primary-500/85      active:bg-primary-400/85
 
@@ -52,7 +52,7 @@ const variantStyles = {
     border backdrop-blur-lg backdrop-saturate-150
   `,
 
-  soft: `
+	soft: `
     dark:bg-zinc-800/85 dark:hover:bg-zinc-700/85 dark:active:bg-zinc-600/85
          bg-zinc-200/85      hover:bg-zinc-300/85      active:bg-zinc-400/85
 
@@ -62,7 +62,7 @@ const variantStyles = {
     backdrop-blur-lg backdrop-saturate-150
   `,
 
-  outline: `
+	outline: `
     dark:hover:bg-zinc-700/85 dark:active:bg-zinc-600/85
          hover:bg-zinc-50/85       active:bg-zinc-100/85
 
@@ -75,7 +75,7 @@ const variantStyles = {
     border hover:backdrop-blur-lg hover:backdrop-saturate-150 active:backdrop-blur-lg active:backdrop-saturate-150
   `,
 
-  ghost: `
+	ghost: `
     dark:hover:bg-zinc-700/85 dark:active:bg-zinc-600/85
          hover:bg-zinc-300/85      active:bg-zinc-400/85
 

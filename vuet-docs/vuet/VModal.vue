@@ -3,9 +3,9 @@ import { Dialog } from "@ark-ui/vue/dialog";
 import { twMerge } from "tailwind-merge";
 
 defineProps<{
-  title: string;
-  description?: string;
-  class?: string;
+	title: string;
+	description?: string;
+	class?: string;
 }>();
 
 const isOpen = defineModel<boolean>({ required: true });

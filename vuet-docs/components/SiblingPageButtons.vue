@@ -1,17 +1,27 @@
 <script setup lang="ts">
 const route = useRoute();
 
-const siblingPages = ref(await queryCollectionItemSurroundings("content", route.path));
+const siblingPages = ref(
+	await queryCollectionItemSurroundings("content", route.path),
+);
 
-const prevPage = ref(await queryCollection("content").path(siblingPages.value[0]?.path).first())
-const nextPage = ref(await queryCollection("content").path(siblingPages.value[1]?.path).first())
+const prevPage = ref(
+	await queryCollection("content").path(siblingPages.value[0]?.path).first(),
+);
+const nextPage = ref(
+	await queryCollection("content").path(siblingPages.value[1]?.path).first(),
+);
 
 watch(route, async ({ path }) => {
-  siblingPages.value = await queryCollectionItemSurroundings("content", path);
+	siblingPages.value = await queryCollectionItemSurroundings("content", path);
 
-  prevPage.value = await queryCollection("content").path(siblingPages.value[0]?.path).first();
-  nextPage.value = await queryCollection("content").path(siblingPages.value[1]?.path).first();
-})
+	prevPage.value = await queryCollection("content")
+		.path(siblingPages.value[0]?.path)
+		.first();
+	nextPage.value = await queryCollection("content")
+		.path(siblingPages.value[1]?.path)
+		.first();
+});
 </script>
 
 <template>

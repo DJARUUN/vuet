@@ -1,5 +1,3 @@
 {
-	"needs": [
-		"Button"
-	]
+	"needs": ["Button"]
 }

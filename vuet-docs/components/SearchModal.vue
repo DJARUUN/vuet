@@ -4,11 +4,17 @@ import Fuse from "fuse.js";
 const isSearchModalOpen = ref(false);
 
 const searchQuery = ref("Primary");
-const { data: searchData } = await useAsyncData("search-data", () => queryCollectionSearchSections("content"));
+const { data: searchData } = await useAsyncData("search-data", () =>
+	queryCollectionSearchSections("content"),
+);
 
-const fuse = new Fuse(searchData.value, { keys: ["title", "description", "content"] });
+const fuse = new Fuse(searchData.value, {
+	keys: ["title", "description", "content"],
+});
 
-const searchResults = computed(() => fuse.search(toValue(searchQuery)).slice(0, 10));
+const searchResults = computed(() =>
+	fuse.search(toValue(searchQuery)).slice(0, 10),
+);
 </script>
 
 <template>

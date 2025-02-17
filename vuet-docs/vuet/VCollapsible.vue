@@ -1,23 +1,30 @@
 <script setup lang="ts">
-import { twMerge } from 'tailwind-merge';
+import { twMerge } from "tailwind-merge";
 
-const { defaultCollapsed, autoCloseOnMobile } = defineProps<{ title: string, class?: string; defaultCollapsed?: boolean; autoCloseOnMobile?: boolean }>();
+const { defaultCollapsed, autoCloseOnMobile } = defineProps<{
+	title: string;
+	class?: string;
+	defaultCollapsed?: boolean;
+	autoCloseOnMobile?: boolean;
+}>();
 
-const isCollapsed = ref(defaultCollapsed !== undefined ? defaultCollapsed : false);
+const isCollapsed = ref(
+	defaultCollapsed !== undefined ? defaultCollapsed : false,
+);
 
 function handleAutoCloseOnMobile() {
-  if (autoCloseOnMobile && window.innerWidth < 1024) isCollapsed.value = true;
-  else isCollapsed.value = false;
+	if (autoCloseOnMobile && window.innerWidth < 1024) isCollapsed.value = true;
+	else isCollapsed.value = false;
 }
 
 onMounted(() => {
-  window.addEventListener("resize", handleAutoCloseOnMobile);
+	window.addEventListener("resize", handleAutoCloseOnMobile);
 
-  handleAutoCloseOnMobile();
+	handleAutoCloseOnMobile();
 });
 
 onUnmounted(() => {
-  window.removeEventListener("resize", handleAutoCloseOnMobile);
+	window.removeEventListener("resize", handleAutoCloseOnMobile);
 });
 </script>
 
