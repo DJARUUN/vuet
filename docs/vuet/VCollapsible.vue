@@ -36,7 +36,7 @@ const variantStyles = {
 			p-3 pt-0 data-collapsed:-mb-3
 		`,
 		innest: `
-		 *:m-0
+		 *:!m-0
 		`,
 	},
 };
@@ -76,7 +76,7 @@ onUnmounted(() => {
 		</VButton>
 
 		<div :data-collapsed="isCollapsed || null"
-			:class="twMerge(`grid transition-[grid-template-rows] ease-out ${isCollapsed ? 'grid-rows-[0fr]' : 'grid-rows-[1fr]'}`, variantStyles[variant].inner)">
+			:class="twMerge(`grid transition-[grid-template-rows,opacity] ease-out ${isCollapsed ? 'grid-rows-[0fr] opacity-75' : 'grid-rows-[1fr]'}`, variantStyles[variant].inner)">
 			<div :class="twMerge('overflow-y-hidden', variantStyles[variant].innest, innerClass)">
 				<slot />
 			</div>
