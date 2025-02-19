@@ -137,7 +137,7 @@
   --tw-prose-td-borders: var(--color-border) !important;
 
   pre {
-    @apply rounded-xl;
+    @apply rounded-xl my-0;
   }
 }
 

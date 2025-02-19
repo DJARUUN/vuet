@@ -36,7 +36,6 @@ const variantStyles = {
 			p-3 pt-0 data-collapsed:-mb-3
 		`,
 		innest: `
-		 *:!m-0
 		`,
 	},
 };
