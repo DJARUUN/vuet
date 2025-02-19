@@ -22,9 +22,10 @@ useSeoMeta({
 </script>
 
 <template>
-  <ContentRenderer
-    v-if="page"
-    :value="page"
-    class="prose prose-h1:font-bold prose-h1:text-3xl prose-headings:**:no-underline dark:prose-invert min-w-full"
-  />
+	<div class="flex flex-col gap-6 overflow-auto scroll-smooth scroll-pt-6 w-[clamp(0px,100%,70ch)] mx-auto">
+		<ContentRenderer v-if="page" :value="page"
+			class="prose prose-h1:font-bold prose-h1:text-3xl prose-headings:**:no-underline dark:prose-invert min-w-full" />
+
+		<SiblingPageButtons :path="route.path" />
+	</div>
 </template>

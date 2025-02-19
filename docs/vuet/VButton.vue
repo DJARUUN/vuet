@@ -15,99 +15,115 @@ const {
 	class?: string;
 	innerClass?: string;
 	disabled?: boolean;
+	loading?: boolean;
+	loadingText?: string;
 }>();
 
 const sharedStyles = `flex text-sm font-medium rounded-lg cursor-pointer transition-[background-color,color,border,opacity] ease-out data-disabled:opacity-60 data-disabled:cursor-not-allowed select-none data-disabled:pointer-events-none`;
 
 const sizeStyles = {
-	default: `h-9 px-3.5`,
+	default: `h-8.5 px-3.5`,
 
-	icon: `size-9`,
+	icon: `size-8.5`,
 };
 
 const variantStyles = {
 	default: `
-    dark:bg-zinc-800/85 dark:hover:bg-zinc-700/85 dark:active:bg-zinc-600/85
-         bg-white            hover:bg-zinc-50/85       active:bg-zinc-100/85
-
-    dark:text-zinc-100
-         text-zinc-900
-
-    dark:border-zinc-500/35 dark:border-t-zinc-500/95 dark:hover:border-zinc-400/35 dark:hover:border-t-zinc-400/95
-         border-zinc-400/30      border-t-zinc-400/20      hover:border-zinc-400/30      hover:border-t-zinc-400/20
-
-    border backdrop-blur-lg backdrop-saturate-150
-  `,
+    bg-secondary hover:bg-[color-mix(in_oklab,var(--color-secondary)_90%,black)]
+    text-secondary-fg
+    !border-[color-mix(in_oklab,var(--color-secondary)_92.5%,white)] !border-t-[color-mix(in_oklab,var(--color-secondary)_82.5%,white)]
+    border
+	`,
 
 	primary: `
-    dark:bg-primary-600/85 dark:hover:bg-primary-500/85 dark:active:bg-primary-400/85
-         bg-primary-600/85      hover:bg-primary-500/85      active:bg-primary-400/85
-
-    dark:text-zinc-100
-         text-zinc-900
-
-    dark:border-primary-400/35 dark:border-t-primary-400/95 dark:hover:border-primary-300/35 dark:hover:border-t-primary-300/95
-         border-primary-400/35      border-t-primary-400/95      hover:border-primary-300/35      hover:border-t-primary-300/95
-
-    border backdrop-blur-lg backdrop-saturate-150
-  `,
+    bg-primary hover:bg-[color-mix(in_oklab,var(--color-primary)_90%,black)]
+    text-primary-fg
+    !border-[color-mix(in_oklab,var(--color-primary)_92.5%,white)] !border-t-[color-mix(in_oklab,var(--color-primary)_82.5%,white)]
+    border
+	`,
 
 	soft: `
-    dark:bg-zinc-800/85 dark:hover:bg-zinc-700/85 dark:active:bg-zinc-600/85
-         bg-zinc-200/85      hover:bg-zinc-300/85      active:bg-zinc-400/85
-
-    dark:text-zinc-100
-         text-zinc-900
-
-    backdrop-blur-lg backdrop-saturate-150
+    bg-muted hover:bg-secondary
+    text-fg
   `,
 
 	outline: `
-    dark:hover:bg-zinc-700/85 dark:active:bg-zinc-600/85
-         hover:bg-zinc-50/85       active:bg-zinc-100/85
-
-    dark:text-zinc-100
-         text-zinc-900
-
-    dark:border-zinc-500/35 dark:hover:border-zinc-500/35
-         border-zinc-400/30      hover:border-zinc-400/30
-
-    border hover:backdrop-blur-lg hover:backdrop-saturate-150 active:backdrop-blur-lg active:backdrop-saturate-150
+    hover:bg-muted
+    text-fg
+    border-border
+    border
   `,
 
 	ghost: `
-    dark:hover:bg-zinc-700/85 dark:active:bg-zinc-600/85
-         hover:bg-zinc-300/85      active:bg-zinc-400/85
-
-    dark:text-zinc-100
-         text-zinc-900
-
-    hover:backdrop-blur-lg hover:backdrop-saturate-150 active:backdrop-blur-lg active:backdrop-saturate-150
+    hover:bg-muted
+    text-fg
   `,
+
+	success: `
+    bg-success hover:bg-[color-mix(in_oklab,var(--color-success)_90%,black)]
+    dark:text-fg text-bg
+	`,
+
+	warning: `
+    bg-warning hover:bg-[color-mix(in_oklab,var(--color-warning)_90%,black)]
+    dark:text-bg text-fg
+	`,
+
+	danger: `
+    bg-danger hover:bg-[color-mix(in_oklab,var(--color-danger)_90%,black)]
+    dark:text-fg text-bg
+	`,
 };
 
 const innerStyles = "inline-flex gap-2 items-center justify-center size-full";
 </script>
 
 <template>
-  <button v-if="!to" :type="type" :data-disabled="disabled || null"
-    :class="twMerge(sharedStyles, sizeStyles[size], variantStyles[variant], $props.class)">
-    <div :class="twMerge(innerStyles, innerClass)">
-      <slot />
-    </div>
-  </button>
+	<button v-if="!to" :type="type" :data-disabled="disabled || null"
+		:class="twMerge(sharedStyles, sizeStyles[size], variantStyles[variant], $props.class)">
+		<div :class="twMerge(innerStyles, innerClass)">
+			<slot v-if="loading" name="loading">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+					class="size-4 animate-spin">
+					<path stroke-linecap="round" stroke-linejoin="round"
+						d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+				</svg>
+				<span v-if="loadingText">{{ loadingText }}</span>
+			</slot>
 
-  <NuxtLink v-else-if="nuxt && to" :data-disabled="disabled || null"
-    :class="twMerge(sharedStyles, sizeStyles[size], variantStyles[variant], $props.class)" :to="to">
-    <div :class="twMerge(innerStyles, innerClass)">
-      <slot />
-    </div>
-  </NuxtLink>
+			<slot v-else />
+		</div>
+	</button>
 
-  <a v-else :data-disabled="disabled || null"
-    :class="twMerge(sharedStyles, sizeStyles[size], variantStyles[variant], $props.class)" :href="to">
-    <div :class="twMerge(innerStyles, innerClass)">
-      <slot />
-    </div>
-  </a>
+	<NuxtLink v-else-if="nuxt && to" :data-disabled="disabled || null"
+		:class="twMerge(sharedStyles, sizeStyles[size], variantStyles[variant], $props.class)" :to="to">
+		<div :class="twMerge(innerStyles, innerClass)">
+			<slot v-if="loading" name="loading">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+					class="size-4 animate-spin">
+					<path stroke-linecap="round" stroke-linejoin="round"
+						d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+				</svg>
+				<span v-if="loadingText">{{ loadingText }}</span>
+			</slot>
+
+			<slot v-else />
+		</div>
+	</NuxtLink>
+
+	<a v-else :data-disabled="disabled || null"
+		:class="twMerge(sharedStyles, sizeStyles[size], variantStyles[variant], $props.class)" :href="to">
+		<div :class="twMerge(innerStyles, innerClass)">
+			<slot v-if="loading" name="loading">
+				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
+					class="size-4 animate-spin">
+					<path stroke-linecap="round" stroke-linejoin="round"
+						d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0 3.181 3.183a8.25 8.25 0 0 0 13.803-3.7M4.031 9.865a8.25 8.25 0 0 1 13.803-3.7l3.181 3.182m0-4.991v4.99" />
+				</svg>
+				<span v-if="loadingText">{{ loadingText }}</span>
+			</slot>
+
+			<slot v-else />
+		</div>
+	</a>
 </template>

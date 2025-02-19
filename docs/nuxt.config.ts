@@ -13,6 +13,7 @@ export default defineNuxtConfig({
 
   components: [
     { path: "~/vuet", pathPrefix: false },
+    { path: "~/examples", pathPrefix: false },
     { path: "~/components", pathPrefix: false },
   ],
 

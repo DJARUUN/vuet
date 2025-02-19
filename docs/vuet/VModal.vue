@@ -3,52 +3,61 @@ import { Dialog } from "@ark-ui/vue/dialog";
 import { twMerge } from "tailwind-merge";
 
 defineProps<{
-	title: string;
-	description?: string;
-	class?: string;
+  title?: string;
+  description?: string;
+  class?: string;
 }>();
 
-const isOpen = defineModel<boolean>({ required: true });
+const isOpen = defineModel<boolean>({ required: false, default: false });
 </script>
 
 <template>
   <Dialog.Root v-model:open="isOpen">
     <slot />
 
-    <Teleport to="body">
-      <Dialog.Backdrop class="absolute inset-0 bg-zinc-900/60 z-40 backdrop-blur-xs backdrop-saturate-150" />
+    <ClientOnly>
+      <Teleport to="body">
+        <Dialog.Backdrop class="absolute inset-0 dark:bg-bg/60 bg-fg/50" />
 
-      <Dialog.Positioner
-        :class="twMerge('absolute inset-0 flex justify-center items-center p-3 z-50 isolate', $props.class)">
+        <Dialog.Positioner
+          :class="twMerge('absolute inset-0 flex justify-center items-center p-3 z-50 isolate', $props.class)">
 
-        <Dialog.Content
-          class="dark:bg-zinc-800/85 dark:text-zinc-100 bg-white/85 text-zinc-900 dark:border-zinc-500/35 dark:border-t-zinc-500/95 border-zinc-400/30 border-t-zinc-400/20 rounded-xl px-6 py-5 flex flex-col gap-6 border max-h-full backdrop-blur-lg backdrop-saturate-150 max-w-full shadow-xl dark:shadow-black/20 shadow-black/10">
-          <div class="grid grid-cols-[1fr_auto] gap-3">
-            <Dialog.Title class="flex flex-col gap-1.5">
-              <h3 class="text-lg font-semibold">{{ title }}</h3>
-              <p v-if="description" class="text-sm dark:text-zinc-300">{{ description }}</p>
-            </Dialog.Title>
+          <Dialog.Content
+            class="bg-overlay/85 backdrop-blur-xl backdrop-saturate-150 text-overlay-fg rounded-xl px-6 py-5 flex flex-col gap-6 border max-h-full max-w-full min-w-116 shadow-lg dark:shadow-overlay/25 shadow-overlay-fg/5 !border-border dark:!border-t-[color-mix(in_oklab,var(--color-overlay)_82.5%,white)]">
+            <div class="grid grid-cols-[1fr_auto] gap-5 -mb-2">
+              <Dialog.Title class="flex flex-col gap-1.5">
+                <slot name="title">
+                  <h3 class="text-lg font-semibold">{{ title }}</h3>
+                </slot>
 
-            <VButton variant="ghost" size="icon" @click="isOpen = false">
-              <svg class="size-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                  d="M18 6L6 18M6 6l12 12" />
-              </svg>
-            </VButton>
-          </div>
+                <slot name="description">
+                  <p v-if="description" class="text-sm text-muted-fg">
+                    {{ description }}
+                  </p>
+                </slot>
+              </Dialog.Title>
 
-          <Dialog.Description class="flex flex-col gap-6 overflow-y-auto">
-            <div class="overflow-y-auto">
-              <slot name="content" />
+              <VButton variant="ghost" size="icon" @click="isOpen = false" class="-mt-1 -mr-1 size-8" title="close">
+                <svg class="size-4.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+                  <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"
+                    stroke-width="2" d="M18 6L6 18M6 6l12 12" />
+                </svg>
+              </VButton>
             </div>
 
-            <div class="inline-flex justify-end gap-2">
-              <slot name="actions" />
-            </div>
-          </Dialog.Description>
+            <Dialog.Description class="flex flex-col gap-6 overflow-y-auto">
+              <div class="overflow-y-auto flex flex-col gap-3">
+                <slot name="content" />
+              </div>
 
-        </Dialog.Content>
-      </Dialog.Positioner>
-    </Teleport>
+              <div class="inline-flex justify-end gap-2">
+                <slot name="actions" />
+              </div>
+            </Dialog.Description>
+
+          </Dialog.Content>
+        </Dialog.Positioner>
+      </Teleport>
+    </ClientOnly>
   </Dialog.Root>
 </template>
