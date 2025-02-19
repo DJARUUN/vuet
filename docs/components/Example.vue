@@ -4,7 +4,7 @@
       <slot />
     </VCollapsible>
 
-    <VCollapsible title="Code" variant="container">
+    <VCollapsible title="Code" variant="container" defaultCollapsed>
       <slot name="code" />
     </VCollapsible>
   </div>
