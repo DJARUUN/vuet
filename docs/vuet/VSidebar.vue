@@ -85,7 +85,7 @@ watch(route, () => (isMobileNavShown.value = false));
 .v-leave-to {
   div {
     opacity: 50%;
-    translate: 0 -0.5rem;
+    translate: 0 -0.75rem;
   }
 }
 </style>
