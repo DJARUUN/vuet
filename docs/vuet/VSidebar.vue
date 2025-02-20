@@ -11,7 +11,7 @@ watch(route, () => (isMobileNavShown.value = false));
 
 <template>
   <aside
-    class="hidden lg:flex flex-col gap-5 p-6 border-r border-border min-w-[18rem] overflow-auto bg-overlay/85 backdrop-blur-xl backdrop-saturate-150">
+    class="hidden lg:flex flex-col gap-5 p-6 border-r border-border min-w-[18rem] overflow-auto bg-overlay/90 backdrop-blur-xl backdrop-saturate-150">
     <div class="inline-flex justify-between items-center">
       <slot name="header">
         <div class="inline-flex gap-3">
@@ -32,13 +32,9 @@ watch(route, () => (isMobileNavShown.value = false));
     <slot name="footer" />
   </aside>
 
-  <div
-    :class="`lg:hidden absolute inset-0 dark:bg-bg/60 bg-fg/40 z-[5] ${isMobileNavShown ? 'opacity-100 transition-opacity ease-out duration-150' : 'opacity-0 pointer-events-none'}`"
-    @click="isMobileNavShown = false" />
-
-  <div
-    :class="`hidden not-lg:flex flex-col overflow-hidden fixed isolate z-10 inset-x-0 bg-overlay/85 backdrop-blur-xl backdrop-saturate-150 border-b border-border max-h-full ${isMobileNavShown && 'shadow-lg dark:shadow-overlay/25 shadow-overlay-fg/5 rounded-b-xl'}`">
-    <nav class="gap-5 px-6 inline-flex items-center overflow-auto min-h-18">
+  <div class="hidden not-lg:flex flex-col fixed isolate z-60 inset-x-0 max-h-full">
+    <nav
+      class="gap-5 px-6 inline-flex items-center overflow-auto min-h-18 bg-overlay/90 backdrop-blur-xl backdrop-saturate-150 border-b border-border">
       <div class="grid grid-cols-[1fr_auto] gap-3 flex-1">
         <div class="inline-flex justify-between items-center">
           <slot name="header">
@@ -66,8 +62,24 @@ watch(route, () => (isMobileNavShown.value = false));
     </nav>
 
     <Transition>
-      <div v-show="isMobileNavShown" class="block p-6 pt-0 overflow-auto h-full">
-        <div class="flex flex-col gap-5 transition-[translate,opacity] ease-bounce duration-300">
+      <div v-show="isMobileNavShown" :class="`block overflow-auto h-full p-3`">
+        <div
+          class="flex flex-col gap-5 p-6 transition-[translate,opacity,shadow] bg-overlay/90 backdrop-blur-xl backdrop-saturate-150 ease-bounce duration-300 shadow-lg dark:shadow-overlay/25 shadow-overlay-fg/5 rounded-xl border !border-border dark:!border-t-[color-mix(in_oklab,var(--color-overlay)_82.5%,white)]">
+          <template v-for="item in items" :key="item">
+            <VSidebarGroup v-if="item.page === false" :item="item" />
+            <VSidebarItem v-else :item="item" />
+          </template>
+
+          <template v-for="item in items" :key="item">
+            <VSidebarGroup v-if="item.page === false" :item="item" />
+            <VSidebarItem v-else :item="item" />
+          </template>
+
+          <template v-for="item in items" :key="item">
+            <VSidebarGroup v-if="item.page === false" :item="item" />
+            <VSidebarItem v-else :item="item" />
+          </template>
+
           <template v-for="item in items" :key="item">
             <VSidebarGroup v-if="item.page === false" :item="item" />
             <VSidebarItem v-else :item="item" />
@@ -81,10 +93,9 @@ watch(route, () => (isMobileNavShown.value = false));
 </template>
 
 <style scoped>
-.v-enter-from,
-.v-leave-to {
+.v-enter-from {
   div {
-    opacity: 50%;
+    opacity: 0%;
     translate: 0 -0.75rem;
   }
 }

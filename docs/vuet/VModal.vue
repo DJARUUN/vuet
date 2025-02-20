@@ -6,6 +6,7 @@ defineProps<{
   title?: string;
   description?: string;
   class?: string;
+  contentClass?: string;
 }>();
 
 const isOpen = defineModel<boolean>({ required: false, default: false });
@@ -17,13 +18,13 @@ const isOpen = defineModel<boolean>({ required: false, default: false });
 
     <ClientOnly>
       <Teleport to="body">
-        <Dialog.Backdrop class="absolute inset-0 dark:bg-bg/60 bg-fg/40 z-20" />
+        <Dialog.Backdrop class="absolute inset-0 dark:bg-bg/40 bg-fg/15 z-20" />
 
         <Dialog.Positioner
           :class="twMerge('absolute inset-0 flex justify-center items-center p-3 z-50 isolate', $props.class)">
 
           <Dialog.Content
-            class="bg-overlay/85 backdrop-blur-xl backdrop-saturate-150 text-overlay-fg rounded-xl px-6 py-5 flex flex-col gap-6 border max-h-full not-md:w-full md:min-w-116 shadow-lg dark:shadow-overlay/25 shadow-overlay-fg/5 !border-border dark:!border-t-[color-mix(in_oklab,var(--color-overlay)_82.5%,white)]">
+            :class="twMerge(`bg-overlay/90 backdrop-blur-xl backdrop-saturate-150 text-overlay-fg rounded-xl px-6 py-5 flex flex-col gap-6 border max-h-full not-md:w-full md:min-w-116 shadow-lg dark:shadow-overlay/25 shadow-overlay-fg/5 !border-border dark:!border-t-[color-mix(in_oklab,var(--color-overlay)_82.5%,white)]`, contentClass)">
             <div class="grid grid-cols-[1fr_auto] gap-5 -mb-2">
               <Dialog.Title class="flex flex-col gap-1.5">
                 <slot name="title">
