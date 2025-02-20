@@ -69,50 +69,22 @@ watch(route, () => (isMobileNavShown.value = false));
             <VSidebarItem v-else :item="item" />
           </template>
 
-          <!-- <template v-for="item in items" :key="item"> -->
-          <!--   <VSidebarGroup v-if="item.page === false" :item="item" /> -->
-          <!--   <VSidebarItem v-else :item="item" /> -->
-          <!-- </template> -->
+          <template v-for="item in items" :key="item">
+            <VSidebarGroup v-if="item.page === false" :item="item" />
+            <VSidebarItem v-else :item="item" />
+          </template>
+
+          <template v-for="item in items" :key="item">
+            <VSidebarGroup v-if="item.page === false" :item="item" />
+            <VSidebarItem v-else :item="item" />
+          </template>
+
+          <template v-for="item in items" :key="item">
+            <VSidebarGroup v-if="item.page === false" :item="item" />
+            <VSidebarItem v-else :item="item" />
+          </template>
         </div>
       </template>
     </VModal>
-
-    <!-- <Transition> -->
-    <!--   <div v-show="isMobileNavShown" :class="`block overflow-auto h-full p-3`"> -->
-    <!--     <div -->
-    <!--       class="flex flex-col gap-5 p-6 transition-[translate,opacity,shadow] bg-overlay/90 backdrop-blur-xl backdrop-saturate-150 ease-bounce duration-300 shadow-lg dark:shadow-overlay/25 shadow-overlay-fg/5 rounded-xl border !border-border dark:!border-t-[color-mix(in_oklab,var(--color-overlay)_82.5%,white)]"> -->
-    <!--       <template v-for="item in items" :key="item"> -->
-    <!--         <VSidebarGroup v-if="item.page === false" :item="item" /> -->
-    <!--         <VSidebarItem v-else :item="item" /> -->
-    <!--       </template> -->
-    <!---->
-    <!--       <template v-for="item in items" :key="item"> -->
-    <!--         <VSidebarGroup v-if="item.page === false" :item="item" /> -->
-    <!--         <VSidebarItem v-else :item="item" /> -->
-    <!--       </template> -->
-    <!---->
-    <!--       <template v-for="item in items" :key="item"> -->
-    <!--         <VSidebarGroup v-if="item.page === false" :item="item" /> -->
-    <!--         <VSidebarItem v-else :item="item" /> -->
-    <!--       </template> -->
-    <!---->
-    <!--       <template v-for="item in items" :key="item"> -->
-    <!--         <VSidebarGroup v-if="item.page === false" :item="item" /> -->
-    <!--         <VSidebarItem v-else :item="item" /> -->
-    <!--       </template> -->
-    <!--     </div> -->
-    <!---->
-    <!--     <slot name="footer" /> -->
-    <!--   </div> -->
-    <!-- </Transition> -->
   </div>
 </template>
-
-<style scoped>
-.v-enter-from {
-  div {
-    opacity: 0%;
-    translate: 0 -0.75rem;
-  }
-}
-</style>

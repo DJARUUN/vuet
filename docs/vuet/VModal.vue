@@ -42,7 +42,7 @@ onUnmounted(() => {
 
         <DrawerContent
           :class="twMerge(`flex flex-col rounded-t-xl mt-24 max-h-[90%] fixed bottom-0 left-0 right-0 bg-overlay/90 backdrop-blur-xl backdrop-saturate-150 text-overlay-fg border-t !border-border dark:!border-[color-mix(in_oklab,var(--color-overlay)_82.5%,white)]`, $props.class)">
-          <div :class="twMerge(`p-6 flex-1 flex flex-col gap-6`, contentClass)">
+          <div :class="twMerge(`p-6 flex-1 flex flex-col gap-6 overflow-y-auto`, contentClass)">
             <div class="mx-auto w-16 h-1.5 flex-shrink-0 rounded-full bg-secondary" />
 
             <div class="grid grid-cols-[1fr_auto] gap-5 -mb-3">
