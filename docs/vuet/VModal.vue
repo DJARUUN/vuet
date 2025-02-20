@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { DrawerContent, DrawerOverlay, DrawerPortal, DrawerRoot, DrawerTrigger } from 'vaul-vue';
+import { DrawerContent, DrawerOverlay, DrawerPortal, DrawerRoot } from 'vaul-vue';
 import { Dialog } from "@ark-ui/vue/dialog";
 import { twMerge } from "tailwind-merge";
 
@@ -8,6 +8,7 @@ defineProps<{
   description?: string;
   class?: string;
   contentClass?: string;
+  dontUseDrawer?: boolean;
 }>();
 
 const isOpen = defineModel<boolean>({ required: false, default: false });
@@ -33,7 +34,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <template v-if="showDrawer">
+  <template v-if="!dontUseDrawer && showDrawer">
     <DrawerRoot v-model:open="isOpen">
       <slot />
 
@@ -41,38 +42,33 @@ onUnmounted(() => {
         <DrawerOverlay class="fixed inset-0 dark:bg-bg/40 bg-fg/15" />
 
         <DrawerContent
-          :class="twMerge(`flex flex-col rounded-t-xl mt-24 max-h-[80%] fixed bottom-0 inset-x-0 bg-overlay/90 backdrop-blur-xl backdrop-saturate-150 text-overlay-fg border-t border-x !border-border dark:!border-[color-mix(in_oklab,var(--color-overlay)_82.5%,white)]`, $props.class)">
-          <div :class="twMerge(`p-6 flex rounded-t-xl flex-col gap-6 overflow-y-auto`, contentClass)">
-            <div class="mx-auto w-20 h-1.5 flex-shrink-0 rounded-full bg-border -mb-2 -mt-3" />
+          :class="twMerge(`flex flex-col rounded-t-xl mt-24 min-h-0 max-h-[80%] fixed bottom-0 inset-x-0 bg-overlay/90 backdrop-blur-xl backdrop-saturate-150 text-overlay-fg border-t border-x !border-border dark:!border-[color-mix(in_oklab,var(--color-overlay)_82.5%,white)]`, $props.class)">
+          <div class="rounded-t-xl flex flex-col h-full overflow-y-auto">
+            <div class="mx-auto w-20 h-[5px] rounded-full bg-border mt-3.5 flex-shrink-0" />
 
-            <div class="grid grid-cols-[1fr_auto] gap-5 -mb-3">
-              <div class="flex flex-col gap-1.5">
-                <slot name="title">
-                  <h3 class="text-lg font-semibold">{{ title }}</h3>
-                </slot>
+            <div :class="twMerge(`p-6 flex flex-col gap-6 h-full`, contentClass)">
+              <div class="grid grid-cols-[1fr_auto] gap-5">
+                <div class="flex flex-col gap-1.5">
+                  <slot name="title">
+                    <h3 class="text-lg font-semibold">{{ title }}</h3>
+                  </slot>
 
-                <slot name="description">
-                  <p v-if="description" class="text-sm text-muted-fg">
-                    {{ description }}
-                  </p>
-                </slot>
+                  <slot name="description">
+                    <p v-if="description" class="text-sm text-muted-fg">
+                      {{ description }}
+                    </p>
+                  </slot>
+                </div>
               </div>
 
-              <!-- <VButton variant="ghost" size="icon" @click="isOpen = false" class="-mt-1 -mr-1 size-8" title="close"> -->
-              <!--   <svg class="size-4.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"> -->
-              <!--     <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" -->
-              <!--       stroke-width="2" d="M18 6L6 18M6 6l12 12" /> -->
-              <!--   </svg> -->
-              <!-- </VButton> -->
-            </div>
+              <div class="flex flex-col gap-6 h-full flex-shrink-0">
+                <div class="flex flex-col gap-3 h-full overflow-y-auto">
+                  <slot name="content" />
+                </div>
 
-            <div class="flex flex-col gap-6 overflow-y-auto">
-              <div class="overflow-y-auto flex flex-col gap-3">
-                <slot name="content" />
-              </div>
-
-              <div class="inline-flex justify-end gap-2">
-                <slot name="actions" />
+                <div class="inline-flex justify-end gap-2 flex-shrink-0">
+                  <slot name="actions" />
+                </div>
               </div>
             </div>
           </div>

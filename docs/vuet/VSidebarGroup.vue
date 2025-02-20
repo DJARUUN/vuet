@@ -10,7 +10,7 @@ const { item } = defineProps<{
 <template>
   <div :class="`inline-flex gap-1 ml-1.5 ${isNested && '-mb-0.5'}`">
     <div v-if="isNested" class="w-[2px]">
-      <div class="h-8.5 transition-all ease-out bg-border w-[1px]" />
+      <div class="h-8.5 transition-all ease-smooth bg-border w-[1px]" />
     </div>
 
     <VCollapsible :title="item.title" :class="`text-[0.938rem] ${isNested && 'mx-0 text-muted-fg h-8.5 px-3.5'}`"

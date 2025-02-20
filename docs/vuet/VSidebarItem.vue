@@ -10,7 +10,7 @@ const isActive = computed(() => route.path === item.path);
 <template>
   <div class="inline-flex gap-1 ml-1.5 h-full">
     <div class="w-[2px]">
-      <div :class="`h-full transition-all ease-out ${isActive ? 'bg-primary w-[2px]' : 'bg-border w-[1px]'}`" />
+      <div :class="`h-full transition-all ease-smooth ${isActive ? 'bg-primary w-[2px]' : 'bg-border w-[1px]'}`" />
     </div>
 
     <VButton :to="item.path" :variant="isActive ? 'soft' : 'ghost'"

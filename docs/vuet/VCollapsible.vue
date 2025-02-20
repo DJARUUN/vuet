@@ -30,7 +30,7 @@ const variantStyles = {
 			border border-border rounded-xl
 		`,
 		button: `
-			h-12 px-4 hover:bg-transparent transition-[color] ease-out
+			h-12 px-4 hover:bg-transparent transition-[color] ease-smooth
 		`,
 		inner: `
 			p-3 pt-0 data-collapsed:-mb-3
@@ -69,13 +69,13 @@ onUnmounted(() => {
 			<span>{{ title }}</span>
 
 			<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-				:class="`size-4 transition-[rotate] ease-out ${!isCollapsed && 'rotate-180'}`">
+				:class="`size-4 transition-[rotate] ease-smooth ${!isCollapsed && 'rotate-180'}`">
 				<path stroke-linecap="round" stroke-linejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
 			</svg>
 		</VButton>
 
 		<div :data-collapsed="isCollapsed || null"
-			:class="twMerge(`grid transition-[grid-template-rows,opacity] ease-out ${isCollapsed ? 'grid-rows-[0fr] opacity-75' : 'grid-rows-[1fr]'}`, variantStyles[variant].inner)">
+			:class="twMerge(`grid transition-[grid-template-rows,opacity] ease-smooth ${isCollapsed ? 'grid-rows-[0fr] opacity-75' : 'grid-rows-[1fr]'}`, variantStyles[variant].inner)">
 			<div :class="twMerge('overflow-y-hidden', variantStyles[variant].innest, innerClass)">
 				<slot />
 			</div>

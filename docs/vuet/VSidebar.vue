@@ -61,7 +61,7 @@ watch(route, () => (isMobileNavShown.value = false));
       </div>
     </nav>
 
-    <VModal v-model="isMobileNavShown" contentClass="px-0">
+    <VModal v-model="isMobileNavShown" contentClass="px-0 py-3">
       <template #content>
         <div class="flex flex-col gap-5 px-6">
           <template v-for="item in items" :key="item">

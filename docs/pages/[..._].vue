@@ -22,7 +22,7 @@ useSeoMeta({
 </script>
 
 <template>
-	<div class="flex flex-col gap-6 overflow-auto scroll-smooth scroll-pt-6 w-[clamp(0px,100%,70ch)] mx-auto not-lg:mt-3">
+	<div class="flex flex-col gap-6 overflow-auto scroll-smooth w-[clamp(0px,100%,70ch)] mx-auto">
 		<ContentRenderer v-if="page" :value="page"
 			class="prose prose-h1:font-bold prose-h1:text-3xl prose-headings:**:no-underline min-w-full" />
 
