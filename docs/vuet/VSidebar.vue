@@ -61,34 +61,50 @@ watch(route, () => (isMobileNavShown.value = false));
       </div>
     </nav>
 
-    <Transition>
-      <div v-show="isMobileNavShown" :class="`block overflow-auto h-full p-3`">
-        <div
-          class="flex flex-col gap-5 p-6 transition-[translate,opacity,shadow] bg-overlay/90 backdrop-blur-xl backdrop-saturate-150 ease-bounce duration-300 shadow-lg dark:shadow-overlay/25 shadow-overlay-fg/5 rounded-xl border !border-border dark:!border-t-[color-mix(in_oklab,var(--color-overlay)_82.5%,white)]">
+    <VModal v-model="isMobileNavShown" contentClass="px-0">
+      <template #content>
+        <div class="flex flex-col gap-5 px-6">
           <template v-for="item in items" :key="item">
             <VSidebarGroup v-if="item.page === false" :item="item" />
             <VSidebarItem v-else :item="item" />
           </template>
 
-          <template v-for="item in items" :key="item">
-            <VSidebarGroup v-if="item.page === false" :item="item" />
-            <VSidebarItem v-else :item="item" />
-          </template>
-
-          <template v-for="item in items" :key="item">
-            <VSidebarGroup v-if="item.page === false" :item="item" />
-            <VSidebarItem v-else :item="item" />
-          </template>
-
-          <template v-for="item in items" :key="item">
-            <VSidebarGroup v-if="item.page === false" :item="item" />
-            <VSidebarItem v-else :item="item" />
-          </template>
+          <!-- <template v-for="item in items" :key="item"> -->
+          <!--   <VSidebarGroup v-if="item.page === false" :item="item" /> -->
+          <!--   <VSidebarItem v-else :item="item" /> -->
+          <!-- </template> -->
         </div>
+      </template>
+    </VModal>
 
-        <slot name="footer" />
-      </div>
-    </Transition>
+    <!-- <Transition> -->
+    <!--   <div v-show="isMobileNavShown" :class="`block overflow-auto h-full p-3`"> -->
+    <!--     <div -->
+    <!--       class="flex flex-col gap-5 p-6 transition-[translate,opacity,shadow] bg-overlay/90 backdrop-blur-xl backdrop-saturate-150 ease-bounce duration-300 shadow-lg dark:shadow-overlay/25 shadow-overlay-fg/5 rounded-xl border !border-border dark:!border-t-[color-mix(in_oklab,var(--color-overlay)_82.5%,white)]"> -->
+    <!--       <template v-for="item in items" :key="item"> -->
+    <!--         <VSidebarGroup v-if="item.page === false" :item="item" /> -->
+    <!--         <VSidebarItem v-else :item="item" /> -->
+    <!--       </template> -->
+    <!---->
+    <!--       <template v-for="item in items" :key="item"> -->
+    <!--         <VSidebarGroup v-if="item.page === false" :item="item" /> -->
+    <!--         <VSidebarItem v-else :item="item" /> -->
+    <!--       </template> -->
+    <!---->
+    <!--       <template v-for="item in items" :key="item"> -->
+    <!--         <VSidebarGroup v-if="item.page === false" :item="item" /> -->
+    <!--         <VSidebarItem v-else :item="item" /> -->
+    <!--       </template> -->
+    <!---->
+    <!--       <template v-for="item in items" :key="item"> -->
+    <!--         <VSidebarGroup v-if="item.page === false" :item="item" /> -->
+    <!--         <VSidebarItem v-else :item="item" /> -->
+    <!--       </template> -->
+    <!--     </div> -->
+    <!---->
+    <!--     <slot name="footer" /> -->
+    <!--   </div> -->
+    <!-- </Transition> -->
   </div>
 </template>
 
