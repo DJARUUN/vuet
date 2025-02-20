@@ -1,10 +1,20 @@
 <script setup lang="ts">
-const defaultTheme = "light";
+declare global {
+  var theme: string;
+}
 
-const theme = ref(defaultTheme);
+useHead({
+  script: [{
+    children: `
+      globalThis.theme = localStorage.getItem("theme") ?? "light";
+      document.documentElement.classList.add(globalThis.theme);
+    `}],
+});
+
+const theme = ref();
 watch(theme, (newTheme) => localStorage.setItem("theme", newTheme));
 
-onMounted(() => (theme.value = localStorage.getItem("theme") || defaultTheme));
+onMounted(() => (theme.value = globalThis.theme));
 
 const pages = await queryCollectionNavigation("content");
 </script>

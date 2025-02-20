@@ -6,40 +6,6 @@
 
 @layer base {
   :root {
-    --bg: var(--color-white);
-    --fg: var(--color-zinc-950);
-    --body: var(--color-zinc-700);
-
-    --primary: var(--color-blue-600);
-    --primary-fg: var(--fg);
-
-    --secondary: var(--color-zinc-100);
-    --secondary-fg: var(--color-zinc-950);
-
-    --overlay: var(--color-white);
-    --overlay-fg: var(--color-zinc-950);
-
-    --accent: var(--color-blue-600);
-    --accent-fg: var(--fg);
-
-    --muted: var(--color-zinc-100);
-    --muted-fg: var(--color-zinc-600);
-
-    --success: var(--color-emerald-600);
-    --success-fg: var(--color-emerald-700);
-
-    --warning: var(--color-amber-400);
-    --warning-fg: var(--color-amber-500);
-
-    --danger: var(--color-red-600);
-    --danger-fg: var(--color-red-700);
-
-    --border: var(--color-zinc-200);
-    --input: var(--color-zinc-300);
-    --ring: var(--primary);
-  }
-
-  :root.dark {
     --bg: var(--color-zinc-950);
     --fg: var(--color-zinc-50);
     --body: var(--color-zinc-300);
@@ -70,6 +36,40 @@
 
     --border: oklch(0.270 0.013 285.805);
     --input: oklch(0.290 0.013 285.805);
+    --ring: var(--primary);
+  }
+
+  :root.light {
+    --bg: var(--color-white);
+    --fg: var(--color-zinc-950);
+    --body: var(--color-zinc-700);
+
+    --primary: var(--color-blue-600);
+    --primary-fg: var(--fg);
+
+    --secondary: var(--color-zinc-100);
+    --secondary-fg: var(--color-zinc-950);
+
+    --overlay: var(--color-white);
+    --overlay-fg: var(--color-zinc-950);
+
+    --accent: var(--color-blue-600);
+    --accent-fg: var(--fg);
+
+    --muted: var(--color-zinc-100);
+    --muted-fg: var(--color-zinc-600);
+
+    --success: var(--color-emerald-600);
+    --success-fg: var(--color-emerald-700);
+
+    --warning: var(--color-amber-400);
+    --warning-fg: var(--color-amber-500);
+
+    --danger: var(--color-red-600);
+    --danger-fg: var(--color-red-700);
+
+    --border: var(--color-zinc-200);
+    --input: var(--color-zinc-300);
     --ring: var(--primary);
   }
 }
@@ -144,7 +144,7 @@
 @layer base {
   body {
     @apply bg-bg text-fg;
-    font-family: "Figtree", sans-serif;
+    font-family: "Geist", sans-serif;
   }
 
   ::selection {
@@ -176,7 +176,7 @@
 
     &[data-part="content"] {
       &:is([open], [data-open], [data-state="open"]) {
-        animation: modal-content-in 250ms;
+        animation: modal-content-in 300ms;
         @apply ease-bounce;
       }
 
