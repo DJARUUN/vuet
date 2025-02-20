@@ -41,9 +41,9 @@ onUnmounted(() => {
         <DrawerOverlay class="fixed inset-0 dark:bg-bg/40 bg-fg/15" />
 
         <DrawerContent
-          :class="twMerge(`flex flex-col rounded-t-xl mt-24 max-h-[90%] fixed bottom-0 left-0 right-0 bg-overlay/90 backdrop-blur-xl backdrop-saturate-150 text-overlay-fg border-t !border-border dark:!border-[color-mix(in_oklab,var(--color-overlay)_82.5%,white)]`, $props.class)">
-          <div :class="twMerge(`p-6 flex-1 flex flex-col gap-6 overflow-y-auto`, contentClass)">
-            <div class="mx-auto w-16 h-1.5 flex-shrink-0 rounded-full bg-secondary -mb-2" />
+          :class="twMerge(`flex flex-col rounded-t-xl mt-24 max-h-[80%] fixed bottom-0 inset-x-0 bg-overlay/90 backdrop-blur-xl backdrop-saturate-150 text-overlay-fg border-t border-x !border-border dark:!border-[color-mix(in_oklab,var(--color-overlay)_82.5%,white)]`, $props.class)">
+          <div :class="twMerge(`p-6 flex rounded-t-xl flex-col gap-6 overflow-y-auto`, contentClass)">
+            <div class="mx-auto w-20 h-1.5 flex-shrink-0 rounded-full bg-border -mb-2 -mt-3" />
 
             <div class="grid grid-cols-[1fr_auto] gap-5 -mb-3">
               <div class="flex flex-col gap-1.5">
@@ -57,6 +57,13 @@ onUnmounted(() => {
                   </p>
                 </slot>
               </div>
+
+              <!-- <VButton variant="ghost" size="icon" @click="isOpen = false" class="-mt-1 -mr-1 size-8" title="close"> -->
+              <!--   <svg class="size-4.5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"> -->
+              <!--     <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" -->
+              <!--       stroke-width="2" d="M18 6L6 18M6 6l12 12" /> -->
+              <!--   </svg> -->
+              <!-- </VButton> -->
             </div>
 
             <div class="flex flex-col gap-6 overflow-y-auto">

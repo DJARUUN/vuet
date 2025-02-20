@@ -68,6 +68,28 @@ watch(route, () => (isMobileNavShown.value = false));
             <VSidebarGroup v-if="item.page === false" :item="item" />
             <VSidebarItem v-else :item="item" />
           </template>
+
+          <DevOnly>
+            <template v-for="item in items" :key="item">
+              <VSidebarGroup v-if="item.page === false" :item="item" />
+              <VSidebarItem v-else :item="item" />
+            </template>
+
+            <template v-for="item in items" :key="item">
+              <VSidebarGroup v-if="item.page === false" :item="item" />
+              <VSidebarItem v-else :item="item" />
+            </template>
+
+            <template v-for="item in items" :key="item">
+              <VSidebarGroup v-if="item.page === false" :item="item" />
+              <VSidebarItem v-else :item="item" />
+            </template>
+
+            <template v-for="item in items" :key="item">
+              <VSidebarGroup v-if="item.page === false" :item="item" />
+              <VSidebarItem v-else :item="item" />
+            </template>
+          </DevOnly>
         </div>
       </template>
     </VModal>
