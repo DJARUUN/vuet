@@ -1,5 +1,7 @@
 <script setup lang="ts">
 import { twMerge } from "tailwind-merge";
+import VButton from "./VButton.vue";
+import { onMounted, onUnmounted } from "vue";
 
 const { variant = "default", defaultCollapsed, autoCloseOnMobile } = defineProps<{
 	title: string;

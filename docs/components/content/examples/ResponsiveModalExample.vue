@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { computed, ref } from 'vue';
+import VButton from '~/vuet/VButton.vue';
+import VResponsiveModal from '~/vuet/VResponsiveModal.vue';
+
 const safetyCheckText = ref("");
 const safetyCheckValid = computed(() => safetyCheckText.value.trim() === "DJARUUN/vuet");
 
@@ -18,7 +22,7 @@ function handleDeleteProject() {
 </script>
 
 <template>
-  <VModal title="Delete DJARUUN/vuet" v-model="isOpen">
+  <VResponsiveModal title="Delete DJARUUN/vuet" v-model="isOpen">
     <VButton variant="danger" @click="isOpen = true">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
         class="size-4">
@@ -102,5 +106,5 @@ function handleDeleteProject() {
         Delete project
       </VButton>
     </template>
-  </VModal>
+  </VResponsiveModal>
 </template>

@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import { ContentRenderer } from '#components';
+import { createError, definePageMeta, queryCollection, useAsyncData, useRoute, useSeoMeta } from '#imports';
+import SiblingPageButtons from '~/components/SiblingPageButtons.vue';
+
 definePageMeta({
 	layout: "docs",
 	pageTransition: { name: "page", mode: "out-in" },
@@ -14,8 +18,6 @@ if (!page.value)
 		status: 404,
 		message: `${route.fullPath} is not a page`,
 	});
-
-const pathSegments = page.value.path.split("/").filter((segment) => segment.length > 0).map((segment) => segment[0].toUpperCase() + segment.slice(1));
 
 useSeoMeta({
 	title: page.value?.title + " - Vuet",

@@ -1,7 +1,13 @@
 <script setup lang="ts">
-import type { ContentNavigationItem } from "@nuxt/content";
+import { twMerge } from "tailwind-merge";
+import VButton from "./VButton.vue";
+import { useRoute } from "vue-router";
+import { computed } from "vue";
 
-const { item } = defineProps<{ item: ContentNavigationItem }>();
+const { item } = defineProps<{
+  item: any;
+  class?: string;
+}>();
 
 const route = useRoute();
 const isActive = computed(() => route.path === item.path);
@@ -14,7 +20,8 @@ const isActive = computed(() => route.path === item.path);
     </div>
 
     <VButton :to="item.path" :variant="isActive ? 'soft' : 'ghost'"
-      :class="`h-8.5 flex-1 ${isActive ? 'text-fg' : 'text-muted-fg hover:text-fg'}`" innerClass="justify-start">
+      :class="twMerge(`h-8.5 flex-1 ${isActive ? 'text-fg' : 'text-muted-fg hover:text-fg'}`, $props.class)"
+      innerClass="justify-start">
       {{ item.title }}
     </VButton>
   </div>

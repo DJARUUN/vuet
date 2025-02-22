@@ -1,3 +1,8 @@
+<script setup lang="ts">
+import VCollapsible from '~/vuet/VCollapsible.vue';
+
+</script>
+
 <template>
   <div class="flex flex-col gap-3">
     <VCollapsible title="Preview" variant="container">

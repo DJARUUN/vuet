@@ -112,6 +112,9 @@
   --text-sm: 0.8875rem;
 
   --ease-smooth: cubic-bezier(0.32, 0.72, 0, 1);
+
+  --font-display: "Bricolage Grotesque", "sans-serif";
+  --font-sans: "Geist", "sans-serif";
 }
 
 @utility prose {
@@ -137,12 +140,23 @@
   pre {
     @apply rounded-xl my-0;
   }
+
+  h1 {
+    @apply font-display;
+  }
+
+  h2>a {
+    font-weight: 600;
+  }
+
+  h3>a {
+    font-weight: 550;
+  }
 }
 
 @layer base {
   body {
     @apply bg-bg text-fg;
-    font-family: "Geist", sans-serif;
   }
 
   ::selection {

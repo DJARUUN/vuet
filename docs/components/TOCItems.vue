@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import VButton from '~/vuet/VButton.vue';
+
 defineProps<{ links: any[] }>();
 </script>
 

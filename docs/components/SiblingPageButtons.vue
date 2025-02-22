@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import { queryCollection, queryCollectionItemSurroundings } from '#imports';
+import SiblingPageButton from './SiblingPageButton.vue';
+
 const { path } = defineProps<{ path: string }>()
 
 const siblingPages = await queryCollectionItemSurroundings("content", path);

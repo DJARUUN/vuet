@@ -1,4 +1,10 @@
 <script setup lang="ts">
+import { queryCollection, useLoadingIndicator } from '#imports';
+import { ref, watch } from 'vue';
+import { useRoute } from 'vue-router';
+import VCollapsible from '~/vuet/VCollapsible.vue';
+import TOCItems from './TOCItems.vue';
+
 const route = useRoute();
 const page = ref(await queryCollection("content").path(route.path).first());
 

@@ -12,9 +12,9 @@ export default defineNuxtConfig({
   },
 
   components: [
-    { path: "~/vuet", pathPrefix: false },
-    { path: "~/examples", pathPrefix: false },
-    { path: "~/components", pathPrefix: false },
+    // { path: "~/vuet", pathPrefix: false },
+    // { path: "~/examples", pathPrefix: false },
+    // { path: "~/components", pathPrefix: false },
   ],
 
   vite: {
@@ -33,5 +33,15 @@ export default defineNuxtConfig({
         },
       },
     },
+  },
+
+  fonts: {
+    experimental: {
+      processCSSVariables: true,
+    },
+  },
+
+  imports: {
+    autoImport: false,
   },
 });

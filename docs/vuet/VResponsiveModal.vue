@@ -1,4 +1,8 @@
 <script setup lang="ts">
+import VDrawer from './VDrawer.vue';
+import VDialog from './VDialog.vue';
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
+
 defineProps<{
 	title?: string;
 	description?: string;
@@ -10,7 +14,7 @@ const isOpen = defineModel<boolean>({ required: false, default: false });
 
 const showDrawer = ref(false);
 
-const computedComponent = computed(() => showDrawer.value ? resolveComponent('VDrawer') : resolveComponent('VDialog'));
+const computedComponent = computed(() => showDrawer.value ? VDrawer : VDialog);
 
 function handleResize() {
 	showDrawer.value = window.innerWidth < 1024;
@@ -29,7 +33,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-	<component :is="computedComponent" v-bind="$props" v-model:open="isOpen">
+	<component :is="computedComponent" v-bind="$props" v-model="isOpen">
 		<slot />
 
 		<template #title>

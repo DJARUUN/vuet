@@ -1,24 +1,27 @@
 <script setup lang="ts">
+import { useAsyncData } from "#app";
+import { queryCollectionSearchSections } from "#imports";
 import Fuse from "fuse.js";
+import { computed, ref, toValue } from "vue";
 
 const isSearchModalOpen = ref(false);
 
 const searchQuery = ref("Primary");
 const { data: searchData } = await useAsyncData("search-data", () =>
-	queryCollectionSearchSections("content"),
+  queryCollectionSearchSections("content"),
 );
 
 const fuse = new Fuse(searchData.value, {
-	keys: ["title", "description", "content"],
+  keys: ["title", "description", "content"],
 });
 
 const searchResults = computed(() =>
-	fuse.search(toValue(searchQuery)).slice(0, 10),
+  fuse.search(toValue(searchQuery)).slice(0, 10),
 );
 </script>
 
 <template>
-  <VModal v-model="isSearchModalOpen" title="Search documentation">
+  <VResponsiveModal v-model="isSearchModalOpen" title="Search documentation">
     <VButton variant="ghost" size="icon" @click="isSearchModalOpen = true">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
         class="size-4.5">
@@ -37,5 +40,5 @@ const searchResults = computed(() =>
         </VButton>
       </li>
     </template>
-  </VModal>
+  </VResponsiveModal>
 </template>

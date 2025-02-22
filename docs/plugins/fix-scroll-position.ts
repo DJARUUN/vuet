@@ -1,3 +1,5 @@
+import { defineNuxtPlugin, useNuxtApp } from "#imports";
+
 export default defineNuxtPlugin(() => {
     useNuxtApp().hook("page:transition:finish", () => {
         const main = document.querySelector("main");
