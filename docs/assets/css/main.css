@@ -109,7 +109,7 @@
   --color-input: var(--input);
   --color-ring: var(--ring);
 
-  --text-sm: 0.9rem;
+  --text-sm: 0.8875rem;
 
   --ease-smooth: cubic-bezier(0.32, 0.72, 0, 1);
 }

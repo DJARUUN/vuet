@@ -52,7 +52,7 @@ const pages = await queryCollectionNavigation("content");
       </VSidebar>
     </template>
 
-    <div class="lg:grid lg:grid-cols-[1fr_16rem] not-lg:flex not-lg:flex-col-reverse gap-9">
+    <div class="lg:grid lg:grid-cols-[1fr_16rem] not-lg:flex not-lg:flex-col-reverse lg:gap-9 not-lg:gap-6">
       <slot />
 
       <div class="not-lg:w-[clamp(0px,100%,70ch)] not-lg:mx-auto">

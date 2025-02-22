@@ -24,15 +24,17 @@ watch(route, () => (isMobileNavShown.value = false));
       </slot>
     </div>
 
-    <template v-for="item in items" :key="item">
-      <VSidebarGroup v-if="item.page === false" :item="item" />
-      <VSidebarItem v-else :item="item" />
-    </template>
+    <nav class="flex flex-col gap-3">
+      <template v-for="item in items" :key="item">
+        <VSidebarGroup v-if="item.page === false" :item="item" />
+        <VSidebarItem v-else :item="item" />
+      </template>
+    </nav>
 
     <slot name="footer" />
   </aside>
 
-  <div class="hidden not-lg:flex flex-col fixed isolate z-60 inset-x-0 max-h-full">
+  <div class="hidden not-lg:flex flex-col fixed isolate z-10 inset-x-0 max-h-full">
     <nav
       class="gap-5 px-6 inline-flex items-center overflow-auto min-h-18 bg-overlay/90 backdrop-blur-xl backdrop-saturate-150 border-b border-border">
       <div class="grid grid-cols-[1fr_auto] gap-3 flex-1">
@@ -61,37 +63,15 @@ watch(route, () => (isMobileNavShown.value = false));
       </div>
     </nav>
 
-    <VModal v-model="isMobileNavShown" contentClass="px-0 py-3">
+    <VDrawer v-model="isMobileNavShown" contentClass="px-3.5 py-3">
       <template #content>
-        <div class="flex flex-col gap-5 px-6">
+        <div class="flex flex-col gap-3 px-2.5">
           <template v-for="item in items" :key="item">
             <VSidebarGroup v-if="item.page === false" :item="item" />
             <VSidebarItem v-else :item="item" />
           </template>
-
-          <DevOnly>
-            <template v-for="item in items" :key="item">
-              <VSidebarGroup v-if="item.page === false" :item="item" />
-              <VSidebarItem v-else :item="item" />
-            </template>
-
-            <template v-for="item in items" :key="item">
-              <VSidebarGroup v-if="item.page === false" :item="item" />
-              <VSidebarItem v-else :item="item" />
-            </template>
-
-            <template v-for="item in items" :key="item">
-              <VSidebarGroup v-if="item.page === false" :item="item" />
-              <VSidebarItem v-else :item="item" />
-            </template>
-
-            <template v-for="item in items" :key="item">
-              <VSidebarGroup v-if="item.page === false" :item="item" />
-              <VSidebarItem v-else :item="item" />
-            </template>
-          </DevOnly>
         </div>
       </template>
-    </VModal>
+    </VDrawer>
   </div>
 </template>

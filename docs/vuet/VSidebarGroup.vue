@@ -13,7 +13,7 @@ const { item } = defineProps<{
       <div class="h-8.5 transition-all ease-smooth bg-border w-[1px]" />
     </div>
 
-    <VCollapsible :title="item.title" :class="`text-[0.938rem] ${isNested && 'mx-0 text-muted-fg h-8.5 px-3.5'}`"
+    <VCollapsible :title="item.title" :class="`${isNested && 'mx-0 text-muted-fg h-8.5 px-3.5'}`"
       :defaultCollapsed="isNested">
       <div :class="`flex flex-col ${isNested && 'px-2.5'}`">
         <template v-for="item_ in item.children" :key="item_">

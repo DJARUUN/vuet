@@ -15,6 +15,8 @@ if (!page.value)
 		message: `${route.fullPath} is not a page`,
 	});
 
+const pathSegments = page.value.path.split("/").filter((segment) => segment.length > 0).map((segment) => segment[0].toUpperCase() + segment.slice(1));
+
 useSeoMeta({
 	title: page.value?.title + " - Vuet",
 	description: page.value?.description,

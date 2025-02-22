@@ -64,7 +64,7 @@ onUnmounted(() => {
 <template>
 	<div :class="twMerge('flex flex-col w-full', variantStyles[variant].outer)" :data-collapsed="isCollapsed || null">
 		<VButton variant="ghost" :data-collapsed="isCollapsed || null"
-			:class="twMerge(`text-base ${isCollapsed && 'text-muted-fg hover:text-fg'}`, variantStyles[variant].button, $props.class)"
+			:class="twMerge(`text-[0.925rem] ${isCollapsed && 'text-muted-fg hover:text-fg'}`, variantStyles[variant].button, $props.class)"
 			innerClass="justify-between" @click="isCollapsed = !isCollapsed">
 			<span>{{ title }}</span>
 
