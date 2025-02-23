@@ -21,7 +21,8 @@ watch(route, () => (isMobileNavShown.value = false));
 <template>
   <aside
     class="hidden lg:flex flex-col gap-5 p-6 border-r border-border w-[18rem] overflow-auto bg-overlay/90 backdrop-blur-xl backdrop-saturate-150">
-    <div class="inline-flex justify-between items-center">
+    <div v-if="$slots.header || $slots.headerLeft || $slots.headerRight"
+      class="inline-flex justify-between items-center">
       <slot name="header">
         <div class="inline-flex gap-3">
           <slot name="headerLeft" />
@@ -70,7 +71,7 @@ watch(route, () => (isMobileNavShown.value = false));
       </div>
     </nav>
 
-    <VDrawer v-model="isMobileNavShown" contentClass="px-3.5 py-3">
+    <VDrawer v-model="isMobileNavShown" contentClass="px-3.5">
       <template #content>
         <div class="flex flex-col gap-3 px-2.5">
           <template v-for="item in items" :key="item">
