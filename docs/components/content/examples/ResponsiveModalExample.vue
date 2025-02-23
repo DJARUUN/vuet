@@ -35,67 +35,7 @@ function handleDeleteProject() {
     <template #content>
       <p class="text-sm text-muted-fg">To confirm, type "DJARUUN/vuet" in the box below</p>
       <input type="text"
-        class="min-h-10 px-3.5 rounded-lg text-fg border border-input placeholder:text-muted-fg focus:outline-none focus:border-primary disabled:cursor-not-allowed disabled:opacity-60 transition-[border] ease-smooth"
-        v-model="safetyCheckText">
-
-      <p class="text-sm text-muted-fg">To confirm, type "DJARUUN/vuet" in the box below</p>
-      <input type="text"
-        class="min-h-10 px-3.5 rounded-lg text-fg border border-input placeholder:text-muted-fg focus:outline-none focus:border-primary disabled:cursor-not-allowed disabled:opacity-60 transition-[border] ease-smooth"
-        v-model="safetyCheckText">
-
-      <p class="text-sm text-muted-fg">To confirm, type "DJARUUN/vuet" in the box below</p>
-      <input type="text"
-        class="min-h-10 px-3.5 rounded-lg text-fg border border-input placeholder:text-muted-fg focus:outline-none focus:border-primary disabled:cursor-not-allowed disabled:opacity-60 transition-[border] ease-smooth"
-        v-model="safetyCheckText">
-
-      <p class="text-sm text-muted-fg">To confirm, type "DJARUUN/vuet" in the box below</p>
-      <input type="text"
-        class="min-h-10 px-3.5 rounded-lg text-fg border border-input placeholder:text-muted-fg focus:outline-none focus:border-primary disabled:cursor-not-allowed disabled:opacity-60 transition-[border] ease-smooth"
-        v-model="safetyCheckText">
-
-      <p class="text-sm text-muted-fg">To confirm, type "DJARUUN/vuet" in the box below</p>
-      <input type="text"
-        class="min-h-10 px-3.5 rounded-lg text-fg border border-input placeholder:text-muted-fg focus:outline-none focus:border-primary disabled:cursor-not-allowed disabled:opacity-60 transition-[border] ease-smooth"
-        v-model="safetyCheckText">
-
-      <p class="text-sm text-muted-fg">To confirm, type "DJARUUN/vuet" in the box below</p>
-      <input type="text"
-        class="min-h-10 px-3.5 rounded-lg text-fg border border-input placeholder:text-muted-fg focus:outline-none focus:border-primary disabled:cursor-not-allowed disabled:opacity-60 transition-[border] ease-smooth"
-        v-model="safetyCheckText">
-
-      <p class="text-sm text-muted-fg">To confirm, type "DJARUUN/vuet" in the box below</p>
-      <input type="text"
-        class="min-h-10 px-3.5 rounded-lg text-fg border border-input placeholder:text-muted-fg focus:outline-none focus:border-primary disabled:cursor-not-allowed disabled:opacity-60 transition-[border] ease-smooth"
-        v-model="safetyCheckText">
-
-      <p class="text-sm text-muted-fg">To confirm, type "DJARUUN/vuet" in the box below</p>
-      <input type="text"
-        class="min-h-10 px-3.5 rounded-lg text-fg border border-input placeholder:text-muted-fg focus:outline-none focus:border-primary disabled:cursor-not-allowed disabled:opacity-60 transition-[border] ease-smooth"
-        v-model="safetyCheckText">
-
-      <p class="text-sm text-muted-fg">To confirm, type "DJARUUN/vuet" in the box below</p>
-      <input type="text"
-        class="min-h-10 px-3.5 rounded-lg text-fg border border-input placeholder:text-muted-fg focus:outline-none focus:border-primary disabled:cursor-not-allowed disabled:opacity-60 transition-[border] ease-smooth"
-        v-model="safetyCheckText">
-
-      <p class="text-sm text-muted-fg">To confirm, type "DJARUUN/vuet" in the box below</p>
-      <input type="text"
-        class="min-h-10 px-3.5 rounded-lg text-fg border border-input placeholder:text-muted-fg focus:outline-none focus:border-primary disabled:cursor-not-allowed disabled:opacity-60 transition-[border] ease-smooth"
-        v-model="safetyCheckText">
-
-      <p class="text-sm text-muted-fg">To confirm, type "DJARUUN/vuet" in the box below</p>
-      <input type="text"
-        class="min-h-10 px-3.5 rounded-lg text-fg border border-input placeholder:text-muted-fg focus:outline-none focus:border-primary disabled:cursor-not-allowed disabled:opacity-60 transition-[border] ease-smooth"
-        v-model="safetyCheckText">
-
-      <p class="text-sm text-muted-fg">To confirm, type "DJARUUN/vuet" in the box below</p>
-      <input type="text"
-        class="min-h-10 px-3.5 rounded-lg text-fg border border-input placeholder:text-muted-fg focus:outline-none focus:border-primary disabled:cursor-not-allowed disabled:opacity-60 transition-[border] ease-smooth"
-        v-model="safetyCheckText">
-
-      <p class="text-sm text-muted-fg">To confirm, type "DJARUUN/vuet" in the box below</p>
-      <input type="text"
-        class="min-h-10 px-3.5 rounded-lg text-fg border border-input placeholder:text-muted-fg focus:outline-none focus:border-primary disabled:cursor-not-allowed disabled:opacity-60 transition-[border] ease-smooth"
+        class="min-h-10 px-3.5 rounded-lg text-fg border border-input placeholder:text-muted-fg focus:outline-none focus:border-primary disabled:cursor-not-allowed disabled:opacity-70 transition-[border] ease-smooth"
         v-model="safetyCheckText">
     </template>
 

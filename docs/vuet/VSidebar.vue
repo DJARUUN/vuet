@@ -56,30 +56,31 @@ watch(route, () => (isMobileNavShown.value = false));
           <div class="inline-flex gap-3">
             <slot name="headerRight" />
 
-            <VButton variant="ghost" size="icon" @click="isMobileNavShown = !isMobileNavShown">
-              <svg v-if="!isMobileNavShown" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                stroke-width="1.5" stroke="currentColor" class="size-4.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-              </svg>
-              <svg v-else xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                stroke="currentColor" class="size-4.5">
-                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-              </svg>
-            </VButton>
+            <VDrawer v-model="isMobileNavShown" contentClass="px-3.5">
+              <VButton variant="ghost" size="icon" @click="isMobileNavShown = !isMobileNavShown">
+                <svg v-if="!isMobileNavShown" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                  stroke-width="1.5" stroke="currentColor" class="size-4.5">
+                  <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                </svg>
+                <svg v-else xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                  stroke="currentColor" class="size-4.5">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                </svg>
+              </VButton>
+
+              <template #content>
+                <div class="flex flex-col gap-3 px-2.5">
+                  <template v-for="item in items" :key="item">
+                    <VSidebarGroup v-if="item.page === false" :item="item" :class="groupClass" :itemClass="itemClass" />
+                    <VSidebarItem v-else :item="item" :class="itemClass" />
+                  </template>
+                </div>
+              </template>
+            </VDrawer>
           </div>
         </slot>
       </div>
     </nav>
-
-    <VDrawer v-model="isMobileNavShown" contentClass="px-3.5">
-      <template #content>
-        <div class="flex flex-col gap-3 px-2.5">
-          <template v-for="item in items" :key="item">
-            <VSidebarGroup v-if="item.page === false" :item="item" :class="groupClass" :itemClass="itemClass" />
-            <VSidebarItem v-else :item="item" :class="itemClass" />
-          </template>
-        </div>
-      </template>
-    </VDrawer>
   </div>
 </template>

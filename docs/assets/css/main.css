@@ -193,7 +193,7 @@
       }
 
       &:is([closed], [data-closed], [data-state="closed"]) {
-        animation: modal-content-out 225ms;
+        animation: modal-content-out 200ms;
         @apply ease-smooth;
       }
     }

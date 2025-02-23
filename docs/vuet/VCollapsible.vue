@@ -13,6 +13,9 @@ const { variant = "default", defaultCollapsed, autoCloseOnMobile } = defineProps
 	dontOverlapSides?: boolean;
 }>();
 
+const isCollapsed = defineModel<boolean>({ required: false });
+if (defaultCollapsed) isCollapsed.value = true;
+
 const variantStyles = {
 	default: {
 		outer: `
@@ -35,21 +38,18 @@ const variantStyles = {
 			h-12 px-4 hover:bg-transparent transition-[color] ease-smooth
 		`,
 		inner: `
-			p-3 pt-0 data-collapsed:-mb-3
+			p-3 pt-0 group-data-collapsed:-mb-3
 		`,
 		innest: `
 		`,
 	},
 };
 
-const isCollapsed = defineModel<boolean>({ required: false });
-if (defaultCollapsed) isCollapsed.value = true;
-
 function handleAutoCloseOnMobile() {
-	return;
-
-	if (autoCloseOnMobile && window.innerWidth < 1024) isCollapsed.value = true;
-	else isCollapsed.value = false;
+	if (autoCloseOnMobile) {
+		if (window.innerWidth < 1024) isCollapsed.value = true;
+		else isCollapsed.value = false;
+	}
 }
 
 onMounted(() => {
@@ -64,8 +64,9 @@ onUnmounted(() => {
 </script>
 
 <template>
-	<div :class="twMerge('flex flex-col w-full', variantStyles[variant].outer)" :data-collapsed="isCollapsed || null">
-		<VButton variant="ghost" :data-collapsed="isCollapsed || null"
+	<div :data-collapsed="isCollapsed || undefined"
+		:class="twMerge('flex flex-col w-full group', variantStyles[variant].outer)">
+		<VButton variant="ghost"
 			:class="twMerge(`text-[0.925rem] ${isCollapsed && 'text-muted-fg hover:text-fg'}`, variantStyles[variant].button, $props.class)"
 			innerClass="justify-between" @click="isCollapsed = !isCollapsed">
 			<span>{{ title }}</span>
@@ -76,7 +77,7 @@ onUnmounted(() => {
 			</svg>
 		</VButton>
 
-		<div :data-collapsed="isCollapsed || null"
+		<div
 			:class="twMerge(`grid transition-[grid-template-rows,opacity] ease-smooth ${isCollapsed ? 'grid-rows-[0fr] opacity-75' : 'grid-rows-[1fr]'}`, variantStyles[variant].inner)">
 			<div :class="twMerge('overflow-y-hidden', variantStyles[variant].innest, innerClass)">
 				<slot />

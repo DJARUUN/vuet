@@ -10,16 +10,20 @@ const page = ref(await queryCollection("content").path(route.path).first());
 
 const loadingIndicator = useLoadingIndicator();
 
+async function getPathContent(path: string) {
+  return await queryCollection("content").path(path).first();
+}
+
 watch(route, async ({ path }) => {
   setTimeout(async () => {
     if (!loadingIndicator.isLoading.value)
-      page.value = await queryCollection("content").path(path).first();
+      page.value = await getPathContent(path);
   }, 200);
 });
 
 watch(loadingIndicator.isLoading, async (isLoading) => {
   if (!isLoading)
-    page.value = await queryCollection("content").path(route.path).first();
+    page.value = await getPathContent(route.path);
 });
 </script>
 

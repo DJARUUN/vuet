@@ -6,8 +6,9 @@ defineProps<{ links: any[] }>();
 
 <template>
   <template v-for="link in links" :key="link">
-    <VButton :to="`#${link.id}`" :nuxt="false" variant="ghost" class="text-sm px-2.5 h-7 text-muted-fg"
-      innerClass="justify-start" :style="`margin-left: ${(link.depth - 2) * 1}rem;`">
+    <VButton :to="`#${link.id}`" linkType="anchor" variant="ghost"
+      class="text-sm px-2.5 h-7 text-muted-fg hover:text-fg" innerClass="justify-start"
+      :style="`margin-left: ${(link.depth - 2) * 1}rem;`">
       {{ link.text }}
     </VButton>
 

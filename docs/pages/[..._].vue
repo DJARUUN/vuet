@@ -28,7 +28,7 @@ useSeoMeta({
 <template>
 	<div class="flex flex-col gap-6 overflow-auto scroll-smooth w-[clamp(0px,100%,70ch)] mx-auto">
 		<ContentRenderer v-if="page" :value="page"
-			class="prose prose-h1:font-bold prose-h1:text-3xl prose-headings:**:no-underline min-w-full" />
+			class="prose prose-h1:font-bold prose-h1:text-3xl prose-headings:**:no-underline prose-headings:**:hover:underline min-w-full" />
 
 		<SiblingPageButtons :path="route.path" />
 	</div>

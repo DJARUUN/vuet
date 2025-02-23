@@ -20,7 +20,7 @@ const isActive = computed(() => route.path === item.path);
     </div>
 
     <VButton :to="item.path" :variant="isActive ? 'soft' : 'ghost'"
-      :class="twMerge(`h-8.5 flex-1 ${isActive ? 'text-fg' : 'text-muted-fg hover:text-fg'}`, $props.class)"
+      :class="twMerge(`h-8 px-3 flex-1 ${isActive ? 'text-fg' : 'text-muted-fg hover:text-fg'}`, $props.class)"
       innerClass="justify-start">
       {{ item.title }}
     </VButton>
