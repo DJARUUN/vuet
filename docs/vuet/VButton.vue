@@ -21,7 +21,7 @@ const {
 }>();
 
 const sharedStyles = `
-	transition-[background-color,color,border,opacity] ease-smooth disabled:opacity-70 disabled:cursor-not-allowed
+	transition-[background-color,color,border,opacity] ease-smooth data-disabled:opacity-70 data-disabled:cursor-not-allowed
 	${variant !== 'link' ? 'flex text-sm font-medium rounded-lg select-none' : 'inline-flex'}
 `;
 
@@ -90,6 +90,7 @@ const innerStyles = "inline-flex gap-2 items-center justify-center size-full";
 
 <template>
 	<button v-if="!to" :type="type" :disabled="loading || disabled || undefined"
+		:data-disabled="loading || disabled || undefined"
 		:class="twMerge(sharedStyles, sizeStyle, variantStyles[variant], $props.class)">
 		<div :class="twMerge(innerStyles, innerClass)">
 			<slot v-if="loading" name="loading">
@@ -105,8 +106,9 @@ const innerStyles = "inline-flex gap-2 items-center justify-center size-full";
 		</div>
 	</button>
 
-	<NuxtLink v-else-if="linkType === 'nuxt'" :disabled="loading || disabled || undefined"
-		:class="twMerge(sharedStyles, sizeStyle, variantStyles[variant], $props.class)" :to="to">
+	<NuxtLink v-else-if="linkType === 'nuxt'" :data-disabled="loading || disabled || undefined"
+		:class="twMerge(sharedStyles, sizeStyle, variantStyles[variant], $props.class)"
+		:to="!disabled ? to : 'javascript:void(0)'">
 		<div :class="twMerge(innerStyles, innerClass)">
 			<slot v-if="loading" name="loading">
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -121,8 +123,9 @@ const innerStyles = "inline-flex gap-2 items-center justify-center size-full";
 		</div>
 	</NuxtLink>
 
-	<RouterLink v-else-if="linkType === 'vue'" :disabled="loading || disabled || undefined"
-		:class="twMerge(sharedStyles, sizeStyle, variantStyles[variant], $props.class)" :to="to">
+	<RouterLink v-else-if="linkType === 'vue'" :data-disabled="loading || disabled || undefined"
+		:class="twMerge(sharedStyles, sizeStyle, variantStyles[variant], $props.class)"
+		:to="!disabled ? to : 'javascript:void(0)'">
 		<div :class="twMerge(innerStyles, innerClass)">
 			<slot v-if="loading" name="loading">
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
@@ -137,8 +140,9 @@ const innerStyles = "inline-flex gap-2 items-center justify-center size-full";
 		</div>
 	</RouterLink>
 
-	<a v-else :disabled="loading || disabled || undefined"
-		:class="twMerge(sharedStyles, sizeStyle, variantStyles[variant], $props.class)" :href="to">
+	<a v-else :data-disabled="loading || disabled || undefined"
+		:class="twMerge(sharedStyles, sizeStyle, variantStyles[variant], $props.class)"
+		:href="!disabled ? to : 'javascript:void(0)'">
 		<div :class="twMerge(innerStyles, innerClass)">
 			<slot v-if="loading" name="loading">
 				<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
