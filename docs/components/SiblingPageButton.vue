@@ -17,7 +17,8 @@ defineProps<{ toPage: ContentCollectionItem | undefined; next: boolean }>();
           {{ toPage.title }}
         </h3>
 
-        <p :class="`h-[2lh] font-normal overflow-hidden text-muted-fg ${next ? 'text-end' : 'text-start'}`">
+        <p
+          :class="`h-[2lh] font-normal line-clamp-2 overflow-ellipsis text-muted-fg ${next ? 'text-end' : 'text-start'}`">
           {{ toPage?.description }}
         </p>
       </div>

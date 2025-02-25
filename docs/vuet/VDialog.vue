@@ -3,7 +3,6 @@ import { Dialog } from "@ark-ui/vue/dialog";
 import { twMerge } from "tailwind-merge";
 import VButton from "./VButton.vue";
 import { XMarkIcon } from "@heroicons/vue/24/outline";
-import { ClientOnly } from "#components";
 
 defineProps<{
 	title?: string;
@@ -22,8 +21,8 @@ const isOpen = defineModel<boolean>({ required: false, default: false });
 	<Dialog.Root v-model:open="isOpen">
 		<slot />
 
-		<ClientOnly>
-			<Teleport to="body">
+		<Teleport to="body">
+			<ClientOnly>
 				<Dialog.Backdrop class="absolute inset-0 dark:bg-bg/40 bg-fg/15 z-20" />
 
 				<Dialog.Positioner class="absolute inset-0 flex justify-center items-center p-3 z-50 isolate">
@@ -60,7 +59,7 @@ const isOpen = defineModel<boolean>({ required: false, default: false });
 						</div>
 					</Dialog.Content>
 				</Dialog.Positioner>
-			</Teleport>
-		</ClientOnly>
+			</ClientOnly>
+		</Teleport>
 	</Dialog.Root>
 </template>

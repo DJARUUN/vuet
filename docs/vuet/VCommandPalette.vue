@@ -10,6 +10,7 @@ const { onSearch } = defineProps<{
 
 const isOpen = defineModel<boolean>("open", { required: false, default: false });
 const query = defineModel<string>("query", { required: false, default: "" });
+const contentRef = ref<HTMLElement | null>(null);
 
 const emit = defineEmits<{
 	select: [item: T];
@@ -37,6 +38,17 @@ watch(results, (newResults) => {
 		selectedIdx.value = 0;
 	} else {
 		selectedIdx.value = -1;
+	}
+});
+
+watch(selectedIdx, (selectedIdx_) => {
+	if (selectedIdx_ !== -1 && results.value.length > 0 && contentRef.value) {
+		const selectedElement = contentRef.value.children[selectedIdx_] as HTMLElement;
+		if (selectedElement) {
+			selectedElement.scrollIntoView({
+				block: "nearest",
+			});
+		}
 	}
 });
 
@@ -83,8 +95,9 @@ onMounted(() => {
 </script>
 
 <template>
-	<VResponsiveModal v-model="isOpen" containerClass="not-lg:min-h-[85%] lg:fixed lg:top-[15%] lg:min-w-0 lg:w-[640px]"
-		noHandle class="gap-3 p-0 pb-3">
+	<VResponsiveModal v-model="isOpen"
+		containerClass="not-lg:min-h-[85%] lg:fixed lg:top-[15%] lg:max-h-[70%] lg:min-w-0 lg:w-[640px]" noHandle
+		class="gap-3 p-0 pb-3">
 		<slot />
 
 		<template #header>
@@ -100,7 +113,7 @@ onMounted(() => {
 		</template>
 
 		<template #content>
-			<div class="flex flex-col flex-1 overflow-y-auto px-3" tabindex="-1">
+			<div ref="contentRef" class="flex flex-col flex-1 overflow-y-auto px-3" tabindex="-1">
 				<template v-if="results.length > 0">
 					<VButton v-for="(item, idx) of results" :key="idx" @click="handleSelect(item)" variant="ghost"
 						:class="`h-fit py-2.5 ${selectedIdx === idx && 'dark:bg-muted bg-[color-mix(in_oklab,var(--color-border)_60%,var(--color-overlay))]'}`"

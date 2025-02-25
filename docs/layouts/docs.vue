@@ -63,10 +63,10 @@ const pages = await queryCollectionNavigation("content");
       </VSidebar>
     </template>
 
-    <div class="lg:grid lg:grid-cols-[1fr_16rem] not-lg:flex not-lg:flex-col-reverse lg:gap-9 not-lg:gap-6">
+    <div class="grid lg:grid-cols-[1fr_16rem] gap-9">
       <slot />
 
-      <div class="not-lg:w-[clamp(0px,100%,70ch)] not-lg:mx-auto">
+      <div class="lg:block hidden">
         <TOC />
       </div>
     </div>
