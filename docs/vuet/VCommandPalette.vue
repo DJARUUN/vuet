@@ -96,7 +96,7 @@ onMounted(() => {
 
 <template>
 	<VResponsiveModal v-model="isOpen"
-		containerClass="not-lg:min-h-[85%] lg:fixed lg:top-[15%] lg:max-h-[70%] lg:min-w-0 lg:w-[640px]" noHandle
+		containerClass="not-lg:min-h-[80%] lg:fixed lg:top-[15%] lg:max-h-[70%] lg:min-w-0 lg:w-[640px]" noHandle
 		class="gap-3 p-0 pb-3">
 		<slot />
 
