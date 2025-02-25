@@ -8,6 +8,9 @@ defineProps<{
 	description?: string;
 	class?: string;
 	containerClass?: string;
+
+	// Drawer specific
+	noHandle?: boolean;
 }>();
 
 const isOpen = defineModel<boolean>({ required: false, default: false });

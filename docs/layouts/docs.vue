@@ -6,7 +6,7 @@ import TOC from '~/components/TOC.vue';
 import VButton from '~/vuet/VButton.vue';
 import VSidebar from '~/vuet/VSidebar.vue';
 import VSidebarLayout from '~/vuet/VSidebarLayout.vue';
-import SearchModal from '~/components/_SearchModal.vue';
+import SearchModal from '~/components/SearchModal.vue';
 
 declare global {
   var theme: string;

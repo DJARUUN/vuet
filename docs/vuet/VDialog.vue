@@ -10,6 +10,9 @@ defineProps<{
 	description?: string;
 	class?: string;
 	containerClass?: string;
+
+	// Needed for API consistency with Drawer
+	noHandle?: boolean;
 }>();
 
 const isOpen = defineModel<boolean>({ required: false, default: false });

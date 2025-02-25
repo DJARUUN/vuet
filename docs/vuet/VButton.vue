@@ -28,8 +28,8 @@ const {
 }>();
 
 const sharedStyles = `
-	transition-[background-color,color,border,opacity] ease-smooth data-disabled:opacity-70 data-disabled:cursor-not-allowed
-	${variant !== 'link' ? 'flex text-sm font-medium rounded-lg select-none' : 'inline-flex'}
+	transition-[background-color,color,border,opacity,outline] ease-smooth data-disabled:opacity-70 data-disabled:cursor-not-allowed outline-transparent
+	${variant !== 'link' ? 'flex text-sm font-medium rounded-lg select-none focus-visible:outline-1 focus-visible:-outline-offset-1 focus-visible:outline-fg' : 'inline-flex'}
 `;
 
 const sizeStyles = {

@@ -7,6 +7,7 @@ defineProps<{
 	description?: string;
 	class?: string;
 	containerClass?: string;
+	noHandle?: boolean;
 }>();
 
 const isOpen = defineModel<boolean>({ required: false, default: false });
@@ -21,9 +22,9 @@ const isOpen = defineModel<boolean>({ required: false, default: false });
 
 			<DrawerContent
 				:class="twMerge(`z-50 flex flex-col gap-6 rounded-t-xl mt-24 max-h-[85%] fixed bottom-0 inset-x-0 bg-overlay/90 backdrop-blur-xl backdrop-saturate-150 text-overlay-fg border-t border-x !border-border dark:!border-[color-mix(in_oklab,var(--color-overlay)_82.5%,white)]`, containerClass)">
-				<div class="mx-auto w-20 h-1.5 rounded-full bg-border mt-4 shrink-0" />
+				<div v-if="!noHandle" class="mx-auto w-20 h-1.5 rounded-full bg-border mt-4 shrink-0" />
 
-				<div :class="twMerge('flex flex-col gap-6 px-6 pb-6 min-h-0 flex-1', $props.class)" data-vaul-no-drag>
+				<div :class="twMerge('flex flex-col gap-6 px-6 pb-6 min-h-0 flex-1', $props.class)">
 					<slot name="header">
 						<div v-if="$slots.title || $slots.description || title || description"
 							class="flex flex-col gap-1.5 shrink-0">
@@ -37,7 +38,7 @@ const isOpen = defineModel<boolean>({ required: false, default: false });
 						</div>
 					</slot>
 
-					<div v-if="$slots.content" class="flex flex-col gap-3 overflow-y-auto">
+					<div v-if="$slots.content" class="flex flex-col gap-3 overflow-y-auto flex-1" data-vaul-no-drag>
 						<slot name="content" />
 					</div>
 

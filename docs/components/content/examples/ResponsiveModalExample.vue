@@ -30,18 +30,22 @@ function handleDeleteProject() {
     </VButton>
 
     <template #content>
-      <p class="text-sm text-muted-fg">To confirm, type "DJARUUN/vuet" in the box below</p>
-      <input type="text"
-        class="min-h-10 px-3.5 rounded-lg text-fg border border-input placeholder:text-muted-fg focus:outline-none focus:border-primary disabled:cursor-not-allowed disabled:opacity-70 transition-[border] ease-smooth shrink-0"
-        v-model="safetyCheckText">
-    </template>
+      <form @submit.prevent="handleDeleteProject" class="flex flex-col gap-6">
+        <div class="flex flex-col gap-3">
+          <p class="text-sm text-muted-fg">To confirm, type "DJARUUN/vuet" in the box below</p>
+          <input type="text"
+            class="min-h-10 px-3.5 rounded-lg text-fg border border-input placeholder:text-muted-fg outline-transparent focus-visible:outline-1 focus-visible:-outline-offset-1 focus-visible:outline-primary disabled:cursor-not-allowed disabled:opacity-70 transition-[outline] ease-smooth shrink-0"
+            v-model="safetyCheckText">
+        </div>
 
-    <template #actions>
-      <VButton variant="outline" @click="isOpen = false">Cancel</VButton>
-      <VButton variant="danger" :disabled="!safetyCheckValid" @click="handleDeleteProject" :loading="isPending"
-        loadingText="Deleting project">
-        Delete project
-      </VButton>
+        <div class="inline-flex gap-2 items-center justify-end w-full">
+          <VButton variant="outline" @click="isOpen = false">Cancel</VButton>
+          <VButton variant="danger" type="submit" :disabled="!safetyCheckValid" :loading="isPending"
+            loadingText="Deleting project">
+            Delete project
+          </VButton>
+        </div>
+      </form>
     </template>
   </VResponsiveModal>
 </template>
