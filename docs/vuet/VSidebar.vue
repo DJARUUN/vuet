@@ -5,6 +5,7 @@ import VButton from './VButton.vue';
 import VDrawer from './VDrawer.vue';
 import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
+import { Bars3Icon, XMarkIcon } from "@heroicons/vue/24/outline";
 
 const { items } = defineProps<{
   items: any[];
@@ -56,17 +57,10 @@ watch(route, () => (isMobileNavShown.value = false));
           <div class="inline-flex gap-3">
             <slot name="headerRight" />
 
-            <VDrawer v-model="isMobileNavShown" contentClass="px-3.5">
+            <VDrawer v-model="isMobileNavShown" class="px-3.5">
               <VButton variant="ghost" size="icon" @click="isMobileNavShown = !isMobileNavShown">
-                <svg v-if="!isMobileNavShown" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                  stroke-width="1.5" stroke="currentColor" class="size-4.5">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                </svg>
-                <svg v-else xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                  stroke="currentColor" class="size-4.5">
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
-                </svg>
+                <Bars3Icon v-if="!isMobileNavShown" class="size-4.5" />
+                <XMarkIcon v-else class="size-4.5" />
               </VButton>
 
               <template #content>

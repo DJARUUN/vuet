@@ -7,7 +7,7 @@ defineProps<{
 	title?: string;
 	description?: string;
 	class?: string;
-	contentClass?: string;
+	containerClass?: string;
 }>();
 
 const isOpen = defineModel<boolean>({ required: false, default: false });
@@ -34,22 +34,12 @@ onUnmounted(() => {
 
 <template>
 	<component :is="computedComponent" v-bind="$props" v-model="isOpen">
-		<slot />
-
-		<template #title>
-			<slot name="title" />
+		<template #default>
+			<slot />
 		</template>
 
-		<template #description>
-			<slot name="description" />
-		</template>
-
-		<template #content>
-			<slot name="content" />
-		</template>
-
-		<template #actions>
-			<slot name="actions" />
+		<template v-for="(_, name) in $slots" :key="name" v-slot:[name]="slotData">
+			<slot :name="name" v-bind="slotData" />
 		</template>
 	</component>
 </template>
