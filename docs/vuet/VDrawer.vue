@@ -21,7 +21,7 @@ const isOpen = defineModel<boolean>({ required: false, default: false });
 			<DrawerOverlay class="fixed inset-0 dark:bg-bg/40 bg-fg/15 z-20" />
 
 			<DrawerContent
-				:class="twMerge(`z-50 flex flex-col gap-6 rounded-t-xl mt-24 max-h-[85%] fixed bottom-0 inset-x-0 bg-overlay/90 backdrop-blur-xl backdrop-saturate-150 text-overlay-fg border-t border-x !border-border dark:!border-[color-mix(in_oklab,var(--color-overlay)_82.5%,white)]`, containerClass)">
+				:class="twMerge(`z-50 flex flex-col gap-6 rounded-t-xl mt-24 max-h-[80%] fixed bottom-0 inset-x-0 bg-overlay/90 backdrop-blur-xl backdrop-saturate-150 text-overlay-fg border-t border-x !border-border dark:!border-[color-mix(in_oklab,var(--color-overlay)_82.5%,white)]`, containerClass)">
 				<div v-if="!noHandle" class="mx-auto w-20 h-1.5 rounded-full bg-border mt-4 shrink-0" />
 
 				<div :class="twMerge('flex flex-col gap-6 px-6 pb-6 min-h-0 flex-1', $props.class)">
