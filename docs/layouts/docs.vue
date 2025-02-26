@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { queryCollectionNavigation, useHead, useTheme } from '#imports';
+import { queryCollectionNavigation, useTheme } from '#imports';
 import { SunIcon, MoonIcon } from '@heroicons/vue/24/outline';
 import VButton from '~/vuet/VButton.vue';
 import VSidebar from '~/vuet/VSidebar.vue';
