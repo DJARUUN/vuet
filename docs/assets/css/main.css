@@ -154,11 +154,6 @@
   body {
     @apply bg-bg text-fg;
   }
-
-  ::selection {
-    color: var(--color-fg);
-    background: color-mix(in oklab, var(--color-primary) 70%, transparent);
-  }
 }
 
 .page-enter-active,

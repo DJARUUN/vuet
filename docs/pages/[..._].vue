@@ -53,7 +53,7 @@ function slugToWords(slug: string) {
 
 			<h1 class="font-bold font-display text-3xl">{{ page?.title }}</h1>
 
-			<p class="text-muted-fg">{{ page?.description }}</p>
+			<p class="text-muted-fg text-[1.05rem]">{{ page?.description }}</p>
 		</div>
 
 		<hr class="text-border mb-3">
