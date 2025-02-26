@@ -57,7 +57,7 @@ onMounted(() => {
     pulse: number
   }[] = []
 
-  const createStars = () => {
+  function createStars() {
     const displayWidth = window.innerWidth
     const displayHeight = window.innerHeight
 
@@ -70,7 +70,7 @@ onMounted(() => {
       stars.push({
         x: Math.random() * displayWidth,
         y: Math.random() * displayHeight,
-        size: Math.random() * 1.5 + 0.5,
+        size: Math.random() * 1.5 + 2,
         speed: Math.random() * 0.04 + 0.02,
         opacity: Math.random() * 0.4 + 0.3,
         pulse: Math.random() * 0.02
