@@ -67,7 +67,7 @@ defineRouteRules({
 		<footer class="w-full pb-4 text-center text-xs text-muted-fg flex flex-col gap-4">
 			<!-- Gradient border line fading from center -->
 			<div
-				class="h-px bg-gradient-to-r from-transparent via-[color-mix(in_oklab,var(--color-secondary)_90%,white)] to-transparent" />
+				class="h-px bg-gradient-to-r from-transparent dark:via-[color-mix(in_oklab,var(--color-secondary)_90%,white)] via-[color-mix(in_oklab,var(--color-secondary)_95%,black)] to-transparent" />
 			<div class="relative z-10">
 				© {{ new Date().getFullYear() }} <span class="font-semibold">DJARUUN</span>&nbsp;&nbsp;•&nbsp;&nbsp;<a
 					href="https://github.com/DJARUUN/vuet/blob/master/LICENSE" target="_blank" class="underline">MIT License</a>
