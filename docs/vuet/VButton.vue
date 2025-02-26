@@ -4,7 +4,6 @@ import { RouterLink } from "vue-router";
 import { computed } from "vue";
 import { NuxtLink } from "#components";
 import { ArrowPathIcon } from "@heroicons/vue/24/outline";
-
 const {
 	type = "button",
 	variant = "default",
@@ -21,7 +20,6 @@ const {
 	linkType?: "nuxt" | "vue" | "anchor";
 	to?: string;
 	class?: string;
-	innerClass?: string;
 	disabled?: boolean;
 	loading?: boolean;
 	loadingText?: string;
@@ -30,14 +28,15 @@ const {
 const sharedStyles = `
 	transition-[background-color,color,border,opacity,outline] ease-smooth data-disabled:opacity-70 data-disabled:cursor-not-allowed outline-transparent
 	${variant !== 'link' ? 'flex text-sm font-medium rounded-lg select-none focus-visible:outline-1 focus-visible:-outline-offset-1 focus-visible:outline-fg' : 'inline-flex'}
+	inline-flex gap-2 items-center justify-center
 `;
 
 const sizeStyles = {
 	default: `h-8.5 px-3.5`,
+
 	icon: `size-8.5`,
 };
 const sizeStyle = variant !== "link" ? sizeStyles[size] : undefined;
-
 const variantStyles = {
 	default: `
 		bg-secondary hover:bg-[color-mix(in_oklab,var(--color-secondary)_90%,black)]
@@ -91,12 +90,9 @@ const variantStyles = {
 	`,
 };
 
-const innerStyles = "inline-flex gap-2 items-center justify-center size-full";
-
 const elementTag = computed(() => {
 	// For regular buttons
 	if (!to) return "button";
-
 	// For links of any type
 	switch (linkType) {
 		case "nuxt": return NuxtLink;
@@ -110,7 +106,6 @@ const elementProps = computed(() => {
 		"data-disabled": loading || disabled || undefined,
 		class: twMerge(sharedStyles, sizeStyle, variantStyles[variant], classProp),
 	};
-
 	// For regular buttons
 	if (!to) {
 		return {
@@ -119,7 +114,6 @@ const elementProps = computed(() => {
 			disabled: loading || disabled || undefined,
 		};
 	}
-
 	// For links of any type
 	switch (linkType) {
 		case "nuxt":
@@ -140,13 +134,10 @@ const elementProps = computed(() => {
 
 <template>
 	<component :is="elementTag" v-bind="elementProps">
-		<div :class="twMerge(innerStyles, innerClass)">
-			<slot v-if="loading" name="loading">
-				<ArrowPathIcon class="size-4 animate-spin" />
-				<span v-if="loadingText">{{ loadingText }}</span>
-			</slot>
-
-			<slot v-else />
-		</div>
+		<slot v-if="loading" name="loading">
+			<ArrowPathIcon class="size-4 animate-spin" />
+			<span v-if="loadingText">{{ loadingText }}</span>
+		</slot>
+		<slot v-else />
 	</component>
 </template>

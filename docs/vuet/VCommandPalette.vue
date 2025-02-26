@@ -87,6 +87,10 @@ function handleKeyDown(event: KeyboardEvent) {
 	}
 }
 
+function handleMouseOver(idx: number) {
+	selectedIdx.value = idx;
+}
+
 onMounted(() => {
 	if (isOpen.value) {
 		selectedIdx.value = 0;
@@ -115,9 +119,10 @@ onMounted(() => {
 		<template #content>
 			<div ref="contentRef" class="flex flex-col flex-1 overflow-y-auto px-3" tabindex="-1">
 				<template v-if="results.length > 0">
-					<VButton v-for="(item, idx) of results" :key="idx" @click="handleSelect(item)" variant="ghost"
-						:class="`h-fit py-2.5 ${selectedIdx === idx && 'dark:bg-muted bg-[color-mix(in_oklab,var(--color-border)_60%,var(--color-overlay))]'}`"
-						innerClass="text-start justify-start items-start" tabindex="-1">
+					<VButton v-for="(item, idx) of results" :key="idx"
+						style="--selected-bg-light: color-mix(in oklab, var(--color-border) 60% ,var(--color-overlay))"
+						:class="`h-fit py-2.5 hover:bg-transparent text-start justify-start items-start ${selectedIdx === idx && 'dark:bg-muted dark:hover:bg-muted bg-(--selected-bg-light) hover:bg-(--selected-bg-light)'}`"
+						tabindex="-1" @click="handleSelect(item)" variant="ghost" @mouseenter="handleMouseOver(idx)">
 						<slot name="item" :item="item" />
 					</VButton>
 				</template>

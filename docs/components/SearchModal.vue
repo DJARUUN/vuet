@@ -14,8 +14,9 @@ const { data: searchData } = await useAsyncData("search-data", () =>
 );
 const fuse = new Fuse(searchData.value || [], {
   keys: [
-    { name: "title", weight: 3 },
-    { name: "description", weight: 2 },
+    { name: "title", weight: 4 },
+    { name: "description", weight: 3 },
+    { name: "id", weight: 2 },
     { name: "content", weight: 1 }
   ],
 });

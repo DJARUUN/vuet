@@ -68,8 +68,8 @@ onUnmounted(() => {
 	<div :data-collapsed="isCollapsed || undefined"
 		:class="twMerge('flex flex-col w-full group', variantStyles[variant].outer)">
 		<VButton variant="ghost"
-			:class="twMerge(`text-[0.925rem] ${isCollapsed && 'text-muted-fg hover:text-fg'}`, variantStyles[variant].button, $props.class)"
-			innerClass="justify-between" @click="isCollapsed = !isCollapsed">
+			:class="twMerge(`text-[0.925rem] justify-between ${isCollapsed && 'text-muted-fg hover:text-fg'}`, variantStyles[variant].button, $props.class)"
+			@click="isCollapsed = !isCollapsed">
 			<span>{{ title }}</span>
 
 			<ChevronDownIcon :class="`size-4 transition-[rotate] ease-smooth ${!isCollapsed && 'rotate-180'}`" />
