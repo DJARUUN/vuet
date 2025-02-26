@@ -3,6 +3,7 @@ import { ContentRenderer } from '#components';
 import { createError, definePageMeta, queryCollection, useAsyncData, useRoute, useSeoMeta } from '#imports';
 import { ChevronRightIcon, CubeIcon } from '@heroicons/vue/24/outline';
 import SiblingPageButtons from '~/components/SiblingPageButtons.vue';
+import { watch } from 'vue';
 
 definePageMeta({
 	layout: "docs",
@@ -34,11 +35,25 @@ function slugToWords(slug: string) {
 			.map((word) => word[0].toUpperCase() + word.slice(1))
 			.join(" "));
 }
+
+watch(route, async (newRoute) => {
+	const { data: newPage } = await useAsyncData(newRoute.path, () =>
+		queryCollection("content").path(newRoute.path).first(),
+	);
+	if (!newPage.value) {
+		throw createError({
+			status: 404,
+			message: `${newRoute.fullPath} is not a page`,
+		});
+	}
+	page.value = newPage.value;
+});
 </script>
 
 <template>
 	<div class="flex flex-col gap-6 overflow-auto scroll-smooth w-[clamp(0px,100%,70ch)] mx-auto">
 		<div class="flex flex-col gap-4 text-sm">
+
 			<div class="inline-flex gap-1 items-center mb-2">
 				<template v-for="word in slugToWords(page?.path || '')">
 					<span class="text-muted-fg font-[450]">{{ word }}</span>

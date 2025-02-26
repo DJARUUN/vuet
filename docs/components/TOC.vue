@@ -29,7 +29,7 @@ watch(loadingIndicator.isLoading, async (isLoading) => {
 
 <template>
   <div class="flex flex-col gap-3 lg:min-w-[16rem] lg:fixed lg:top-0 lg:pt-9.5 lg:right-6 lg:p-3">
-    <VCollapsible title="On this page" defaultCollapsed autoCloseOnMobile>
+    <VCollapsible title="On this page">
       <div class="flex flex-col gap-1">
         <TOCItems :links="page?.body.toc?.links || []" />
       </div>

@@ -5,6 +5,7 @@ import VResponsiveModal from './VResponsiveModal.vue';
 import { onMounted, ref, watch, type Ref } from 'vue';
 
 const { onSearch } = defineProps<{
+	placeholder?: string;
 	onSearch(query: string): T[];
 }>();
 
@@ -108,7 +109,7 @@ onMounted(() => {
 			<div class="w-full relative">
 				<input type="text"
 					class="py-3 px-4 rounded-t-xl text-fg border-b border-b-input placeholder:text-muted-fg focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-70 ease-smooth shrink-0 w-full"
-					placeholder="e.g. ResponsiveModal" v-model="query" @keydown="handleKeyDown">
+					:placeholder="placeholder" v-model="query" @keydown="handleKeyDown">
 
 				<VButton variant="ghost" size="icon" class="absolute right-2 top-[50%] -translate-y-[50%]" @click="handleClose">
 					<XMarkIcon class="size-4.5" />

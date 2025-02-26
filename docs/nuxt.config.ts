@@ -25,6 +25,10 @@ export default defineNuxtConfig({
 
   modules: ["@nuxt/fonts", "@nuxt/content"],
 
+  experimental: {
+    inlineRouteRules: true,
+  },
+
   content: {
     build: {
       markdown: {

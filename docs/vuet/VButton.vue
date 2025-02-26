@@ -37,6 +37,7 @@ const sizeStyles = {
 	icon: `size-8.5`,
 };
 const sizeStyle = variant !== "link" ? sizeStyles[size] : undefined;
+
 const variantStyles = {
 	default: `
 		bg-secondary hover:bg-[color-mix(in_oklab,var(--color-secondary)_90%,black)]
@@ -47,7 +48,7 @@ const variantStyles = {
 
 	primary: `
 		bg-primary hover:bg-[color-mix(in_oklab,var(--color-primary)_90%,black)]
-		text-primary-fg
+		dark:text-primary-fg text-bg
 		!border-[color-mix(in_oklab,var(--color-primary)_92.5%,white)] !border-t-[color-mix(in_oklab,var(--color-primary)_82.5%,white)]
 		border
 	`,
@@ -59,9 +60,9 @@ const variantStyles = {
 
 	outline: `
 		hover:bg-muted
-		 text-fg
-		 border-border
-		 border
+		text-fg
+		border-border
+		border
 	`,
 
 	ghost: `

@@ -1,44 +1,22 @@
 <script setup lang="ts">
-import { queryCollectionNavigation, useHead } from '#imports';
+import { queryCollectionNavigation, useHead, useTheme } from '#imports';
 import { SunIcon, MoonIcon } from '@heroicons/vue/24/outline';
-import { onMounted, ref, watch } from 'vue';
-import TOC from '~/components/TOC.vue';
 import VButton from '~/vuet/VButton.vue';
 import VSidebar from '~/vuet/VSidebar.vue';
 import VSidebarLayout from '~/vuet/VSidebarLayout.vue';
 import SearchModal from '~/components/SearchModal.vue';
 
-declare global {
-  var theme: string;
-}
-
-useHead({
-  script: [{
-    children: `
-      globalThis.theme = localStorage.getItem("theme") ?? "light";
-      document.documentElement.classList.add(globalThis.theme);
-    `}],
-});
-
-const theme = ref();
-watch(theme, (newTheme) => localStorage.setItem("theme", newTheme));
-
-onMounted(() => (theme.value = globalThis.theme));
+const theme = useTheme();
 
 const pages = await queryCollectionNavigation("content");
 </script>
 
 <template>
-  <Html :class="theme">
-
-  </Html>
-
   <VSidebarLayout>
     <template #sidebar>
       <VSidebar :items="pages">
         <template #headerLeft>
-          <VButton to="/getting-started/introduction" variant="ghost"
-            class="font-display text-xl font-bold -ml-3.5 w-fit">
+          <VButton to="/" variant="ghost" class="font-display text-xl font-bold -ml-3.5 w-fit">
             Vuet
           </VButton>
         </template>
@@ -54,12 +32,8 @@ const pages = await queryCollectionNavigation("content");
       </VSidebar>
     </template>
 
-    <div class="grid lg:grid-cols-[1fr_16rem] gap-9">
+    <div class="grid lg:grid-cols-[1fr_16rem] gap-9 w-full">
       <slot />
-
-      <div class="lg:block hidden">
-        <TOC />
-      </div>
     </div>
   </VSidebarLayout>
 </template>

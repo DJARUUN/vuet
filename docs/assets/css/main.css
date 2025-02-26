@@ -114,6 +114,7 @@
   --ease-smooth: cubic-bezier(0.32, 0.72, 0, 1);
 
   --font-display: "Bricolage Grotesque", "sans-serif";
+  --font-special: "Instrument Serif", serif;
   --font-sans: "Geist", "sans-serif";
 }
 

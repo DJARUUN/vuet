@@ -37,7 +37,7 @@ function slugToWords(slug: string) {
 </script>
 
 <template>
-  <VCommandPalette v-model:open="isSearchModalOpen" :onSearch="handleSearch"
+  <VCommandPalette v-model:open="isSearchModalOpen" placeholder="e.g. Button" :onSearch="handleSearch"
     @select="(item) => navigateTo(item.item.id)">
     <VButton variant="ghost" size="icon" @click="isSearchModalOpen = true">
       <MagnifyingGlassIcon class="size-4.5" />
