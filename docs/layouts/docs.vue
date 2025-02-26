@@ -37,19 +37,10 @@ const pages = await queryCollectionNavigation("content");
     <template #sidebar>
       <VSidebar :items="pages">
         <template #headerLeft>
-          <div class="inline-flex items-center gap-1 lg:flex-col lg:items-start group">
-            <VButton to="/getting-started/introduction" variant="ghost"
-              class="font-display text-xl font-bold -ml-3.5 w-fit">
-              Vuet
-            </VButton>
-
-            <div
-              class="grid not-lg:grid-cols-[0fr] not-lg:group-hover:grid-cols-[1fr] lg:grid-rows-[0fr] lg:group-hover:grid-rows-[1fr] opacity-50  group-hover:opacity-100 transition-[grid-template-columns,grid-template-rows,opacity] ease-smooth">
-              <p class="text-sm text-muted-fg not-lg:overflow-x-hidden not-lg:text-nowrap lg:overflow-y-hidden">
-                The components you need for the <span class="italic">modern</span> Vue ecosystem.
-              </p>
-            </div>
-          </div>
+          <VButton to="/getting-started/introduction" variant="ghost"
+            class="font-display text-xl font-bold -ml-3.5 w-fit">
+            Vuet
+          </VButton>
         </template>
 
         <template #headerRight>
