@@ -17,7 +17,7 @@ defineRouteRules({
 
 		<div class="container mx-auto px-6 grid place-content-center">
 			<div class="text-center -translate-y-2 flex flex-col gap-6">
-				<h1 class="text-[2.9rem] max-w-[90%] leading-none lg:text-6xl font-bold tracking-tight lg:max-w-3xl mx-auto"
+				<h1 class="text-[2.6rem] max-w-[90%] leading-none lg:text-6xl font-bold tracking-tight lg:max-w-3xl mx-auto"
 					style="
 						background: linear-gradient(175deg,var(--color-fg),var(--color-body));
 						background-clip: border-box;
@@ -29,7 +29,7 @@ defineRouteRules({
 						Beautiful Vue components for the
 					</span>
 					<span
-						class="italic font-special relative inline-block font-semibold tracking-normal -mr-0.5 text-[2.975rem] lg:text-[3.825rem]"
+						class="italic font-special relative inline-block font-semibold tracking-normal -mr-0.5 text-[2.675rem] lg:text-[3.825rem]"
 						style="
 							background: linear-gradient(120deg, var(--color-primary), color-mix(in oklab, var(--color-primary) 92.5%, white));
 							-webkit-background-clip: text;
