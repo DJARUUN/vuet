@@ -33,24 +33,19 @@ onMounted(() => {
 		<div class="container mx-auto px-6 grid place-content-center">
 			<div class="text-center flex flex-col gap-6">
 				<h1
-					:class="`text-[2.6rem] max-w-[90%] leading-none lg:text-6xl font-bold tracking-tight lg:max-w-3xl mx-auto transition-[translate,opacity,filter] ease-smooth duration-1500 ${reachedTransitionPoint1 ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-16 opacity-0 blur-sm'}`"
-					style="
-						background: linear-gradient(175deg,var(--color-fg),var(--color-body));
-						background-clip: border-box;
-						background-clip: text;
-						-webkit-background-clip: text;
-						-webkit-text-fill-color: transparent;
-					">
+					:class="`text-[2.6rem] max-w-[90%] leading-none lg:text-6xl font-bold tracking-tight lg:max-w-3xl mx-auto transition-[translate,opacity,filter] ease-smooth duration-1500 big-heading ${reachedTransitionPoint1 ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-8 opacity-0 blur-sm'}`">
 					<span class="font-display">
 						Beautiful Vue components for the
 					</span>
-					<span
-						class="italic font-special relative inline-block font-semibold tracking-normal -mr-0.5 text-[2.675rem] lg:text-[3.825rem]"
+					<span class="italic font-special font-semibold tracking-normal -mr-0.5 text-[2.675rem] lg:text-[3.825rem]"
 						style="
-							background: linear-gradient(120deg, var(--color-primary), color-mix(in oklab, var(--color-primary) 92.5%, white));
+							background: linear-gradient(120deg, color-mix(in oklab, var(--color-primary) 97.5%, white) 25%, color-mix(in oklab, var(--color-primary) 90%, white));
+							background-clip: border-box;
+							background-clip: text;
 							-webkit-background-clip: text;
 							-webkit-text-fill-color: transparent;
-							text-shadow: 0 0 20px color-mix(in oklch, var(--primary), transparent 85%), 0 0 35px color-mix(in oklch, var(--primary), transparent 90%);
+							-webkit-text-fill-color: transparent;
+							text-shadow: 0 0 20px color-mix(in oklab, var(--primary), transparent 85%), 0 0 35px color-mix(in oklab, var(--primary), transparent 90%);
 						">
 						modern
 					</span>
@@ -68,7 +63,7 @@ onMounted(() => {
 				<div
 					:class="`flex items-center justify-center gap-x-4 transition-[translate,opacity,filter] ease-smooth duration-1250 ${reachedTransitionPoint3 ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-4 opacity-0 blur-xs'}`">
 					<VButton variant="primary" class="group" to="/getting-started/introduction" style="
-							box-shadow: 0 0 40px color-mix(in oklch, var(--primary), transparent 85%), 0 0 15px color-mix(in oklch, var(--primary), transparent 90%);
+							box-shadow: 0 0 40px color-mix(in oklab, var(--primary), transparent 85%), 0 0 15px color-mix(in oklab, var(--primary), transparent 90%);
 						">
 						Get Started
 						<ArrowRightIcon class="size-4.5 group-hover:translate-x-1 transition-[translate] ease-smooth" />
@@ -94,3 +89,21 @@ onMounted(() => {
 		</footer>
 	</div>
 </template>
+
+<style>
+.big-heading {
+	background: linear-gradient(160deg, color-mix(in oklab, var(--color-muted-fg) 99%, white), var(--color-fg) 50%);
+	background-clip: border-box;
+	background-clip: text;
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+
+	&:where(.dark, .dark *) {
+		background: linear-gradient(160deg, var(--color-fg) 50%, color-mix(in oklab, var(--color-muted-fg) 90%, white));
+		background-clip: border-box;
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+	}
+}
+</style>
