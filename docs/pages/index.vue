@@ -33,7 +33,7 @@ onMounted(() => {
 		<div class="container mx-auto px-6 grid place-content-center">
 			<div class="text-center flex flex-col gap-6">
 				<h1
-					:class="`text-[2.6rem] max-w-[90%] leading-none lg:text-6xl font-bold tracking-tight lg:max-w-3xl mx-auto transition-[translate,opacity,filter] ease-smooth duration-1500 big-heading ${reachedTransitionPoint1 ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-8 opacity-0 blur-sm'}`">
+					:class="`text-[2.6rem] max-w-[90%] leading-none lg:text-6xl font-bold tracking-tight lg:max-w-3xl mx-auto transition-[translate,opacity,filter] ease-smooth duration-1500 big-heading ${reachedTransitionPoint1 ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-8 opacity-0 blur-xs'}`">
 					<span class="font-display">
 						Beautiful Vue components for the
 					</span>
@@ -55,13 +55,13 @@ onMounted(() => {
 				</h1>
 
 				<p
-					:class="`text-[0.95rem] lg:text-lg leading-6 lg:leading-7.5 text-body/85 max-w-2xl mx-auto transition-[translate,opacity,filter] ease-smooth duration-1250 ${reachedTransitionPoint2 ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-4 opacity-0 blur-sm'}`">
+					:class="`text-[0.95rem] lg:text-lg leading-6 lg:leading-7.5 text-body/85 max-w-2xl mx-auto transition-[translate,opacity,filter] ease-smooth duration-1250 ${reachedTransitionPoint2 ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-4 opacity-0 blur-xs'}`">
 					A collection of fully customizable Vue 3 components. Built with TypeScript, Tailwind CSS, and modern design
 					principles.
 				</p>
 
 				<div
-					:class="`flex items-center justify-center gap-x-4 transition-[translate,opacity,filter] ease-smooth duration-1250 ${reachedTransitionPoint3 ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-4 opacity-0 blur-xs'}`">
+					:class="`flex items-center justify-center gap-x-4 transition-[translate,opacity,filter] ease-smooth duration-1250 ${reachedTransitionPoint3 ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-4 opacity-0 blur-[2px]'}`">
 					<VButton variant="primary" class="group" to="/getting-started/introduction" style="
 							box-shadow: 0 0 40px color-mix(in oklab, var(--primary), transparent 85%), 0 0 15px color-mix(in oklab, var(--primary), transparent 90%);
 						">
