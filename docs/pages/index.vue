@@ -42,7 +42,7 @@ defineRouteRules({
 						web
 					</span>
 				</h1>
-				<p class="text-base lg:text-lg leading-6.5 lg:leading-8 text-body/85 max-w-2xl mx-auto">
+				<p class="text-[0.95rem] lg:text-lg leading-6.5 lg:leading-8 text-body/85 max-w-2xl mx-auto">
 					A collection of fully customizable Vue 3 components. Built with TypeScript, Tailwind CSS, and modern design
 					principles.
 				</p>

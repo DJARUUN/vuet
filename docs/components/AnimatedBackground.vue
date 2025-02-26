@@ -84,7 +84,7 @@ onMounted(() => {
 
     <!-- Primary gradient blob - large and dramatic -->
     <div
-      class="absolute lg:-left-[25%] -left-[150%] -top-[15%] transform-gpu overflow-hidden blur-3xl animate-float-main"
+      class="absolute lg:-left-[25%] -left-[175%] -top-[15%] transform-gpu overflow-hidden blur-3xl animate-float-main"
       aria-hidden="true">
       <div class="relative aspect-[1155/678] w-[75rem] rotate-[30deg] opacity-25" style="
           background: linear-gradient(to right, var(--primary), var(--secondary));
@@ -94,7 +94,7 @@ onMounted(() => {
 
     <!-- Secondary gradient blob - larger but more subtle -->
     <div
-      class="absolute lg:-right-[20%] -right-[100%] top-[60%] transform-gpu overflow-hidden blur-3xl animate-float-secondary"
+      class="absolute lg:-right-[20%] -right-[125%] top-[60%] transform-gpu overflow-hidden blur-3xl animate-float-secondary"
       aria-hidden="true">
       <div class="relative aspect-[800/600] w-[60rem] translate-x-[20%] rotate-[15deg] opacity-10" style="
           background: linear-gradient(to right, var(--secondary), var(--primary));
