@@ -22,7 +22,8 @@ const theme = useTheme();
           </VButton>
 
           <div class="inline-flex gap-3 items-center flex-1 justify-end">
-            <SearchModal buttonClass="not-md:flex-1 md:w-66" />
+            <SearchModal buttonClass="not-md:aspect-square md:w-66 not-md:justify-center md:justify-start"
+              textClass="not-md:hidden" />
 
             <VButton to="/primitives/button" variant="outline">
               <CubeIcon class="size-4.5" />

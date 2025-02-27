@@ -13,7 +13,7 @@ const { item } = defineProps<{
 </script>
 
 <template>
-  <div :class="`inline-flex gap-1 ml-1.5 ${isNested && '-mb-0.5'}`">
+  <div :class="`inline-flex gap-1 mx-1.5 ${isNested && '-mb-0.5'}`">
     <div v-if="isNested" class="w-[2px]">
       <div class="h-8.5 transition-all ease-smooth bg-border w-[1px]" />
     </div>

@@ -11,6 +11,7 @@ import { twMerge } from "tailwind-merge";
 
 defineProps<{
   buttonClass?: string;
+  textClass?: string;
 }>();
 
 const isSearchModalOpen = ref(false);
@@ -58,11 +59,10 @@ onBeforeUnmount(() => window.removeEventListener("keydown", handleKeyDown));
   <VCommandPalette v-model:open="isSearchModalOpen" placeholder="e.g. Button" :onSearch="handleSearch"
     @select="(item) => navigateTo(item.item.id)">
     <VButton variant="outline" @click="isSearchModalOpen = true"
-      :class="twMerge(`@container text-muted-fg relative justify-start`, buttonClass)">
-      <MagnifyingGlassIcon
-        class="size-4.5 shrink-0 @max-[5.1rem]:absolute @max-[5.1rem]:left-[50%] @max-[5.1rem]:-translate-x-[50%]" />
+      :class="twMerge(`text-muted-fg relative justify-start`, buttonClass)">
+      <MagnifyingGlassIcon class="size-4.5 shrink-0" />
 
-      <span class="@max-[5.1rem]:hidden">Search<span class="@max-[7.4rem]:hidden"> docs</span>...</span>
+      <span :class="textClass">Search docs...</span>
 
       <VKbd noPlus class="not-md:hidden absolute right-1.5">
         <span>⌘</span><span>K</span>
