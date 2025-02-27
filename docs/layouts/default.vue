@@ -16,22 +16,22 @@ const theme = useTheme();
     <div class="flex flex-col fixed isolate z-10 inset-x-0 max-h-full">
       <nav
         class="gap-5 px-6 inline-flex items-center overflow-auto min-h-18 bg-overlay/90 backdrop-blur-xl backdrop-saturate-150 border-b border-border">
-        <div class="inline-flex justify-between items-center w-full">
+        <div class="inline-flex justify-between items-center w-full gap-3">
           <VButton to="/" variant="ghost" class="font-display text-xl font-bold -ml-3.5 w-fit">
             Vuet
           </VButton>
 
-          <div class="inline-flex gap-3 items-center">
-            <SearchModal />
+          <div class="inline-flex gap-3 items-center flex-1 justify-end">
+            <SearchModal buttonClass="not-md:flex-1 md:w-66" />
+
+            <VButton to="/primitives/button" variant="outline">
+              <CubeIcon class="size-4.5" />
+              Components
+            </VButton>
 
             <VButton variant="ghost" size="icon" @click="theme = theme === 'dark' ? 'light' : 'dark'">
               <SunIcon v-if="theme === 'dark'" class="size-4.5" />
               <MoonIcon v-else class="size-4.5" />
-            </VButton>
-
-            <VButton to="/primitives/button" variant="outline">
-              <CubeIcon class="size-4.5" />
-              All Components
             </VButton>
           </div>
         </div>

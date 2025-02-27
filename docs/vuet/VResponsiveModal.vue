@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import VDrawer from './VDrawer.vue';
 import VDialog from './VDialog.vue';
-import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue';
 
 defineProps<{
 	title?: string;
@@ -30,7 +30,7 @@ onMounted(() => {
 	window.addEventListener('resize', handleResize);
 });
 
-onUnmounted(() => {
+onBeforeUnmount(() => {
 	window.removeEventListener('resize', handleResize);
 });
 </script>

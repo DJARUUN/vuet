@@ -16,19 +16,30 @@ if (!pages.value) throw createError({ status: 500, message: "Something went wron
   <VSidebarLayout>
     <template #sidebar>
       <VSidebar :items="pages ?? []">
-        <template #headerLeft>
-          <VButton to="/" variant="ghost" class="font-display text-xl font-bold -ml-3.5 w-fit">
-            Vuet
-          </VButton>
-        </template>
+        <template #header>
+          <div class="inline-flex gap-3 justify-between lg:flex lg:flex-col lg:gap-3 w-full">
+            <div class="inline-flex gap-3 justify-between">
+              <VButton to="/" variant="ghost" class="font-display text-xl font-bold -ml-3.5 w-fit">
+                Vuet
+              </VButton>
 
-        <template #headerRight>
-          <SearchModal />
+              <VButton variant="ghost" size="icon" @click="theme = theme === 'dark' ? 'light' : 'dark'"
+                class="not-lg:hidden">
+                <SunIcon v-if="theme === 'dark'" class="size-4.5" />
+                <MoonIcon v-else class="size-4.5" />
+              </VButton>
+            </div>
 
-          <VButton variant="ghost" size="icon" @click="theme = theme === 'dark' ? 'light' : 'dark'">
-            <SunIcon v-if="theme === 'dark'" class="size-4.5" />
-            <MoonIcon v-else class="size-4.5" />
-          </VButton>
+            <div class="inline-flex gap-3 flex-1">
+              <SearchModal buttonClass="not-lg:flex-1 lg:w-full" />
+
+              <VButton variant="ghost" size="icon" @click="theme = theme === 'dark' ? 'light' : 'dark'"
+                class="lg:hidden">
+                <SunIcon v-if="theme === 'dark'" class="size-4.5" />
+                <MoonIcon v-else class="size-4.5" />
+              </VButton>
+            </div>
+          </div>
         </template>
       </VSidebar>
     </template>

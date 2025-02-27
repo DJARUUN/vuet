@@ -2,10 +2,16 @@
 import { navigateTo, useAsyncData } from "#app";
 import { queryCollectionSearchSections } from "#imports";
 import Fuse from "fuse.js";
-import { ref } from "vue";
+import { onBeforeUnmount, onMounted, ref } from "vue";
 import { ChevronRightIcon, CubeIcon, HashtagIcon, MagnifyingGlassIcon } from "@heroicons/vue/24/outline";
 import VButton from "~/vuet/VButton.vue";
 import VCommandPalette from "~/vuet/VCommandPalette.vue";
+import VKbd from "~/vuet/VKbd.vue";
+import { twMerge } from "tailwind-merge";
+
+defineProps<{
+  buttonClass?: string;
+}>();
 
 const isSearchModalOpen = ref(false);
 
@@ -34,13 +40,32 @@ function slugToWords(slug: string) {
       .map((word) => word[0].toUpperCase() + word.slice(1))
       .join(" "));
 }
+
+function handleKeyDown(event: KeyboardEvent) {
+  if ((event.ctrlKey || event.metaKey) && event.key === "k") {
+    event.preventDefault();
+    isSearchModalOpen.value = !isSearchModalOpen.value;
+    console.log("TOGGLED OPEN SEARCH MODAL");
+  }
+}
+
+onMounted(() => window.addEventListener("keydown", handleKeyDown));
+
+onBeforeUnmount(() => window.removeEventListener("keydown", handleKeyDown));
 </script>
 
 <template>
   <VCommandPalette v-model:open="isSearchModalOpen" placeholder="e.g. Button" :onSearch="handleSearch"
     @select="(item) => navigateTo(item.item.id)">
-    <VButton variant="ghost" size="icon" @click="isSearchModalOpen = true">
+    <VButton variant="outline" @click="isSearchModalOpen = true"
+      :class="twMerge(`text-muted-fg relative justify-start`, buttonClass)">
       <MagnifyingGlassIcon class="size-4.5" />
+
+      <span>Search docs...</span>
+
+      <VKbd noPlus class="not-md:hidden absolute right-1.5">
+        <span>⌘</span><span>K</span>
+      </VKbd>
     </VButton>
 
     <template #item="{ item: link }">
