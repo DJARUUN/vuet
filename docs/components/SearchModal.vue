@@ -61,7 +61,7 @@ onBeforeUnmount(() => window.removeEventListener("keydown", handleKeyDown));
       :class="twMerge(`text-muted-fg relative justify-start`, buttonClass)">
       <MagnifyingGlassIcon class="size-4.5" />
 
-      <span>Search docs...</span>
+      <span>Search<span class="not-md:hidden"> docs</span>...</span>
 
       <VKbd noPlus class="not-md:hidden absolute right-1.5">
         <span>⌘</span><span>K</span>
