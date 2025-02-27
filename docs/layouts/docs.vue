@@ -17,7 +17,8 @@ if (!pages.value) throw createError({ status: 500, message: "Something went wron
     <template #sidebar>
       <VSidebar :items="pages ?? []">
         <template #headerLeft>
-          <VButton to="/" variant="ghost" class="font-display text-xl font-bold -ml-3.5 w-fit">
+          <VButton to="/getting-started/introduction" variant="ghost"
+            class="font-display text-xl font-bold -ml-3.5 w-fit">
             Vuet
           </VButton>
         </template>

@@ -17,7 +17,9 @@ const theme = useTheme();
       <nav
         class="gap-5 px-6 inline-flex items-center overflow-auto min-h-18 bg-overlay/90 backdrop-blur-xl backdrop-saturate-150 border-b border-border">
         <div class="inline-flex justify-between items-center w-full">
-          <h3 class="font-display font-bold text-xl">Vuet</h3>
+          <VButton to="/" variant="ghost" class="font-display text-xl font-bold -ml-3.5 w-fit">
+            Vuet
+          </VButton>
 
           <div class="inline-flex gap-3 items-center">
             <SearchModal />
@@ -36,7 +38,7 @@ const theme = useTheme();
       </nav>
     </div>
 
-    <main class="pt-16 h-full">
+    <main class="h-full overflow-x-hidden scroll-smooth scroll-pt-24">
       <slot />
     </main>
   </div>

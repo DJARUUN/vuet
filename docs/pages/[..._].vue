@@ -39,9 +39,8 @@ function slugToWords(slug: string) {
 <template>
 	<div class="flex flex-col gap-6 overflow-auto scroll-smooth w-[clamp(0px,100%,70ch)] mx-auto">
 		<div class="flex flex-col gap-4 text-sm">
-
 			<div class="inline-flex gap-1 items-center mb-2">
-				<template v-for="word in slugToWords(page?.path || '')">
+				<template v-for="word in slugToWords(page?.path || '')" :key="word">
 					<span class="text-muted-fg font-[450]">{{ word }}</span>
 					<ChevronRightIcon class="text-muted-fg size-3.5" />
 				</template>
@@ -53,7 +52,6 @@ function slugToWords(slug: string) {
 			</div>
 
 			<h1 class="font-bold font-display text-3xl">{{ page?.title }}</h1>
-
 			<p class="text-muted-fg text-[1.05rem] leading-7">{{ page?.description }}</p>
 		</div>
 

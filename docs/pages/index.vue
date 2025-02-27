@@ -4,11 +4,15 @@ import {
 } from '@heroicons/vue/24/outline'
 import VButton from '~/vuet/VButton.vue'
 import AnimatedBackground from '~/components/AnimatedBackground.vue'
-import { defineRouteRules } from '#imports';
+import { definePageMeta, defineRouteRules } from '#imports';
 import { ref, onMounted } from "vue";
 
 defineRouteRules({
 	prerender: true,
+});
+
+definePageMeta({
+	pageTransition: { name: "page", mode: "out-in" },
 });
 
 const reachedTransitionPoint1 = ref(false);

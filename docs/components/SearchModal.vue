@@ -46,7 +46,7 @@ function slugToWords(slug: string) {
     <template #item="{ item: link }">
       <div class="items-start flex flex-col gap-1">
         <div class="inline-flex gap-1 items-center">
-          <template v-for="word in slugToWords(link.item.id)">
+          <template v-for="word in slugToWords(link.item.id)" :key="word">
             <span class="text-muted-fg font-[450]">{{ word }}</span>
             <ChevronRightIcon class="text-muted-fg size-3.5" />
           </template>
