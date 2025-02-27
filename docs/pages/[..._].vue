@@ -1,13 +1,16 @@
 <script setup lang="ts">
 import { ContentRenderer } from '#components';
 import { createError, definePageMeta, queryCollection, useAsyncData, useRoute, useSeoMeta } from '#imports';
-import { ChevronRightIcon, CubeIcon } from '@heroicons/vue/24/outline';
+import { ArrowTopRightOnSquareIcon, ChevronRightIcon, CubeIcon } from '@heroicons/vue/24/outline';
 import SiblingPageButtons from '~/components/SiblingPageButtons.vue';
+import VButton from '~/vuet/VButton.vue';
 
 definePageMeta({
 	layout: "docs",
 	pageTransition: { name: "page", mode: "out-in" },
 });
+
+const componentSourceBasePath = "https://github.com/DJARUUN/vuet/blob/master/docs/vuet/";
 
 const route = useRoute();
 
@@ -52,7 +55,21 @@ function slugToWords(slug: string) {
 			</div>
 
 			<h1 class="font-bold font-display text-3xl">{{ page?.title }}</h1>
+
 			<p class="text-muted-fg text-[1.05rem] leading-7">{{ page?.description }}</p>
+
+			<div v-if="!page?.stem.startsWith('1.')" class="inline-flex gap-2">
+				<VButton v-if="'headlessUrl' in page!.meta" :to="page?.meta.headlessUrl as string" variant="soft" size="small"
+					target="_blank">
+					<img :src="page?.meta.headlessLogo as string" class="size-3.5">
+					{{ page?.meta.headlessTitle }}
+				</VButton>
+
+				<VButton :to="`${componentSourceBasePath}V${page?.title}.vue`" variant="soft" size="small" target="_blank">
+					Component Source
+					<ArrowTopRightOnSquareIcon class="size-3.5" />
+				</VButton>
+			</div>
 		</div>
 
 		<hr class="text-border mb-3">

@@ -27,7 +27,7 @@ const theme = useTheme();
 
             <VButton to="/primitives/button" variant="outline">
               <CubeIcon class="size-4.5" />
-              Components
+              All Components
             </VButton>
 
             <VButton variant="ghost" size="icon" @click="theme = theme === 'dark' ? 'light' : 'dark'">
