@@ -3,7 +3,6 @@ import { ContentRenderer } from '#components';
 import { createError, definePageMeta, queryCollection, useAsyncData, useRoute, useSeoMeta } from '#imports';
 import { ChevronRightIcon, CubeIcon } from '@heroicons/vue/24/outline';
 import SiblingPageButtons from '~/components/SiblingPageButtons.vue';
-import { watch } from 'vue';
 
 definePageMeta({
 	layout: "docs",
@@ -35,19 +34,6 @@ function slugToWords(slug: string) {
 			.map((word) => word[0].toUpperCase() + word.slice(1))
 			.join(" "));
 }
-
-watch(route, async (newRoute) => {
-	const { data: newPage } = await useAsyncData(newRoute.path, () =>
-		queryCollection("content").path(newRoute.path).first(),
-	);
-	if (!newPage.value) {
-		throw createError({
-			status: 404,
-			message: `${newRoute.fullPath} is not a page`,
-		});
-	}
-	page.value = newPage.value;
-});
 </script>
 
 <template>
@@ -68,7 +54,7 @@ watch(route, async (newRoute) => {
 
 			<h1 class="font-bold font-display text-3xl">{{ page?.title }}</h1>
 
-			<p class="text-muted-fg text-[1.05rem]">{{ page?.description }}</p>
+			<p class="text-muted-fg text-[1.05rem] leading-7">{{ page?.description }}</p>
 		</div>
 
 		<hr class="text-border mb-3">

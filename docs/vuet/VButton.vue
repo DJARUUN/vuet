@@ -59,7 +59,7 @@ const variantStyles = {
 	`,
 
 	outline: `
-		hover:bg-muted
+		bg-bg hover:bg-muted
 		text-fg
 		border-border
 		border

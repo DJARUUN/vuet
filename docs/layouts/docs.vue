@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { queryCollectionNavigation, useTheme } from '#imports';
+import { createError, queryCollectionNavigation, useAsyncData, useTheme } from '#imports';
 import { SunIcon, MoonIcon } from '@heroicons/vue/24/outline';
 import VButton from '~/vuet/VButton.vue';
 import VSidebar from '~/vuet/VSidebar.vue';
@@ -8,13 +8,14 @@ import SearchModal from '~/components/SearchModal.vue';
 
 const theme = useTheme();
 
-const pages = await queryCollectionNavigation("content");
+const { data: pages } = await useAsyncData(() => queryCollectionNavigation("content"));
+if (!pages.value) throw createError({ status: 500, message: "Something went wrong. Try again later." });
 </script>
 
 <template>
   <VSidebarLayout>
     <template #sidebar>
-      <VSidebar :items="pages">
+      <VSidebar :items="pages ?? []">
         <template #headerLeft>
           <VButton to="/" variant="ghost" class="font-display text-xl font-bold -ml-3.5 w-fit">
             Vuet

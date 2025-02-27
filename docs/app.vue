@@ -5,6 +5,7 @@
     </NuxtLayout>
 
     <NuxtRouteAnnouncer />
-    <NuxtLoadingIndicator color="linear-gradient(to right, var(--color-primary-600), var(--color-primary-500))" />
+    <NuxtLoadingIndicator
+      color="linear-gradient(in oklab 120deg, color-mix(in oklab, var(--color-primary) 97.5%, white), color-mix(in oklab, var(--color-primary) 90%, white))" />
   </div>
 </template>
