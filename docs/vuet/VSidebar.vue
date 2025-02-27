@@ -21,7 +21,7 @@ watch(route, () => (isMobileNavShown.value = false));
 
 <template>
   <aside
-    class="hidden lg:flex flex-col gap-5 p-6 border-r border-border w-[18rem] overflow-auto bg-overlay/90 backdrop-blur-xl backdrop-saturate-150">
+    class="hidden lg:flex flex-col gap-5 px-6 py-5 border-r border-border w-[18rem] overflow-auto bg-overlay/90 backdrop-blur-xl backdrop-saturate-150">
     <div v-if="$slots.header || $slots.headerLeft || $slots.headerRight"
       class="inline-flex justify-between items-center">
       <slot name="header">
