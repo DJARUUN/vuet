@@ -16,7 +16,7 @@ const {
 } = defineProps<{
 	type?: "button" | "submit" | "reset";
 	variant?: keyof typeof variantStyles;
-	size?: "default" | "icon";
+	size?: keyof typeof sizeStyles;
 	linkType?: "nuxt" | "vue" | "anchor";
 	to?: string;
 	class?: string;
@@ -27,13 +27,13 @@ const {
 
 const sharedStyles = `
 	transition-[background-color,color,border,opacity,outline] ease-smooth data-disabled:opacity-70 data-disabled:cursor-not-allowed outline-transparent
-	${variant !== 'link' ? 'flex text-sm font-medium rounded-lg select-none focus-visible:outline-1 focus-visible:-outline-offset-1 focus-visible:outline-fg' : 'inline-flex'}
-	inline-flex gap-2 items-center justify-center
+	${variant !== 'link' ? 'flex font-medium rounded-lg select-none focus-visible:outline-1 focus-visible:-outline-offset-1 focus-visible:outline-fg' : 'inline-flex'}
+	inline-flex items-center justify-center
 `;
 
 const sizeStyles = {
-	default: `h-8.5 px-3.5`,
-
+	default: `text-sm gap-2 h-8.5 px-3.5`,
+	small: `text-xs gap-1.5 h-7 px-3`,
 	icon: `size-8.5`,
 };
 const sizeStyle = variant !== "link" ? sizeStyles[size] : undefined;
