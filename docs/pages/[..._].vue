@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ContentRenderer } from '#components';
-import { createError, definePageMeta, queryCollection, useAsyncData, useRoute, useSeoMeta } from '#imports';
+import { computed, createError, definePageMeta, queryCollection, useAsyncData, useRoute, useSeoMeta } from '#imports';
 import { ArrowTopRightOnSquareIcon, ChevronRightIcon, CubeIcon } from '@heroicons/vue/24/outline';
 import SiblingPageButtons from '~/components/SiblingPageButtons.vue';
 import VButton from '~/vuet/VButton.vue';
@@ -17,15 +17,16 @@ const route = useRoute();
 const { data: page } = await useAsyncData(route.path, () =>
 	queryCollection("content").path(route.path).first(),
 );
-if (!page.value)
+if (!page.value) {
 	throw createError({
 		status: 404,
 		message: `${route.fullPath} is not a page`,
 	});
+}
 
 useSeoMeta({
-	title: page.value?.title + " - Vuet",
-	description: page.value?.description,
+	title: page.value.title + " - Vuet",
+	description: page.value.description,
 });
 
 function slugToWords(slug: string) {
@@ -37,35 +38,36 @@ function slugToWords(slug: string) {
 			.map((word) => word[0].toUpperCase() + word.slice(1))
 			.join(" "));
 }
+
+const meta = computed(() => page.value?.meta as Record<string, any>);
 </script>
 
 <template>
-	<div class="flex flex-col gap-6 overflow-auto scroll-smooth w-[clamp(0px,100%,70ch)] mx-auto">
+	<div v-if="page" class="flex flex-col gap-6 overflow-auto scroll-smooth w-[clamp(0px,100%,70ch)] mx-auto">
 		<div class="flex flex-col gap-4 text-sm">
 			<div class="inline-flex gap-1 items-center mb-2">
-				<template v-for="word in slugToWords(page?.path || '')" :key="word">
+				<template v-for="word in slugToWords(page.path || '')" :key="word">
 					<span class="text-muted-fg font-[450]">{{ word }}</span>
 					<ChevronRightIcon class="text-muted-fg size-3.5" />
 				</template>
 
 				<div class="inline-flex gap-2 items-center">
 					<CubeIcon class="size-4 text-muted-fg shrink-0" />
-					<span class="font-medium">{{ page?.title }}</span>
+					<span class="font-medium">{{ page.title }}</span>
 				</div>
 			</div>
 
-			<h1 class="font-bold font-display text-3xl">{{ page?.title }}</h1>
+			<h1 class="font-bold font-display text-3xl">{{ page.title }}</h1>
 
-			<p class="text-muted-fg text-[1.05rem] leading-7">{{ page?.description }}</p>
+			<p class="text-muted-fg text-[1.05rem] leading-7">{{ page.description }}</p>
 
-			<div v-if="!page?.stem.startsWith('1.')" class="inline-flex gap-2">
-				<VButton v-if="'headlessUrl' in page!.meta" :to="page?.meta.headlessUrl as string" variant="soft" size="small"
-					target="_blank">
-					<img :src="page?.meta.headlessLogo as string" class="size-3.5">
-					{{ page?.meta.headlessTitle }}
+			<div v-if="!page.stem.startsWith('1.')" class="inline-flex gap-2">
+				<VButton v-if="meta.headless" :to="meta.headless.url as string" variant="soft" size="small" target="_blank">
+					<img :src="meta.headless.logo as string" class="size-3.5">
+					{{ meta.headless.title }}
 				</VButton>
 
-				<VButton :to="`${componentSourceBasePath}V${page?.title}.vue`" variant="soft" size="small" target="_blank">
+				<VButton :to="`${componentSourceBasePath}V${page.title}.vue`" variant="soft" size="small" target="_blank">
 					Component Source
 					<ArrowTopRightOnSquareIcon class="size-3.5" />
 				</VButton>
