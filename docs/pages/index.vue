@@ -37,7 +37,7 @@ onMounted(() => {
 		<div class="container mx-auto px-6 grid place-content-center">
 			<div class="text-center flex flex-col gap-6">
 				<h1
-					:class="`text-[2.6rem] max-w-[90%] leading-none lg:text-6xl font-bold tracking-tight lg:max-w-3xl mx-auto transition-[translate,opacity,filter] ease-smooth duration-1500 dark:bg-linear-[in_oklab_160deg,var(--color-fg)_50%,color-mix(in_oklab,var(--color-muted-fg)_90%,white)] bg-linear-[in_oklab_160deg,color-mix(in_oklab,var(--color-muted-fg)_99%,white),var(--color-fg)_30%] ${reachedTransitionPoint1 ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-8 opacity-0 blur-xs'}`"
+					:class="`text-[2.6rem] max-w-[90%] leading-none lg:text-6xl font-bold tracking-tighter lg:max-w-3xl mx-auto transition-[translate,opacity,filter] ease-smooth duration-1500 dark:bg-linear-[in_oklab_160deg,var(--color-fg)_50%,color-mix(in_oklab,var(--color-muted-fg)_90%,white)] bg-linear-[in_oklab_160deg,color-mix(in_oklab,var(--color-muted-fg)_99%,white),var(--color-fg)_30%] ${reachedTransitionPoint1 ? 'translate-y-0 opacity-100 blur-none' : 'translate-y-8 opacity-0 blur-xs'}`"
 					style="
 						background-clip: border-box;
 						background-clip: text;
