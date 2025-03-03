@@ -53,7 +53,7 @@ export default defineNuxtConfig({
   },
 
   hooks: {
-    "nitro:build:before": async ({ options: nitroConfig }) => {
+    "nitro:build:before": async ({ options: { prerender: { routes } } }) => {
       console.log("Finding content pages to prerender");
 
       const __dirname = fileURLToPath(new URL('.', import.meta.url));
@@ -71,10 +71,7 @@ export default defineNuxtConfig({
 
         console.log(`Found ${routes.length} content routes to prerender`);
 
-        nitroConfig.prerender.routes = [
-          ...(nitroConfig.prerender.routes || []),
-          ...routes
-        ];
+        routes.forEach((route) => routes.push(route));
       } catch (error) {
         console.error("Error finding content files:", error);
       }
