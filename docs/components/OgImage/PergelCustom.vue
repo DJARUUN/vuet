@@ -10,7 +10,7 @@ const { title = "Title", description = "Description" } = defineProps<{
 
 <template>
   <div class="w-full h-full flex flex-col justify-center bg-[#0f0f12]">
-    <img src="/stars.png" class="w-[1800px] object-cover opacity-65 z-0" />
+    <!-- <img src="/stars.png" class="w-[1800px] object-cover opacity-65 z-0" /> -->
 
     <svg
       class="absolute inset-0 z-50"
