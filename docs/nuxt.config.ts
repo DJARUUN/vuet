@@ -88,7 +88,6 @@ export default defineNuxtConfig({
   },
 
   ogImage: {
-    zeroRuntime: true,
     fonts: ["Bricolage+Grotesque:700", "Geist:400"],
   },
 });
