@@ -10,6 +10,8 @@ import {
   useRoute,
   useSeoMeta,
   useHead,
+  defineOgImage,
+  defineRouteRules,
 } from "#imports";
 import {
   ArrowTopRightOnSquareIcon,
