@@ -1,7 +1,7 @@
 import tailwindcss from "@tailwindcss/vite";
-import { resolve } from 'path';
-import { fileURLToPath } from 'url';
-import { globby } from 'globby';
+import { resolve } from "path";
+import { fileURLToPath } from "url";
+import { globby } from "globby";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -26,7 +26,7 @@ export default defineNuxtConfig({
 
   css: ["~/assets/css/main.css"],
 
-  modules: ["@nuxt/fonts", "@nuxt/content"],
+  modules: ["@nuxt/fonts", "@nuxt/content", "nuxt-og-image"],
 
   experimental: {
     inlineRouteRules: true,
@@ -53,20 +53,29 @@ export default defineNuxtConfig({
   },
 
   hooks: {
-    "nitro:build:before": async ({ options: { prerender: { routes } } }) => {
+    "nitro:build:before": async ({
+      options: {
+        prerender: { routes },
+      },
+    }) => {
       console.log("Finding content pages to prerender");
 
-      const __dirname = fileURLToPath(new URL('.', import.meta.url));
-      const contentDir = resolve(__dirname, 'content');
+      const __dirname = fileURLToPath(new URL(".", import.meta.url));
+      const contentDir = resolve(__dirname, "content");
 
       try {
-        const contentFiles = await globby(['**/*.md', '**/*.yaml', '**/*.json'], {
-          cwd: contentDir
-        });
+        const contentFiles = await globby(
+          ["**/*.md", "**/*.yaml", "**/*.json"],
+          {
+            cwd: contentDir,
+          }
+        );
 
-        const routes = contentFiles.map(file => {
-          const path = '/' + file.replace(/\.(md|yaml|json)$/, '').replaceAll(/([0-9])\./g, "");
-          return path.endsWith('/index') ? path.replace(/\/index$/, '/') : path;
+        const routes = contentFiles.map((file) => {
+          const path =
+            "/" +
+            file.replace(/\.(md|yaml|json)$/, "").replaceAll(/([0-9])\./g, "");
+          return path.endsWith("/index") ? path.replace(/\/index$/, "/") : path;
         });
 
         console.log(`Found ${routes.length} content routes to prerender`);
@@ -76,5 +85,13 @@ export default defineNuxtConfig({
         console.error("Error finding content files:", error);
       }
     },
-  }
+  },
+
+  ogImage: {
+    zeroRuntime: true,
+    fonts: ["Bricolage+Grotesque:700", "Geist:400"],
+    defaults: {
+      renderer: "chromium",
+    },
+  },
 });

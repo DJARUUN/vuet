@@ -38,7 +38,7 @@ onMounted(() => {
       stars = [];
       createStars();
     }, 200) as unknown as number;
-  };
+  }
 
   window.addEventListener("resize", handleResize, { passive: true });
 
@@ -48,7 +48,7 @@ onMounted(() => {
       lastTime = performance.now();
       animationFrame = requestAnimationFrame(animate);
     }
-  })
+  });
 
   let stars: {
     x: number;
@@ -65,7 +65,8 @@ onMounted(() => {
 
     const sizeFactor = Math.min(displayWidth, displayHeight) / 100;
     const density = Math.max(20000, 15000 + 5000 * sizeFactor);
-    const numberOfStars = Math.floor((displayWidth * displayHeight) / density) * 3;
+    const numberOfStars =
+      Math.floor((displayWidth * displayHeight) / density) * 3;
 
     stars = [];
     for (let i = 0; i < numberOfStars; i++) {
@@ -76,7 +77,7 @@ onMounted(() => {
         speed: Math.random() * 0.04 + 0.02,
         opacity: Math.random() * 0.4 + 0.3,
         pulse: Math.random() * 0.02,
-      })
+      });
     }
   }
 
@@ -89,7 +90,9 @@ onMounted(() => {
   const colorCache: { [key: string]: string } = {};
   for (let i = 0; i <= 10; i++) {
     const opacity = 0.3 + (i / 10) * 0.5;
-    colorCache[opacity.toFixed(1)] = `oklch(0.6 0.05 240 / ${opacity.toFixed(1)})`;
+    colorCache[opacity.toFixed(1)] = `oklch(0.6 0.05 240 / ${opacity.toFixed(
+      1
+    )})`;
   }
 
   function animate(timestamp: number) {
@@ -128,7 +131,8 @@ onMounted(() => {
 
       const opacityKey = star.opacity.toFixed(1);
 
-      ctx.fillStyle = colorCache[opacityKey] || `oklch(0.6 0.05 240 / ${star.opacity})`;
+      ctx.fillStyle =
+        colorCache[opacityKey] || `oklch(0.6 0.05 240 / ${star.opacity})`;
 
       ctx.beginPath();
       ctx.arc(star.x, star.y, star.size / 2, 0, Math.PI * 2);
@@ -142,8 +146,8 @@ onMounted(() => {
   animationFrame = requestAnimationFrame(animate);
 
   onBeforeUnmount(() => {
-    window.removeEventListener('resize', handleResize);
-    document.removeEventListener('visibilitychange', () => { });
+    window.removeEventListener("resize", handleResize);
+    document.removeEventListener("visibilitychange", () => {});
     if (animationFrame) {
       cancelAnimationFrame(animationFrame);
     }
@@ -158,25 +162,49 @@ onMounted(() => {
   <div class="fixed inset-0 -z-10">
     <canvas ref="canvasRef" class="absolute inset-0" />
 
-    <div class="absolute inset-0 opacity-90"
-      style="background: radial-gradient(in oklab circle at center, transparent, var(--color-bg))" />
+    <div
+      class="absolute inset-0 opacity-90"
+      style="
+        background: radial-gradient(
+          in oklab circle at center,
+          transparent,
+          var(--color-bg)
+        );
+      "
+    />
 
     <div
       class="absolute lg:-left-[25%] -left-[175%] -top-[15%] transform-gpu will-change-transform overflow-hidden blur-3xl"
-      aria-hidden="true">
-      <div class="relative aspect-[1155/678] w-[75rem] rotate-[30deg] opacity-25" style="
-          background: linear-gradient(in oklab to right, var(--color-primary), var(--color-secondary));
+      aria-hidden="true"
+    >
+      <div
+        class="relative aspect-[1155/678] w-[75rem] rotate-[30deg] opacity-25"
+        style="
+          background: linear-gradient(
+            in oklab to right,
+            var(--color-primary),
+            var(--color-secondary)
+          );
           border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
-        " />
+        "
+      />
     </div>
 
     <div
       class="absolute lg:-right-[20%] -right-[125%] top-[60%] transform-gpu will-change-transform overflow-hidden blur-3xl"
-      aria-hidden="true">
-      <div class="relative aspect-[800/600] w-[60rem] translate-x-[20%] rotate-[15deg] opacity-10" style="
-          background: linear-gradient(in oklab to right, var(--color-secondary), var(--color-primary));
+      aria-hidden="true"
+    >
+      <div
+        class="relative aspect-[800/600] w-[60rem] translate-x-[20%] rotate-[15deg] opacity-10"
+        style="
+          background: linear-gradient(
+            in oklab to right,
+            var(--color-secondary),
+            var(--color-primary)
+          );
           border-radius: 60% 40% 30% 70% / 50% 40% 60% 50%;
-        " />
+        "
+      />
     </div>
   </div>
 </template>
