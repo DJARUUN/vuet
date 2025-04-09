@@ -9,6 +9,7 @@ import {
   useAsyncData,
   useRoute,
   useSeoMeta,
+  useHead,
 } from "#imports";
 import {
   ArrowTopRightOnSquareIcon,
@@ -39,7 +40,7 @@ if (!page.value) {
 }
 
 useSeoMeta({
-  title: page.value.title + " - Vuet",
+  title: page.value.title,
   description: page.value.description,
 });
 

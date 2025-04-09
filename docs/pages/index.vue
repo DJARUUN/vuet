@@ -7,6 +7,7 @@ import {
   definePageMeta,
   defineRouteRules,
   useSeoMeta,
+  useHead,
 } from "#imports";
 import { ref, onMounted } from "vue";
 
@@ -19,7 +20,7 @@ definePageMeta({
 });
 
 useSeoMeta({
-  title: "Vuet",
+  title: "Welcome!",
   description: "Beautiful Vue components for the modern web",
 });
 

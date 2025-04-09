@@ -26,7 +26,7 @@ export default defineNuxtConfig({
 
   css: ["~/assets/css/main.css"],
 
-  modules: ["@nuxt/fonts", "@nuxt/content", "nuxt-og-image"],
+  modules: ["@nuxt/fonts", "@nuxtjs/seo", "@nuxt/content"],
 
   experimental: {
     inlineRouteRules: true,
