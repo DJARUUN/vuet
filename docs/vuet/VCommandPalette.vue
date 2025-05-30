@@ -102,13 +102,13 @@ onMounted(() => {
 <template>
 	<VResponsiveModal v-model="isOpen"
 		containerClass="not-lg:min-h-[80%] lg:fixed lg:top-[15%] lg:max-h-[70%] lg:min-w-0 lg:w-[640px]" noHandle
-		class="gap-3 p-0 pb-3">
+		class="gap-2 p-0 pb-2">
 		<slot />
 
 		<template #header>
 			<div class="w-full relative">
 				<input type="text"
-					class="py-3 px-4 rounded-t-xl text-fg border-b border-b-input placeholder:text-muted-fg focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-70 ease-smooth shrink-0 w-full"
+					class="py-2 px-3 rounded-t-xl text-fg border-b border-b-input placeholder:text-muted-fg focus-visible:outline-none disabled:cursor-not-allowed disabled:opacity-70 ease-smooth shrink-0 w-full"
 					:placeholder="placeholder" v-model="query" @keydown="handleKeyDown">
 
 				<VButton variant="ghost" size="icon" class="absolute right-2 top-[50%] -translate-y-[50%]" @click="handleClose">
@@ -118,7 +118,7 @@ onMounted(() => {
 		</template>
 
 		<template #content>
-			<div ref="contentRef" class="flex flex-col flex-1 overflow-y-auto px-3" tabindex="-1">
+			<div ref="contentRef" class="flex flex-col flex-1 overflow-y-auto px-2" tabindex="-1">
 				<template v-if="results.length > 0">
 					<VButton v-for="(item, idx) of results" :key="idx"
 						style="--selected-bg-light: color-mix(in oklab, var(--color-border) 60% ,var(--color-overlay))"
@@ -128,7 +128,7 @@ onMounted(() => {
 					</VButton>
 				</template>
 
-				<p v-else class="text-muted-fg text-sm py-5 text-center">
+				<p v-else class="text-muted-fg text-sm py-4 text-center">
 					<template v-if="query.length > 0">
 						No results found for
 						<span class="text-fg">"{{ query }}"</span>.

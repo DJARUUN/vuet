@@ -8,7 +8,7 @@ defineProps<{ toPage: ContentCollectionItem | undefined; next: boolean }>();
 
 <template>
   <VButton v-if="toPage" variant="outline" :to="toPage.path"
-    :class="`h-fit py-3.5 px-4 rounded-xl group flex flex-col ${next ? 'items-end' : 'items-start'}`">
+    :class="`h-fit py-3 px-3.5 rounded-xl group flex flex-col ${next ? 'items-end' : 'items-start'}`">
     <div :class="`grid gap-2 ${next ? 'grid-cols-[1fr_auto]' : 'grid-cols-[auto_1fr]'}`">
       <ArrowLeftIcon v-if="!next" class="size-4 mt-1 group-active:-translate-x-1 transition-[translate] ease-smooth" />
 

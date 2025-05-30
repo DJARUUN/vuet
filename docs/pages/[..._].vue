@@ -68,9 +68,9 @@ const meta = computed(() => page.value?.meta as Record<string, any>);
 <template>
   <div
     v-if="page"
-    class="flex flex-col gap-6 overflow-auto scroll-smooth w-[clamp(0px,100%,70ch)] mx-auto"
+    class="flex flex-col gap-4 overflow-auto scroll-smooth w-[clamp(0px,100%,70ch)] mx-auto"
   >
-    <div class="flex flex-col gap-4 text-sm">
+    <div class="flex flex-col gap-2 text-sm">
       <div class="inline-flex gap-1 items-center mb-2">
         <template v-for="word in slugToWords(page.path || '')" :key="word">
           <span class="text-muted-fg font-[450]">{{ word }}</span>

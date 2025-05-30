@@ -4,7 +4,7 @@ import VCollapsible from '~/vuet/VCollapsible.vue';
 </script>
 
 <template>
-  <div class="flex flex-col gap-3">
+  <div class="flex flex-col gap-2">
     <VCollapsible title="Preview" variant="container">
       <slot />
     </VCollapsible>

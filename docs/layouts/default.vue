@@ -15,13 +15,13 @@ const theme = useTheme();
   <div class="h-dvh">
     <div class="flex flex-col fixed isolate z-10 inset-x-0 max-h-full">
       <nav
-        class="gap-5 px-6 inline-flex items-center overflow-auto min-h-18 bg-overlay/90 backdrop-blur-xl backdrop-saturate-150 border-b border-border">
-        <div class="inline-flex justify-between items-center w-full gap-3">
-          <VButton to="/" variant="ghost" class="font-display text-xl font-bold -ml-3.5 w-fit">
+        class="gap-3 px-4 inline-flex items-center overflow-auto min-h-16 bg-overlay/90 backdrop-blur-xl backdrop-saturate-150 border-b border-border">
+        <div class="inline-flex justify-between items-center w-full gap-2">
+          <VButton to="/" variant="ghost" class="font-display text-xl font-bold -ml-3 w-fit">
             Vuet
           </VButton>
 
-          <div class="inline-flex gap-3 items-center flex-1 justify-end">
+          <div class="inline-flex gap-2 items-center flex-1 justify-end">
             <SearchModal buttonClass="not-md:aspect-square md:w-66 not-md:justify-center md:justify-start"
               textClass="not-md:hidden" />
 

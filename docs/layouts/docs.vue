@@ -17,9 +17,9 @@ if (!pages.value) throw createError({ status: 500, message: "Something went wron
     <template #sidebar>
       <VSidebar :items="pages ?? []">
         <template #header>
-          <div class="inline-flex gap-3 justify-between lg:flex lg:flex-col lg:gap-3 w-full">
-            <div class="inline-flex gap-3 justify-between">
-              <VButton to="/" variant="ghost" class="font-display text-xl font-bold -ml-3.5 w-fit">
+          <div class="inline-flex gap-2 justify-between lg:flex lg:flex-col lg:gap-2 w-full">
+            <div class="inline-flex gap-2 justify-between">
+              <VButton to="/" variant="ghost" class="font-display text-xl font-bold -ml-3 w-fit">
                 Vuet
               </VButton>
 
@@ -30,7 +30,7 @@ if (!pages.value) throw createError({ status: 500, message: "Something went wron
               </VButton>
             </div>
 
-            <div class="inline-flex gap-3 flex-1">
+            <div class="inline-flex gap-2 flex-1">
               <SearchModal buttonClass="not-lg:flex-1 lg:w-full" />
 
               <VButton variant="ghost" size="icon" @click="theme = theme === 'dark' ? 'light' : 'dark'"
@@ -44,7 +44,7 @@ if (!pages.value) throw createError({ status: 500, message: "Something went wron
       </VSidebar>
     </template>
 
-    <div class="grid lg:grid-cols-[1fr_16rem] gap-9 w-full">
+    <div class="grid lg:grid-cols-[1fr_16rem] gap-8 w-full">
       <slot />
     </div>
   </VSidebarLayout>

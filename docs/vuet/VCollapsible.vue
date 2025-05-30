@@ -19,30 +19,16 @@ if (defaultCollapsed) isCollapsed.value = true;
 
 const variantStyles = {
 	default: {
-		outer: `
-			gap-0.5
-		`,
-		button: `
-			h-7 -mx-2.5 px-2.5
-		`,
-		inner: `
-		`,
-		innest: `
-		`,
+		outer: `gap-0.5`,
+		button: `h-7 -mx-2.5 px-2.5`,
+		inner: ``,
+		innest: ``,
 	},
-
 	container: {
-		outer: `
-			border border-border rounded-xl
-		`,
-		button: `
-			h-12 px-4 hover:bg-transparent transition-[color] ease-smooth
-		`,
-		inner: `
-			p-3 pt-0 in-data-collapsed:-mb-3
-		`,
-		innest: `
-		`,
+		outer: `border border-border rounded-xl`,
+		button: `h-10 px-3 hover:bg-transparent transition-[color] ease-smooth`,
+		inner: `p-2 pt-0 in-data-collapsed:-mb-2`,
+		innest: ``,
 	},
 };
 

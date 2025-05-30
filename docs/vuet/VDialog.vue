@@ -29,12 +29,12 @@ onMounted(() => mounted.value = true)
 			<template v-if="mounted">
 				<Dialog.Backdrop class="absolute inset-0 dark:bg-bg/40 bg-fg/15 z-20" />
 
-				<Dialog.Positioner class="absolute inset-0 flex justify-center items-center p-3 z-50 isolate">
+				<Dialog.Positioner class="absolute inset-0 flex justify-center items-center p-2 z-50 isolate">
 					<Dialog.Content
 						:class="twMerge(`flex flex-col bg-overlay/90 backdrop-blur-xl backdrop-saturate-150 text-overlay-fg rounded-xl border max-h-[80%] not-md:w-full md:min-w-116 shadow-lg dark:shadow-overlay/25 shadow-overlay-fg/5 !border-border dark:!border-t-[color-mix(in_oklab,var(--color-overlay)_82.5%,white)]`, containerClass)">
-						<div :class="twMerge('flex flex-col px-6 py-5 gap-6 min-h-0', $props.class)">
+						<div :class="twMerge('flex flex-col px-4 py-4 gap-4 min-h-0', $props.class)">
 							<slot name="header">
-								<div class="grid grid-cols-[1fr_auto] gap-5 -mb-3 shrink-0">
+								<div class="grid grid-cols-[1fr_auto] gap-2 -mb-2 shrink-0">
 									<Dialog.Title v-if="$slots.title || $slots.description || title || description"
 										class="flex flex-col gap-1.5">
 										<slot name="title">
@@ -53,7 +53,7 @@ onMounted(() => mounted.value = true)
 								</div>
 							</slot>
 
-							<div v-if="$slots.content" class="flex flex-col gap-3 flex-1 overflow-y-auto">
+							<div v-if="$slots.content" class="flex flex-col gap-2 flex-1 overflow-y-auto">
 								<slot name="content" />
 							</div>
 
