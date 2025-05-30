@@ -11,7 +11,7 @@ const nextPage = await queryCollection("content").path(siblingPages[1]?.path).fi
 </script>
 
 <template>
-	<div class="grid lg:grid-cols-2 gap-3">
+	<div class="grid lg:grid-cols-2 gap-2">
 		<SiblingPageButton :toPage="prevPage" :next="false" />
 		<SiblingPageButton :toPage="nextPage" :next="true" />
 	</div>

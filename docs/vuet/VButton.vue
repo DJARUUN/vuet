@@ -32,9 +32,9 @@ const sharedStyles = `
 `;
 
 const sizeStyles = {
-	default: `text-sm gap-2 h-8.5 px-3.5`,
-	small: `text-xs gap-1.5 h-7 px-3`,
-	icon: `size-8.5`,
+	default: `text-sm gap-2 h-8 px-3`,
+	small: `text-xs gap-1.5 h-7 px-2.5`,
+	icon: `size-8`,
 };
 const sizeStyle = variant !== "link" ? sizeStyles[size] : undefined;
 
