@@ -91,7 +91,7 @@ onMounted(() => {
   for (let i = 0; i <= 10; i++) {
     const opacity = 0.3 + (i / 10) * 0.5;
     colorCache[opacity.toFixed(1)] = `oklch(0.6 0.05 240 / ${opacity.toFixed(
-      1
+      1,
     )})`;
   }
 
@@ -116,7 +116,7 @@ onMounted(() => {
 
     const len = stars.length;
     for (let i = 0; i < len; i++) {
-      const star = stars[i];
+      const star = stars[i]!;
 
       star.y -= star.speed * deltaTime * 0.1;
       if (star.y < -10) {

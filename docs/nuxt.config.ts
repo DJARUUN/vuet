@@ -2,7 +2,6 @@ import tailwindcss from "@tailwindcss/vite";
 import { resolve } from "path";
 import { fileURLToPath } from "url";
 import { globby } from "globby";
-import { prerenderRoutes } from "#app";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -25,7 +24,7 @@ export default defineNuxtConfig({
     plugins: [tailwindcss()],
   },
 
-  css: ["~/assets/css/main.css"],
+  css: ["./assets/css/main.css"],
 
   modules: ["@nuxt/fonts", "@nuxtjs/seo", "@nuxt/content"],
 
@@ -69,7 +68,7 @@ export default defineNuxtConfig({
           ["**/*.md", "**/*.yaml", "**/*.json"],
           {
             cwd: contentDir,
-          }
+          },
         );
 
         const routes = contentFiles.map((file) => {

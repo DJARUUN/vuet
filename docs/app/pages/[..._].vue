@@ -9,9 +9,6 @@ import {
   useAsyncData,
   useRoute,
   useSeoMeta,
-  useHead,
-  defineOgImage,
-  defineRouteRules,
 } from "#imports";
 import {
   ArrowTopRightOnSquareIcon,
@@ -19,7 +16,7 @@ import {
   CubeIcon,
 } from "@heroicons/vue/24/outline";
 import SiblingPageButtons from "~/components/SiblingPageButtons.vue";
-import VButton from "~/vuet/VButton.vue";
+import VButton from "~~/vuet/VButton.vue";
 
 definePageMeta({
   layout: "docs",
@@ -32,7 +29,7 @@ const componentSourceBasePath =
 const route = useRoute();
 
 const { data: page } = await useAsyncData(route.path, () =>
-  queryCollection("content").path(route.path).first()
+  queryCollection("content").path(route.path).first(),
 );
 if (!page.value) {
   throw createError({
@@ -57,8 +54,8 @@ function slugToWords(slug: string) {
     .map((segment) =>
       segment
         .split("-")
-        .map((word) => word[0].toUpperCase() + word.slice(1))
-        .join(" ")
+        .map((word) => word[0]!.toUpperCase() + word.slice(1))
+        .join(" "),
     );
 }
 

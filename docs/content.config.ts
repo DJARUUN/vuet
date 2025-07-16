@@ -7,7 +7,7 @@ export default defineContentConfig({
       asSeoCollection({
         type: "page",
         source: "**/*.md",
-      })
+      }),
     ),
   },
 });

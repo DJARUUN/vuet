@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { ArrowRightIcon } from "@heroicons/vue/24/outline";
-import VButton from "~/vuet/VButton.vue";
+import VButton from "~~/vuet/VButton.vue";
 import AnimatedBackground from "~/components/AnimatedBackground.vue";
 import {
   defineOgImageComponent,
   definePageMeta,
   defineRouteRules,
   useSeoMeta,
-  useHead,
 } from "#imports";
 import { ref, onMounted } from "vue";
 
@@ -76,7 +75,8 @@ onMounted(() => {
               -webkit-background-clip: text;
               -webkit-text-fill-color: transparent;
               -webkit-text-fill-color: transparent;
-              text-shadow: 0 0 20px
+              text-shadow:
+                0 0 20px
                   color-mix(in oklab, var(--color-primary), transparent 85%),
                 0 0 35px
                   color-mix(in oklab, var(--color-primary), transparent 90%);
@@ -110,7 +110,8 @@ onMounted(() => {
             class="group"
             to="/getting-started/introduction"
             style="
-              box-shadow: 0 0 40px
+              box-shadow:
+                0 0 40px
                   color-mix(in oklab, var(--color-primary), transparent 85%),
                 0 0 15px
                   color-mix(in oklab, var(--color-primary), transparent 90%);

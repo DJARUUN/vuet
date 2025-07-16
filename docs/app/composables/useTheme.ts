@@ -1,39 +1,42 @@
-import { onMounted, useHead, useState, watch } from "#imports";
+import { useHead, useState } from "#app";
+import { onMounted, watch } from "#imports";
 
 declare global {
-	var theme: string;
+  var theme: string;
 }
 
 const defaultTheme = "dark";
 
 export default function useTheme() {
-	useHead({
-		script: [{
-			children: `
-				globalThis.theme = localStorage.getItem("theme") ?? "${defaultTheme}";
-				document.documentElement.classList.add(globalThis.theme);
-			`,
-		}],
-	});
+  useHead({
+    script: [
+      {
+        innerHTML: `
+		globalThis.theme = localStorage.getItem("theme") ?? "${defaultTheme}";
+		document.documentElement.classList.add(globalThis.theme);
+	`,
+      },
+    ],
+  });
 
-	const theme = useState("theme", () => globalThis.theme ?? defaultTheme);
-	const hasMounted = useState("hasMounted", () => false);
+  const theme = useState("theme", () => globalThis.theme ?? defaultTheme);
+  const hasMounted = useState("hasMounted", () => false);
 
-	onMounted(() => {
-		if (!hasMounted.value || !theme.value) {
-			theme.value = globalThis.theme ?? defaultTheme;
+  onMounted(() => {
+    if (!hasMounted.value || !theme.value) {
+      theme.value = globalThis.theme ?? defaultTheme;
 
-			if (!hasMounted.value) hasMounted.value = true;
-		}
-	});
+      if (!hasMounted.value) hasMounted.value = true;
+    }
+  });
 
-	watch(theme, (newTheme, oldTheme) => {
-		localStorage.setItem("theme", newTheme ?? defaultTheme);
+  watch(theme, (newTheme, oldTheme) => {
+    localStorage.setItem("theme", newTheme ?? defaultTheme);
 
-		const html = document.documentElement;
-		if (oldTheme !== newTheme) html.classList.remove(oldTheme);
-		html.classList.add(newTheme);
-	});
+    const html = document.documentElement;
+    if (oldTheme !== newTheme) html.classList.remove(oldTheme);
+    html.classList.add(newTheme);
+  });
 
-	return theme;
+  return theme;
 }
