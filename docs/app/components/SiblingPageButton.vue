@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { ArrowLeftIcon, ArrowRightIcon } from "@heroicons/vue/24/outline";
 import type { ContentCollectionItem } from "@nuxt/content";
-import VButton from "~~/vuet/VButton.vue";
+import VButton from "~/vuet/VButton.vue";
 
 defineProps<{
   toPage: ContentCollectionItem | undefined | null;

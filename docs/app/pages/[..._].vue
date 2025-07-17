@@ -9,6 +9,7 @@ import {
   useAsyncData,
   useRoute,
   useSeoMeta,
+  useHead,
 } from "#imports";
 import {
   ArrowTopRightOnSquareIcon,
@@ -16,7 +17,7 @@ import {
   CubeIcon,
 } from "@heroicons/vue/24/outline";
 import SiblingPageButtons from "~/components/SiblingPageButtons.vue";
-import VButton from "~~/vuet/VButton.vue";
+import VButton from "~/vuet/VButton.vue";
 
 definePageMeta({
   layout: "docs",

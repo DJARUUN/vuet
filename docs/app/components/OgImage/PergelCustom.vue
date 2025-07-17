@@ -65,7 +65,7 @@ const { title = "Title", description = "Description" } = defineProps<{
       </h1>
       <p
         class="text-[32px] text-[#d4d4d8d9] leading-tight"
-        style="font-family: 'Geist'"
+        style="font-family: &quot;Geist&quot;"
       >
         {{ description.slice(0, 200) }}
       </p>

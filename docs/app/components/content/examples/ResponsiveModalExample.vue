@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, ref } from "vue";
-import VButton from "~~/vuet/VButton.vue";
-import VResponsiveModal from "~~/vuet/VResponsiveModal.vue";
+import VButton from "~/vuet/VButton.vue";
+import VResponsiveModal from "~/vuet/VResponsiveModal.vue";
 import { TrashIcon } from "@heroicons/vue/24/outline";
 
 const safetyCheckText = ref("");

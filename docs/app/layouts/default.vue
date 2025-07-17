@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { useTheme } from "#imports";
 import { CubeIcon, MoonIcon, SunIcon } from "@heroicons/vue/24/outline";
-import VButton from "~~/vuet/VButton.vue";
+import VButton from "~/vuet/VButton.vue";
 import SearchModal from "~/components/SearchModal.vue";
 
 const theme = useTheme();

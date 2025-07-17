@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import { ArrowRightIcon } from "@heroicons/vue/24/outline";
-import VButton from "~~/vuet/VButton.vue";
+import VButton from "~/vuet/VButton.vue";
 import AnimatedBackground from "~/components/AnimatedBackground.vue";
 import {
   defineOgImageComponent,
   definePageMeta,
   defineRouteRules,
   useSeoMeta,
+  useHead,
 } from "#imports";
 import { ref, onMounted } from "vue";
 

@@ -18,7 +18,12 @@ export default defineNuxtConfig({
     },
   },
 
-  components: [],
+  components: [
+    {
+      path: "~/vuet",
+      global: true,
+    },
+  ],
 
   vite: {
     plugins: [tailwindcss()],
@@ -46,10 +51,24 @@ export default defineNuxtConfig({
     experimental: {
       processCSSVariables: true,
     },
+    families: [
+      { name: "Bricolage Grotesque", weights: ["200 800"] },
+      { name: "Geist", weights: ["100 900"] },
+      { name: "Instrument Serif", weights: ["400"] },
+    ],
   },
 
   imports: {
     autoImport: false,
+  },
+
+  ogImage: {
+    fonts: ["Bricolage+Grotesque:700", "Geist:400"],
+  },
+
+  site: {
+    url: "https://vuet-docs.vercel.app",
+    name: "Vuet",
   },
 
   hooks: {
@@ -60,8 +79,8 @@ export default defineNuxtConfig({
     }) {
       console.log("Finding content pages to prerender");
 
-      const __dirname = fileURLToPath(new URL(".", import.meta.url));
-      const contentDir = resolve(__dirname, "content");
+      const dirname = fileURLToPath(new URL(".", import.meta.url));
+      const contentDir = resolve(dirname, "content");
 
       try {
         const contentFiles = await globby(
@@ -71,28 +90,19 @@ export default defineNuxtConfig({
           },
         );
 
-        const routes = contentFiles.map((file) => {
+        const routes = contentFiles.map((f) => {
           const path =
             "/" +
-            file.replace(/\.(md|yaml|json)$/, "").replaceAll(/([0-9])\./g, "");
+            f.replace(/\.(md|yaml|json)$/, "").replaceAll(/([0-9])\./g, "");
           return path.endsWith("/index") ? path.replace(/\/index$/, "/") : path;
         });
 
         console.log(`Found ${routes.length} content routes to prerender`);
 
-        routes.forEach((route) => nuxtRoutes.push(route));
+        routes.forEach((r) => nuxtRoutes.push(r));
       } catch (error) {
         console.error("Error finding content files:", error);
       }
     },
-  },
-
-  ogImage: {
-    fonts: ["Bricolage+Grotesque:700", "Geist:400"],
-  },
-
-  site: {
-    url: "https://vuet-docs.vercel.app",
-    name: "Vuet",
   },
 });

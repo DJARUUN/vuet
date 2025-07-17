@@ -9,9 +9,9 @@ import {
   HashtagIcon,
   MagnifyingGlassIcon,
 } from "@heroicons/vue/24/outline";
-import VButton from "~~/vuet/VButton.vue";
-import VCommandPalette from "~~/vuet/VCommandPalette.vue";
-import VKbd from "~~/vuet/VKbd.vue";
+import VButton from "~/vuet/VButton.vue";
+import VCommandPalette from "~/vuet/VCommandPalette.vue";
+import VKbd from "~/vuet/VKbd.vue";
 import { twMerge } from "tailwind-merge";
 
 defineProps<{

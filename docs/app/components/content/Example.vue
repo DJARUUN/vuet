@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import VCollapsible from "~~/vuet/VCollapsible.vue";
+import VCollapsible from "~/vuet/VCollapsible.vue";
 </script>
 
 <template>

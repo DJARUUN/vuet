@@ -6,9 +6,9 @@ import {
   useTheme,
 } from "#imports";
 import { SunIcon, MoonIcon } from "@heroicons/vue/24/outline";
-import VButton from "~~/vuet/VButton.vue";
-import VSidebar from "~~/vuet/VSidebar.vue";
-import VSidebarLayout from "~~/vuet/VSidebarLayout.vue";
+import VButton from "~/vuet/VButton.vue";
+import VSidebar from "~/vuet/VSidebar.vue";
+import VSidebarLayout from "~/vuet/VSidebarLayout.vue";
 import SearchModal from "~/components/SearchModal.vue";
 
 const theme = useTheme();
