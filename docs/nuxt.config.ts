@@ -45,6 +45,9 @@ export default defineNuxtConfig({
         },
       },
     },
+    experimental: {
+      nativeSqlite: true,
+    },
   },
 
   fonts: {
